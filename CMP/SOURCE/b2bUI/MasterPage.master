@@ -92,7 +92,7 @@ if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Survey")) {%><img cl
 </tr>
 <tr>
 <td>
-        <table border=2 CELLPADDING=0 CELLSPACING=0 width="100%">
+        <table CELLPADDING=0 CELLSPACING=0 width="100%">
          <tr>
            <td valign="top" style="background-image:url(images/footerMid.gif) ">               
                <img src="images/footerLefr.gif" />
