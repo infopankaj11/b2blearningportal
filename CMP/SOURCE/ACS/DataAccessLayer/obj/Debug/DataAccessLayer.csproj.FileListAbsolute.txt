@@ -1,0 +1,8 @@
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\bin\Debug\WorkLayers.DataAccessLayer.dll
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\bin\Debug\WorkLayers.DataAccessLayer.pdb
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\obj\Debug\WorkLayers.DataAccessLayer.dll
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\obj\Debug\WorkLayers.DataAccessLayer.pdb
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\bin\Debug\WorkLayers.DataInfoLayer.dll
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\bin\Debug\WorkLayers.DataInfoLayer.pdb
+D:\FinalYearProject\SourceCode\ACS\ACS\DataAccessLayer\bin\Debug\WorkLayers.DataAccessLayer.dll.config

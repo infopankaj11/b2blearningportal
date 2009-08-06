@@ -1,0 +1,5 @@
+D:\FinalYearProject\SourceCode\ACS\ACS\DataInfoLayer\bin\Debug\WorkLayers.DataInfoLayer.dll
+D:\FinalYearProject\SourceCode\ACS\ACS\DataInfoLayer\bin\Debug\WorkLayers.DataInfoLayer.pdb
+D:\FinalYearProject\SourceCode\ACS\ACS\DataInfoLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\FinalYearProject\SourceCode\ACS\ACS\DataInfoLayer\obj\Debug\WorkLayers.DataInfoLayer.dll
+D:\FinalYearProject\SourceCode\ACS\ACS\DataInfoLayer\obj\Debug\WorkLayers.DataInfoLayer.pdb
