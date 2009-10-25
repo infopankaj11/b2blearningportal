@@ -1,0 +1,7 @@
+D:\Projects\CMP\BusinessLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\CMP\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.dll
+D:\Projects\CMP\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.pdb
+D:\Projects\CMP\BusinessLayer\bin\Debug\WorkLayers.DataLayer.dll
+D:\Projects\CMP\BusinessLayer\bin\Debug\WorkLayers.DataLayer.pdb
+D:\Projects\CMP\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.dll
+D:\Projects\CMP\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.pdb

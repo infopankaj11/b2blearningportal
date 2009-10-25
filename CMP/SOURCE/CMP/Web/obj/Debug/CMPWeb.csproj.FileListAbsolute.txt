@@ -1,0 +1,5 @@
+D:\Projects\CMP\Web\bin\Web.dll
+D:\Projects\CMP\Web\bin\Web.pdb
+D:\Projects\CMP\Web\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\CMP\Web\obj\Debug\Web.dll
+D:\Projects\CMP\Web\obj\Debug\Web.pdb
