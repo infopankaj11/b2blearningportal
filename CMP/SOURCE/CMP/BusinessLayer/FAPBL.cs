@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WorkLayers.DataLayer;
+using System.Data;
 
 namespace WorkLayers.BusinessLayer
 {
-    class FAPBL
+    public class FAPBL
     {
-       
+        private FAPDL fapDL;
+
+        public FAPBL()
+        {
+            fapDL = new FAPDL();
+        }
+
+        public DataTable testit()
+        {
+            return fapDL.testit();
+        }
     }
 }
