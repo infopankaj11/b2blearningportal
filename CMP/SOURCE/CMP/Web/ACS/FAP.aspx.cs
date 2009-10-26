@@ -15,6 +15,7 @@ using WorkLayers.BusinessLayer;
 public partial class FAP : System.Web.UI.Page
 {
     FAPBL fapBL;
+
     public FAP()
     {
         fapBL = new FAPBL();
@@ -23,19 +24,14 @@ public partial class FAP : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ConfigurationManager.AppSettings["CurrentMenu"] = "PortalAdmin";
-        populateTable();
+        PopulateFAPList();
     }
 
-    private void populateTable()
+    private void PopulateFAPList()
     {
-        DataTable dtFAP = fapBL.testit();
+        DataTable dtFAP = fapBL.GetAllFAPs();
         gv_FAPs.DataSource = dtFAP;
         gv_FAPs.DataBind();
-    }
-
-    private void populateData()
-    {
-        
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)

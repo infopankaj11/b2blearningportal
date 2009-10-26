@@ -16,9 +16,9 @@ namespace WorkLayers.BusinessLayer
             fapDL = new FAPDL();
         }
 
-        public DataTable testit()
+        public DataTable GetAllFAPs()
         {
-            return fapDL.testit();
+            return fapDL.GetAllFAPs();
         }
     }
 }
