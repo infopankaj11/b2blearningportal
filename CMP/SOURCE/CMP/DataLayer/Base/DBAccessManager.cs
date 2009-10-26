@@ -113,7 +113,7 @@ namespace WorkLayers.DataLayer
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {

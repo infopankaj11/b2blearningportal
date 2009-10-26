@@ -16,20 +16,19 @@ namespace WorkLayers.DataLayer
     public class DBConnManager
     {
 
-        public System.Data.SqlClient.SqlConnection OpenDBConnection()
+        public System.Data.SqlClient.SqlConnection GetDbConnection()
         {
             System.Data.SqlClient.SqlConnection DBConn = null;
 
             try
             {
-                string dbString = ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString();
+                string dbString = ConfigurationManager.ConnectionStrings["CMPConnString"].ToString();
                 DBConn  = new System.Data.SqlClient.SqlConnection(dbString);
                 DBConn.Open();
-
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {
@@ -47,7 +46,7 @@ namespace WorkLayers.DataLayer
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
         }
 

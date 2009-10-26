@@ -31,22 +31,7 @@
     <table border="1" cellspacing="0" cellpadding="3">
    <tr>
    <td style="width:60%" valign="top" >
-                <asp:GridView Width="100%" runat="server" ID="gv_FAPs" AutoGenerateColumns="false" >
-                <Columns>
-                        <asp:TemplateField HeaderText = "" HeaderStyle-BackColor="Silver" HeaderStyle-Font-Bold="true">
-                            <ItemTemplate>
-                                <asp:RadioButton ID="chk02" Text="" runat="server" />
-                             </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText = "FAP Name" HeaderStyle-BackColor="Silver" HeaderStyle-Font-Bold="true">
-                            <ItemTemplate>
-                                <asp:HyperLink runat="server" ID="HyperLink1" Text='<%#Eval("FAPName") %>' NavigateUrl = '<%#Eval("FAPName", "~/FAP.aspx?FAPName={0}&DESC=")  + Eval("Description")%>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField HeaderText="Description" DataField = "Description" HeaderStyle-BackColor="Silver" HeaderStyle-Font-Bold="true" />
-                        <asp:BoundField HeaderText="Program Name" DataField = "ProgramName" HeaderStyle-BackColor="Silver" HeaderStyle-Font-Bold="true" />
-                        <asp:BoundField HeaderText="Type" DataField = "Type" HeaderStyle-BackColor="Silver" HeaderStyle-Font-Bold="true" />
-                 </Columns>
+                <asp:GridView Width="100%" runat="server" ID="gv_FAPs" >
                 </asp:GridView>
             </td>
     </tr>
