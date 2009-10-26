@@ -16,7 +16,7 @@ namespace WorkLayers.DataLayer
     public class DBConnManager
     {
 
-        public System.Data.SqlClient.SqlConnection GetDbConnection()
+        public System.Data.SqlClient.SqlConnection GetDBConnection()
         {
             System.Data.SqlClient.SqlConnection DBConn = null;
 

@@ -27,7 +27,7 @@ namespace WorkLayers.DataLayer
             SqlConnection dbCon = null;
             try
             {
-                dbCon = db.GetDbConnection();
+                dbCon = db.GetDBConnection();
                 SqlCommand sCmd = new SqlCommand(sQuery);
                 sCmd.CommandText = sQuery;
                 sCmd.Connection = dbCon;
@@ -36,6 +36,7 @@ namespace WorkLayers.DataLayer
             catch (Exception ex)
             {
                 iRes = -1;
+                throw ex;
             }
             finally
             {
@@ -53,7 +54,7 @@ namespace WorkLayers.DataLayer
             object[] obj = new object[2];
             try
             {
-                dbCon = db.GetDbConnection();
+                dbCon = db.GetDBConnection();
 
                 SqlCommand sCmd = new SqlCommand(sQuery);
 
@@ -68,7 +69,7 @@ namespace WorkLayers.DataLayer
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
 
             return obj;
@@ -82,14 +83,14 @@ namespace WorkLayers.DataLayer
             SqlConnection dbCon = null;
             try
             {
-                dbCon = db.GetDbConnection();
+                dbCon = db.GetDBConnection();
                 ds = new DataSet();
                 System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter(sQuery, dbCon);
                 da.Fill(ds);
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {
@@ -106,7 +107,7 @@ namespace WorkLayers.DataLayer
             SqlConnection dbCon = null;
             try
             {
-                dbCon = db.GetDbConnection();
+                dbCon = db.GetDBConnection();
                 dt = new DataTable();
                 System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter(sQuery, dbCon);
                 da.Fill(dt);

@@ -10,32 +10,107 @@
 <tr>
 <td>
    <table class="search">
-    <tr align="right">
-    <td class="style1">
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-    <asp:Button ID="Button4" Text="Search" runat="server" />
-    </td>
-    </tr>
-    <tr align="right">
-    <td>
-    <asp:RadioButton id="RadioButton2" Text="by Company" runat="server"/>
-    <asp:RadioButton id="RadioButton3" Text="by Name" runat="server"/>
-    </td>
-    </tr>
+        <tr align="right">
+            <td class="style1">
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <asp:Button ID="Button4" Text="Search" runat="server" />
+            </td>
+        </tr>
+        <tr align="right">
+            <td>
+                <asp:RadioButton id="RadioButton2" Text="by Company" runat="server"/>
+                <asp:RadioButton id="RadioButton3" Text="by Name" runat="server"/>
+            </td>
+        </tr>
     </table>
-
 </td>
 </tr>
+
 <tr>
 <td>
-    <table border="1" cellspacing="0" cellpadding="3">
-   <tr>
-   <td style="width:60%" valign="top" >
-                <asp:GridView Width="100%" runat="server" ID="gv_FAPs" >
+     <table cellpadding="0" cellspacing="0" width="100%" >
+        <tr>
+            <td style="width:60%" valign="top" >
+                <asp:GridView Width="100%" runat="server" ID="gv_FAPs" AutoGenerateColumns="false" >
+                <Columns>
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:CheckBox runat="server" ID="cbSelectAll" /> 
+                        </HeaderTemplate>
+                        <itemstyle horizontalalign="Center" />
+                        <headerstyle horizontalalign="Center" />
+                        
+                        <itemtemplate>
+                            <asp:CheckBox id="cbSelectFAP" runat="server" />  
+                            <asp:HiddenField ID="hfFAPListID" Value='<%#Eval("FAPListID")%>' runat="server" />
+                        </itemtemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbFAPNameHeader" Text="Name" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbFAPName" Text='<%#Eval("FAPName") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbFAPRemarkHeader" Text="Remark" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbFAPRemark" Text='<%#Eval("FAP_Remark") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbCreatedByHeader" Text="Created By" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbCreatedBy" Text='<%#Eval("Created_By") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbCreatedDateHeader" Text="Created Date" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbCreatedDate" Text='<%#Convert.ToDateTime(Eval("Created_Date")).ToString("dd-MMM-yyyy") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbModifiedByHeader" Text="Modified By" />
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbModifiedBy" Text='<%#Eval("Modified_By") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbModifiedDateHeader" Text="Modified Date" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbModifiedDate" Text='<%#Convert.ToDateTime(Eval("Modified_Date")).ToString("dd-MMM-yyyy") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                </Columns>
                 </asp:GridView>
             </td>
-    </tr>
+        </tr>
     </table>
+    
     <br />
   </td>
 </tr>  
@@ -49,15 +124,8 @@
         <td>
         <asp:Button ID="btnDelete" Text="Delete" runat="server" />
         </td>
-        <td>
-        <asp:Button ID="Button5" Text="Modify" runat="server" onclick="btnAdd_Click" />
-        </td>
-        <td>
-        <asp:Button ID="Button6" Text="Cancel" runat="server" />
-        </td>
     </tr>
     </table>
-
 </td>
 </tr>
 </table>    
