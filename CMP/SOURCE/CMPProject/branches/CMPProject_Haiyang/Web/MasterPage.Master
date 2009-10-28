@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html  xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>Content Management Portal</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+
+    <script src="../JScript.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+      </head>
+  <body onload="preloadImages();" style="height:100%">
+    <form id="form1" runat="server">
+  
+  <table width="100%" class="main"  cellpadding=0 cellspacing=0 height=100%>
+<tr>
+<td valign="top">
+        <table  cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+        <td valign="top" style="background-image:url(images/backheader2.gif);">
+            <img alt="" src="../images/logo.gif" style="width: 324px; height: 83px" /><img 
+                alt="" src="../images/aboutu2.gif" style="width: 97px; height: 83px" /><img 
+                alt="" src="../images/company%20registration.gif" 
+                style="width: 139px; height: 83px" /><img alt="" 
+                src="../images/our%20services.gif" style="width: 93px; height: 83px" /><img 
+                alt="" src="../images/contact%20us.gif" style="width: 138px; height: 82px" />            
+                </td>
+                </tr>
+         </table> 
+ </td>
+</tr>
+<tr>
+<td>
+            <table CELLPADDING="0" CELLSPACING="0" style="height:100%">
+            <tr class="sHeight" valign="top">
+            <td valign="top" style="background-color:#09177E;">
+<%if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("PortalAdmin")){%><img class="menu" src="../images/PAdmin-over.gif" name="portalAdmin" /><br /><% }else{ %><a class="menu" href="../Admin/PortalAdmin.aspx" onmouseout="window.status=''; changeImages('portalAdmin', '../images/PAdmin.gif'); return true;" onmouseover="window.status='portalAdmin';changeImages('portalAdmin', '../images/PAdmin-over.gif'); return true;" ><img src="../images/PAdmin.gif" name="portalAdmin" /></a><br /><%} //PORTAL ADMIN            
+if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("UserAdmin")){%><img class="menu" src="../images/userAdmin-over.gif" name="userAdmin"/><br /><% }else{ %><a class="menu" href="../Admin/UserAdmin.aspx" onmouseout="window.status=''; changeImages('userAdmin', '../images/userAdmin.gif'); return true;" onmouseover="window.status='userAdmin';changeImages('userAdmin', '../images/userAdmin-over.gif'); return true;" ><img src="../images/userAdmin.gif" name="userAdmin"/></a><br /><% } //USERADMIN 
+if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Modules")) {%><img class="menu" src="../images/modules-over.gif" name="modules" /><br /><% }else{ %><a class="menu" href="../Admin/ModuleMaintenance.aspx" onmouseout="window.status=''; changeImages('modules', '../images/modules.gif'); return true;" onmouseover="window.status='modules';changeImages('modules', '../images/modules-over.gif'); return true;" ><img class="menu" src="../images/modules.gif" name="modules" ></a><br /><% } //MODULES                 
+if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exams")){%><img class="menu" src="../images/examination-over.gif" name="examination" /><br /><% } else{ %><a class="menu" href="../MCQ/ExamMaintenance.aspx" onmouseout="window.status=''; changeImages('examination', '../images/examination.gif'); return true;" onmouseover="window.status='examination';changeImages('examination', '../images/examination-over.gif'); return true;" ><img src="../images/examination.gif" name="examination" /><br /></a><% } 
+if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")){%><img class="menu" src="../images/exercise-over.gif" name="exercise" /><br /><% } else { %> <a class="menu" href="../MCQ/ExerciseMaintenance.aspx" onmouseout="window.status=''; changeImages('exercise', '../images/exercise.gif'); return true;" onmouseover="window.status='exercise';changeImages('exercise', '../images/exercise-over.gif'); return true;" ><img src="../images/exercise.gif" name="exercise" /></a><br /><%}
+if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Survey")) {%><img class="menu" src="../images/survey-over.gif" name="survey" /><br /><% } else { %><a class="menu" href="../Survey/SurveyMaintenance.aspx" onmouseout="window.status=''; changeImages('survey', '../images/survey.gif'); return true;" onmouseover="window.status='survey';changeImages('survey', '../images/survey-over.gif'); return true;" ><img class="menu" src="../images/survey.gif" name="survey" /></a><br /><%}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) {%><img class="menu" src="../images/Reports-over.gif" name="reports" /><br /><% }else{ %><a class="menu" href="#" onmouseout="window.status=''; changeImages('reports', '../images/Reports.gif'); return true;" onmouseover="window.status='reports';changeImages('reports', '../images/Reports-over.gif'); return true;" ><img class="menu" src="../images/Reports.gif" name="reports" /></a><% } //REPORTS%>           
+<br> 
+            </td>
+
+            <td>  
+                <table>
+                <tr>
+                <td>
+                <%          
+                   if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("PortalAdmin"))
+                  { %>
+                  <a href="../ACS/DAP.aspx" >DAP Manager</a> &nbsp;|&nbsp; <a href="../ACS/FAP.aspx" >FAP Manager</a>&nbsp;|&nbsp;<a href="../ACS/Roles.aspx" >Roles Manager</a> &nbsp;|&nbsp;<a href="../Admin/PortalAdmin.aspx" >Portal Admin</a> &nbsp;|&nbsp;<a href="../Admin/UserAdmin.aspx" >User Admin Manager</a>&nbsp;|&nbsp;<a href="../Admin/ModuleMaintenance.aspx" >Module Manager</a>&nbsp;|&nbsp;<a href="../CMS/Reports.aspx" >Report Manager</a>
+                  
+                  <%}
+                  else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exams")) 
+                  {%>
+                  <a href="../MCQ/ExamMaintenance.aspx" >Exam Manager</a>&nbsp;|&nbsp;<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> &nbsp;|&nbsp<a href="../MCQ/Sections.aspx" >Section Manager</a>
+                  <%}
+                   else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Modules"))
+                   {%>
+                      <a href="../Admin/ModuleMaintenance.aspx" >Module Manager</a> &nbsp;|&nbsp;<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> 
+                  <%     
+                      } 
+                    else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) 
+                   {%>
+                     <a href="../MCQ/ExerciseMaintenance.aspx" >Exercise Manager</a> &nbsp;|&nbsp<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> &nbsp;|&nbsp<a href="../MCQ/Sections.aspx" >Section Manager</a>
+                   <%}
+                   else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Survey")) 
+                   {%>
+                         <a href="../MCQ/ExerciseMaintenance.aspx" >Survey Manager</a> &nbsp;|&nbsp<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> 
+                       <%} %>
+                </td>
+                                
+                </tr>               
+                <tr>
+                <td>
+                <div style="height:inherit">    
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" >        
+                    </asp:ContentPlaceHolder>
+                </div>
+                </td>
+                </tr>
+                </table>
+            </td>
+            </tr>
+            </table>
+
+</td>
+</tr>
+<tr>
+<td>
+        <table CELLPADDING=0 CELLSPACING=0 width="100%">
+         <tr>
+           <td valign="top" style="background-image:url(images/footerMid.gif) ">               
+               <img src="../images/footerLefr.gif" />
+               <img  src="../images/footerRight.gif" />
+           </td>
+         </tr>
+        </table>  
+</td>
+</tr>
+</table>
+    </form>
+</body>
+</html>
