@@ -3,3 +3,8 @@ D:\Projects\CMP\DataLayer\bin\Debug\WorkLayers.DataLayer.dll
 D:\Projects\CMP\DataLayer\bin\Debug\WorkLayers.DataLayer.pdb
 D:\Projects\CMP\DataLayer\obj\Debug\WorkLayers.DataLayer.dll
 D:\Projects\CMP\DataLayer\obj\Debug\WorkLayers.DataLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMP\DataLayer\bin\Debug\WorkLayers.DataLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMP\DataLayer\bin\Debug\WorkLayers.DataLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMP\DataLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\FinalYearProject\CMP\CMP\SOURCE\CMP\DataLayer\obj\Debug\WorkLayers.DataLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMP\DataLayer\obj\Debug\WorkLayers.DataLayer.pdb
