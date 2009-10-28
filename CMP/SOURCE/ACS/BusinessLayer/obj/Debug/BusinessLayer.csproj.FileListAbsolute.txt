@@ -1,9 +1,0 @@
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.dll
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.pdb
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\obj\Debug\ResolveAssemblyReference.cache
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.dll
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.pdb
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\bin\Debug\WorkLayers.DataAccessLayer.dll
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\bin\Debug\WorkLayers.DataInfoLayer.dll
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\bin\Debug\WorkLayers.DataInfoLayer.pdb
-D:\FinalYearProject\SourceCode\ACS\ACS\BusinessLayer\bin\Debug\WorkLayers.DataAccessLayer.pdb
