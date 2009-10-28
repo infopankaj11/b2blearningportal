@@ -1,0 +1,149 @@
+﻿body {
+	margin-bottom: 0px;
+	font-family: Verdana;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #525252;
+	}
+a:link {
+	color: #09177E;
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+
+}
+a:hover {
+	color: #09177E;
+	font-family: verdana;
+	font-size: 10px;
+	font-weight: bold;
+	font-style: normal;
+	line-height: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: underline;
+}
+a:visited {
+	color: #09177E;
+	font-family: verdana;
+	font-size: 10px;
+	font-weight: bold;
+	font-style: normal;
+
+}
+a.menu
+{
+	border:0,0,0;
+	border-bottom:0;
+	border-bottom-style:none;
+	  	 
+}
+img
+{
+	border:0,0,0;
+}
+h1 
+{ 
+	color:#0000E0; 
+}
+tr.sHeight
+{
+	height: auto;
+	width:80px; 
+}
+
+table.main: 
+{
+   height:100%;
+   width:100%; 
+   border:0;	
+   margin:0;
+    
+}
+table.search
+{	
+	align:right;
+	width: 958px
+	
+}
+td, textarea, input, select {
+	font-family: Verdana;
+	font-size: 11px;
+	color: #0066CC;
+	font-weight: normal;
+}
+.tableDetail {
+	font-size: 10px;
+	font-family: Verdana;
+	color: #000066;
+}
+.text1 {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #FFFFFF;
+	font-weight: normal;
+}
+.text2 {
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.text3 {
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: E75700;
+}
+.frame {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #FE6400;
+	border: 1px solid #849CCC;
+	width:808px;
+	
+}
+.text4 {
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #CB3D17;
+}
+
+.headertext
+{
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #0033CC;
+	background-color: #C0C0C0;
+}
+
+.designed_by {
+	font-family: verdana;
+	font-size: 9px;
+	font-weight: normal;
+	color: #363636;
+}
+.text5 {
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: 4F980B;
+}
+.text6 {
+	font-family: verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: 4D83C9;
+}
+.text7 {
+	font-family: verdana;
+	font-size: 10px;
+	font-weight: normal;
+	color: 4D83C9;
+}
