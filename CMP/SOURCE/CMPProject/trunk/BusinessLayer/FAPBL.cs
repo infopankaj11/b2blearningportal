@@ -20,5 +20,10 @@ namespace WorkLayers.BusinessLayer
         {
             return fapDL.GetAllFAPs();
         }
+
+        public DataTable GetFunctionsByFAPID(String FAPID)
+        {
+            return fapDL.GetFunctionsByFAPID(FAPID);
+        }
     }
 }
