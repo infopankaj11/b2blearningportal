@@ -45,16 +45,9 @@
                             <asp:HiddenField ID="hfFAPListID" Value='<%#Eval("FAPListID")%>' runat="server" />
                         </itemtemplate>
                     </asp:TemplateField>
-                    
-                    <asp:TemplateField>
-                        <HeaderTemplate>
-                            <asp:Label runat="server" ID="lbFAPNameHeader" Text="Name" />
-                        </HeaderTemplate>
-                        
-                        <ItemTemplate>
-                            <asp:Label runat="server" ID="lbFAPName" Text='<%#Eval("FAPName") %>'/>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
+                     
+                    <asp:HyperLinkField DataNavigateUrlFields="FAPListID" DataNavigateUrlFormatString="~/ACS/FAPMaintenance.aspx?FAPID={0}"
+                         DataTextField="FAPName" NavigateUrl="~/ACS/FAPMaintenance.aspx" HeaderText = "Name"/>
                     
                     <asp:TemplateField>
                         <HeaderTemplate>
