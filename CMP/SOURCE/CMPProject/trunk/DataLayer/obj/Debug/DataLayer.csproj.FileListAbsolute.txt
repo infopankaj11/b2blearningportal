@@ -23,3 +23,8 @@ D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091030\DataLaye
 D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091030\DataLayer\obj\Debug\ResolveAssemblyReference.cache
 D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091030\DataLayer\obj\Debug\WorkLayers.DataLayer.dll
 D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091030\DataLayer\obj\Debug\WorkLayers.DataLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\trunk\DataLayer\bin\Debug\WorkLayers.DataLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\trunk\DataLayer\bin\Debug\WorkLayers.DataLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\trunk\DataLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\trunk\DataLayer\obj\Debug\WorkLayers.DataLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\trunk\DataLayer\obj\Debug\WorkLayers.DataLayer.pdb
