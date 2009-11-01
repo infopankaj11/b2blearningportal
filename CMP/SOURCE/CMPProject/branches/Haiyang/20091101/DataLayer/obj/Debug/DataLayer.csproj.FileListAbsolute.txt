@@ -1,0 +1,5 @@
+D:\Projects\CMP\CMP\DataLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\CMP\CMP\DataLayer\bin\Debug\WorkLayers.DataLayer.dll
+D:\Projects\CMP\CMP\DataLayer\bin\Debug\WorkLayers.DataLayer.pdb
+D:\Projects\CMP\CMP\DataLayer\obj\Debug\WorkLayers.DataLayer.dll
+D:\Projects\CMP\CMP\DataLayer\obj\Debug\WorkLayers.DataLayer.pdb
