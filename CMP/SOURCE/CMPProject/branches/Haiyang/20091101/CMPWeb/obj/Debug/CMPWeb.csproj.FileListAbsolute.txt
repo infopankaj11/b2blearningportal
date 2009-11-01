@@ -1,0 +1,9 @@
+D:\Projects\CMP\CMP\CMPWeb\bin\CMPWeb.dll
+D:\Projects\CMP\CMP\CMPWeb\bin\CMPWeb.pdb
+D:\Projects\CMP\CMP\CMPWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\CMP\CMP\CMPWeb\obj\Debug\CMPWeb.dll
+D:\Projects\CMP\CMP\CMPWeb\obj\Debug\CMPWeb.pdb
+D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.BusinessLayer.dll
+D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.DataLayer.dll
+D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.DataLayer.pdb
+D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.BusinessLayer.pdb
