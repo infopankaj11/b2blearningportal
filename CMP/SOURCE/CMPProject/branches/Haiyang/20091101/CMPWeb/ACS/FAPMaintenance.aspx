@@ -32,23 +32,21 @@
             </td>
             
             <td>
-                <asp:GridView runat="server" ID="gv_Functions" AutoGenerateColumns="true" />
-                    <%--<Columns>
+                <asp:GridView runat="server" ID="gv_Functions" AutoGenerateColumns="false" ShowHeader="false" 
+                    OnRowDataBound="gv_Functions_RowDataBound" DataKeyNames="FAPFunctionID" >
+                    <Columns>
                         <asp:TemplateField>
-                            <HeaderTemplate>
-                                <asp:CheckBox runat="server" ID="chkSelectAll" /> 
-                            </HeaderTemplate>
                             <itemstyle horizontalalign="Center" />
-                            <headerstyle horizontalalign="Center" />
                             
                             <itemtemplate>
-                                <asp:CheckBox id="chkSelectFunction" runat="server" />  
-                                <asp:HiddenField ID="FAPFunctionID" Value='<%#Eval("FAPFunctionID")%>' runat="server" />
+                                <asp:CheckBox id="chkFunctionSelected" runat="server" />
+                                <asp:HiddenField ID="hfdHasFunction" Value='<%#Eval("HasFunction")%>' runat="server" />
                             </itemtemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="FAP_Function" HeaderText="" />
+                        </asp:TemplateField>                    
+                        <asp:BoundField DataField="FAP_Function"/>
+                    
                     </Columns>
-                </asp:GridView>--%>
+                </asp:GridView>
             </td>
         </tr>
       

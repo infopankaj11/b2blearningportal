@@ -33,11 +33,19 @@ namespace WorkLayers.DataLayer
         public DataTable GetFunctionsByFAPID(String FAPID)
         {
             strSQL = "";
-            strSQL += " SELECT f.FAPFunctionID,    ";
+            strSQL += " SELECT f.FAPFunctionID, f.FAP_Function, f.Function_Remarks, ";
             strSQL += " case ISNULL(TempTB.FAPListID,0)  ";
             strSQL += " when 0 then 'No'    else 'Yes'  end as 'HasFunction' ";
-            strSQL += " FROM fap_function f LEFT OUTER JOIN (SELECT * FROM fap_master WHERE FAPListID=1) ";
+            strSQL += " FROM fap_function f LEFT OUTER JOIN (SELECT * FROM fap_master WHERE FAPListID=" + FAPID + ") ";
             strSQL += " as TempTB ON f.FAPFunctionID = TempTB.FAPFunctionID";
+            return dbAccessManager.GetDataTable(strSQL);
+        }
+
+        //This function will retrieve the FAP information via FAPID
+        public DataTable GetFAPInfoByFAPID(String FAPID)
+        {
+            strSQL = "";
+            strSQL += "SELECT * FROM FAP_List WHERE FAPListID=" + FAPID;
             return dbAccessManager.GetDataTable(strSQL);
         }
     }
