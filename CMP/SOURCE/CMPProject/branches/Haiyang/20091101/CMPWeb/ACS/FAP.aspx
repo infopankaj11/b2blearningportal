@@ -46,7 +46,7 @@
                         </itemtemplate>
                     </asp:TemplateField>
                      
-                    <asp:HyperLinkField DataNavigateUrlFields="FAPListID" DataNavigateUrlFormatString="~/ACS/FAPMaintenance.aspx?FAPID={0}"
+                    <asp:HyperLinkField DataNavigateUrlFields="FAPListID" DataNavigateUrlFormatString="~/ACS/FAPMaintenance.aspx?Action=UpdateFAPID={0}"
                          DataTextField="FAPName" NavigateUrl="~/ACS/FAPMaintenance.aspx" HeaderText = "Name"/>
                     
                     <asp:TemplateField>

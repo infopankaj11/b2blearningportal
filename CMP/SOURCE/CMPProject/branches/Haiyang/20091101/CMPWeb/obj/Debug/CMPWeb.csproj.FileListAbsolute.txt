@@ -7,3 +7,12 @@ D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.BusinessLayer.dll
 D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.DataLayer.dll
 D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.DataLayer.pdb
 D:\Projects\CMP\CMP\CMPWeb\bin\WorkLayers.BusinessLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\bin\CMPWeb.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\bin\CMPWeb.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\bin\WorkLayers.BusinessLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\bin\WorkLayers.DataLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\bin\WorkLayers.DataLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\bin\WorkLayers.BusinessLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\obj\Debug\CMPWeb.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\CMPWeb\obj\Debug\CMPWeb.pdb
