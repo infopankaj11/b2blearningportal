@@ -36,7 +36,7 @@ public partial class FAP : System.Web.UI.Page
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        Response.Redirect("FAPMaintenance.aspx");
+        Response.Redirect("FAPMaintenance.aspx?Action=Add");
     }
 
 }
