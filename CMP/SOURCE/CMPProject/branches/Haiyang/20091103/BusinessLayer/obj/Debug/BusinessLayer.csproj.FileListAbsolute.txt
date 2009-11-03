@@ -1,0 +1,14 @@
+D:\Projects\CMP\CMP\BusinessLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\CMP\CMP\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.dll
+D:\Projects\CMP\CMP\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.pdb
+D:\Projects\CMP\CMP\BusinessLayer\bin\Debug\WorkLayers.DataLayer.dll
+D:\Projects\CMP\CMP\BusinessLayer\bin\Debug\WorkLayers.DataLayer.pdb
+D:\Projects\CMP\CMP\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.dll
+D:\Projects\CMP\CMP\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\BusinessLayer\bin\Debug\WorkLayers.BusinessLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\BusinessLayer\bin\Debug\WorkLayers.DataLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\BusinessLayer\bin\Debug\WorkLayers.DataLayer.pdb
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\BusinessLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.dll
+D:\FinalYearProject\CMP\CMP\SOURCE\CMPProject\branches\Haiyang\20091101\BusinessLayer\obj\Debug\WorkLayers.BusinessLayer.pdb
