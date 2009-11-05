@@ -24,7 +24,8 @@ public partial class FAP : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ConfigurationManager.AppSettings["CurrentMenu"] = "PortalAdmin";
-        PopulateFAPList();
+        if (!Page.IsPostBack)
+            PopulateFAPList();
     }
 
     private void PopulateFAPList()
@@ -39,4 +40,34 @@ public partial class FAP : System.Web.UI.Page
         Response.Redirect("FAPMaintenance.aspx?Action=Add");
     }
 
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        int[] FAPIDs = GetSelectedFAPIDs();
+        if (FAPIDs.Length == 0)
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please select FAP before proceeding.";
+            return;
+        }
+        else
+        {
+            fapBL.DeleteFAPs(FAPIDs);
+            lblMsg.ForeColor = System.Drawing.Color.Green;
+            lblMsg.Text = "Successfully deleted selected FAP(s).";
+            PopulateFAPList();
+        }
+    }
+
+    protected int[] GetSelectedFAPIDs()
+    {
+        ArrayList SelectedFAPIDs = new ArrayList();
+        CheckBox chkSelectedFAP;
+        foreach (GridViewRow myRow in gv_FAPs.Rows)
+        {
+            chkSelectedFAP = (CheckBox)(myRow.FindControl("chkSelectedFAP"));
+            if (chkSelectedFAP.Checked)
+                SelectedFAPIDs.Add(gv_FAPs.DataKeys[myRow.RowIndex].Value);
+        }
+        return (int[])SelectedFAPIDs.ToArray(typeof(int));
+    }
 }
