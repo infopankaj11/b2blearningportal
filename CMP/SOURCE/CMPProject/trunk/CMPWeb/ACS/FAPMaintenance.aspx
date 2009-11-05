@@ -55,13 +55,20 @@
     <table>
         <tr>
             <td>
-                <asp:Button ID="btnAdd" Text="Add" runat="server" />
+                <asp:Button ID="btnAddUpdate" Text="Add" runat="server" Width="80px" OnClick="btnAddUpdate_Click" />
             </td>
             <td>
-                <asp:Button ID="Button2" Text="Clear" runat="server" />
+                <asp:Button ID="btnCancel" Text="Cancel" runat="server" Width="80px" OnClick="btnCancel_Click" /> 
             </td>
+        </tr>
+    </table>
+    
+    <table>
+        <tr>
             <td>
-                <asp:Button ID="Button4" Text="Cancel" runat="server" /> 
+                <asp:Label runat="server" ID="lblMsg" ForeColor="Red" Text="" />
+                <asp:Label runat="server" ID="lblFAPID" Visible="false" Text="" />
+                <asp:Label runat="server" ID="lblAction" Visible="false" Text="" />
             </td>
         </tr>
     </table>
