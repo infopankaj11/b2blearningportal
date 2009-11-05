@@ -67,29 +67,47 @@ public partial class FAPMaintenance {
     protected global::System.Web.UI.WebControls.GridView gv_Functions;
     
     /// <summary>
-    /// btnAdd control.
+    /// btnAddUpdate control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnAdd;
+    protected global::System.Web.UI.WebControls.Button btnAddUpdate;
     
     /// <summary>
-    /// Button2 control.
+    /// btnCancel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button Button2;
+    protected global::System.Web.UI.WebControls.Button btnCancel;
     
     /// <summary>
-    /// Button4 control.
+    /// lblMsg control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button Button4;
+    protected global::System.Web.UI.WebControls.Label lblMsg;
+    
+    /// <summary>
+    /// lblFAPID control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblFAPID;
+    
+    /// <summary>
+    /// lblAction control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblAction;
 }

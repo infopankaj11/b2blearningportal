@@ -31,5 +31,22 @@ namespace WorkLayers.BusinessLayer
             return fapDL.GetFAPInfoByFAPID(FAPID);
         }
 
+        public void InsertFAPInfo(String FAPName, String Created_By, String FAP_Remark, int[] FunctionIDs)
+        {
+            int FAPID = fapDL.InsertFAPGetFAPID(FAPName, Created_By, FAP_Remark);
+            fapDL.UpdateFAPFunctions(FAPID, FunctionIDs);
+        }
+
+        public void UpdateFAPInfoNFunctions(int FAPID, String FAPName, String FAP_Remark, int[] FunctionIDs)
+        {
+            fapDL.UpdateFAPInfo(FAPID, FAPName, FAP_Remark);
+            fapDL.UpdateFAPFunctions(FAPID, FunctionIDs);
+        }
+
+        public void DeleteFAPs(int[] FAPIDs)
+        {
+            fapDL.DeleteFAPs(FAPIDs);
+        }
+
     }
 }

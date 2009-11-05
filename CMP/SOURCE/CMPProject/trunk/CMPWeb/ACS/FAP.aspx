@@ -31,7 +31,7 @@
      <table cellpadding="0" cellspacing="0" width="100%" >
         <tr>
             <td style="width:60%" valign="top" >
-                <asp:GridView Width="100%" runat="server" ID="gv_FAPs" AutoGenerateColumns="false" >
+                <asp:GridView Width="100%" runat="server" ID="gv_FAPs" AutoGenerateColumns="false" DataKeyNames="FAPListID" >
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
@@ -41,12 +41,12 @@
                         <headerstyle horizontalalign="Center" />
                         
                         <itemtemplate>
-                            <asp:CheckBox id="cbSelectFAP" runat="server" />  
+                            <asp:CheckBox id="chkSelectedFAP" runat="server" />  
                             <asp:HiddenField ID="hfFAPListID" Value='<%#Eval("FAPListID")%>' runat="server" />
                         </itemtemplate>
                     </asp:TemplateField>
                      
-                    <asp:HyperLinkField DataNavigateUrlFields="FAPListID" DataNavigateUrlFormatString="~/ACS/FAPMaintenance.aspx?Action=UpdateFAPID={0}"
+                    <asp:HyperLinkField DataNavigateUrlFields="FAPListID" DataNavigateUrlFormatString="~/ACS/FAPMaintenance.aspx?Action=Update&FAPID={0}"
                          DataTextField="FAPName" NavigateUrl="~/ACS/FAPMaintenance.aspx" HeaderText = "Name"/>
                     
                     <asp:TemplateField>
@@ -115,10 +115,16 @@
         <asp:Button ID="btnAdd" Text="Add" runat="server" onclick="btnAdd_Click" />
         </td>
         <td>
-        <asp:Button ID="btnDelete" Text="Delete" runat="server" />
+        <asp:Button ID="btnDelete" Text="Delete" runat="server" OnClick="btnDelete_Click" />
         </td>
     </tr>
     </table>
+</td>
+</tr>
+
+<tr>
+<td>
+    <asp:Label runat="server" ID="lblMsg" ForeColor="Red" />
 </td>
 </tr>
 </table>    
