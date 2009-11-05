@@ -123,5 +123,66 @@ namespace WorkLayers.DataLayer
             return dt;
         }
 
+
+        //Created by Haiyang on 03-Nov-09
+        //This will run all the commands in one transaction, which means, if one of the commands fails, 
+        //the whole transaction will be rollback. 
+        public void ExecuteCommands(String[] strSQLs)
+        {
+            SqlTransaction sqlTran;
+            SqlConnection dbCon = null;
+            dbCon = db.GetDBConnection();
+            sqlTran = dbCon.BeginTransaction();
+
+            try
+            {
+                SqlCommand sCmd = new SqlCommand();
+                sCmd.Connection = dbCon;
+                for (int i = 0; i < strSQLs.Length; i++)
+                {
+                    sCmd.CommandText = strSQLs[i];
+                    sCmd.Transaction = sqlTran;
+                    sCmd.ExecuteNonQuery();
+                }
+                sqlTran.Commit();
+            }
+            catch (Exception ex)
+            {
+                sqlTran.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                db.CloseDBConnection(dbCon);
+            }
+        }
+
+
+        //Created by Haiyang on 03-Nov-09
+        //This will run SQL query and return the scalar. 
+        public Object GetScalar(String strSQL)
+        {
+            Object rtnObj = new Object();
+            SqlConnection dbCon = null;
+            dbCon = db.GetDBConnection();
+
+            try
+            {
+                SqlCommand sCmd = new SqlCommand();
+                sCmd.Connection = dbCon;
+                sCmd.CommandText = strSQL;
+                rtnObj = sCmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                db.CloseDBConnection(dbCon);
+            }
+            return rtnObj;
+        }
+
     }
 }
