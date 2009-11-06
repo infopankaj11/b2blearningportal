@@ -1313,15 +1313,78 @@ INSERT INTO [FAP_Master]([FAPListID],[FAPFunctionID]) VALUES (3,4)
 /******************************* Added by Haiyang on 06-Nov-09 *******************************/
 -- here to change the table structure for Module_Master
 
--- drop original Module_Master first 
+-- it serves the purposes:
+-- 1. Add new table DAP_List
+-- 2. drop table dap_module 
+-- 3. modify table dap_master
+-- 4. modify table module_master
+
+-- 1. Add new table DAP_List
+/****** Object:  Table [dbo].[DAP_List]    Script Date: 11/06/2009 23:50:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DAP_List](
+	[DAPListID] [int] IDENTITY(1,1) NOT NULL,
+	[DAPName] [varchar](50) NULL,
+	[Created_By] [varchar](50) NULL,
+	[Created_Date] [datetime] NULL,
+	[Modified_By] [varchar](50) NULL,
+	[Modified_Date] [datetime] NULL,
+	[Delete_Flag] [varchar](2) NULL,
+	[DAP_Remark] [varchar](500) NULL,
+ CONSTRAINT [PK_DAP_List] PRIMARY KEY CLUSTERED 
+(
+	[DAPListID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+
+-- 2. Drop table dap_module
+/****** Object:  Table [dbo].[dap_module]    Script Date: 11/06/2009 23:56:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[dap_module]') AND type in (N'U'))
+DROP TABLE [dbo].[dap_module]
+
+-- 3.1 drop table dap_master
+
+/****** Object:  Table [dbo].[dap_master]    Script Date: 11/06/2009 23:58:02 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[dap_master]') AND type in (N'U'))
+DROP TABLE [dbo].[dap_master]
+
+
+-- 3.2 create new table DAP_Master
+
+/****** Object:  Table [dbo].[DAP_Master]    Script Date: 11/07/2009 00:02:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DAP_Master](
+	[DAPMasterID] [int] IDENTITY(1,1) NOT NULL,
+	[DAPListID] [int] NULL,
+	[DAPModuleID] [int] NULL,
+ CONSTRAINT [PK_DAP_Master] PRIMARY KEY CLUSTERED 
+(
+	[DAPMasterID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+-- 4.1 drop original Module_Master first 
 
 /****** Object:  Table [dbo].[module_master]    Script Date: 11/06/2009 23:25:53 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[module_master]') AND type in (N'U'))
 DROP TABLE [dbo].[module_master]
 
 
--- Add in new table Module_Master
-/****** Object:  Table [dbo].[Module_Master]    Script Date: 11/06/2009 23:27:26 ******/
+-- 4.2 Add in new table Module_Master
+/****** Object:  Table [dbo].[Module_Master]    Script Date: 11/06/2009 23:38:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1331,6 +1394,7 @@ GO
 CREATE TABLE [dbo].[Module_Master](
 	[module_id] [int] IDENTITY(1,1) NOT NULL,
 	[module_name] [varchar](50) NOT NULL,
+	[module_type] [varchar](50) NOT NULL,
 	[module_remarks] [varchar](500) NOT NULL,
 	[created_by] [varchar](50) NOT NULL,
 	[created_date] [datetime] NOT NULL,
