@@ -1384,7 +1384,7 @@ DROP TABLE [dbo].[module_master]
 
 
 -- 4.2 Add in new table Module_Master
-/****** Object:  Table [dbo].[Module_Master]    Script Date: 11/06/2009 23:38:19 ******/
+/****** Object:  Table [dbo].[Module_Master]    Script Date: 11/08/2009 00:26:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1392,7 +1392,7 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Module_Master](
-	[module_id] [int] IDENTITY(1,1) NOT NULL,
+	[module_id] [int] NOT NULL,
 	[module_name] [varchar](50) NOT NULL,
 	[module_type] [varchar](50) NOT NULL,
 	[module_remarks] [varchar](500) NOT NULL,
