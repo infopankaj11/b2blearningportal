@@ -1411,3 +1411,74 @@ GO
 SET ANSI_PADDING OFF
 
 /****************************** End of Addition on 06-Nov-09 *********************************/
+
+
+/****************************** Added By Haiyang on 08-Nov-09 ********************************/
+-- it will add three new tables: Role_List, Role_DAP, Role_FAP.
+
+-- 1. Add Role_List
+
+/****** Object:  Table [dbo].[Role_List]    Script Date: 11/08/2009 22:39:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Role_List](
+	[RoleListID] [int] IDENTITY(1,1) NOT NULL,
+	[RoleName] [varchar](50) NULL,
+	[Created_By] [varchar](50) NULL,
+	[Created_Date] [datetime] NULL,
+	[Updated_By] [varchar](50) NULL,
+	[Updated_Date] [datetime] NULL,
+	[Role_Remark] [varchar](500) NULL,
+	[Delete_Flag] [varchar](2) NULL,
+ CONSTRAINT [PK_Role_List] PRIMARY KEY CLUSTERED 
+(
+	[RoleListID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+-- 2. Add Role_DAP
+
+/****** Object:  Table [dbo].[Role_DAP]    Script Date: 11/08/2009 22:43:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Role_DAP](
+	[RoleDAPID] [int] IDENTITY(1,1) NOT NULL,
+	[RoleListID] [int] NULL,
+	[DAPListID] [int] NULL,
+ CONSTRAINT [PK_Role_DAP] PRIMARY KEY CLUSTERED 
+(
+	[RoleDAPID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+-- 3. Add Role_FAP
+
+/****** Object:  Table [dbo].[Role_FAP]    Script Date: 11/08/2009 22:44:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Role_FAP](
+	[RoleFAPID] [int] IDENTITY(1,1) NOT NULL,
+	[RokeListID] [int] NULL,
+	[FAPListID] [int] NULL,
+ CONSTRAINT [PK_Role_FAP] PRIMARY KEY CLUSTERED 
+(
+	[RoleFAPID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/********************************** End of Addition on 08-Nov-09 ******************/
+
+
+
