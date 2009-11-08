@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Base\DBAccessManager.cs" />
     <Compile Include="Base\DBConnManager.cs" />
+    <Compile Include="DAPDL.cs" />
     <Compile Include="FAPDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

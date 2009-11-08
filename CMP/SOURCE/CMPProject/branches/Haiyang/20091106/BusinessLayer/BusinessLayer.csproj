@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAPBL.cs" />
     <Compile Include="FAPBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

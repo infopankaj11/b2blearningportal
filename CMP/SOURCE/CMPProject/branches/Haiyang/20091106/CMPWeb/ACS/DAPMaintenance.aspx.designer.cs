@@ -13,101 +13,74 @@
 public partial class DAPMaintenance {
     
     /// <summary>
-    /// lblID control.
+    /// txtDAPName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblID;
+    protected global::System.Web.UI.WebControls.TextBox txtDAPName;
     
     /// <summary>
-    /// TextBox2 control.
+    /// txtDAPRemark control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox TextBox2;
+    protected global::System.Web.UI.WebControls.TextBox txtDAPRemark;
     
     /// <summary>
-    /// Label1 control.
+    /// gv_Modules control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label Label1;
+    protected global::System.Web.UI.WebControls.GridView gv_Modules;
     
     /// <summary>
-    /// TextBox3 control.
+    /// btnAddUpdate control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox TextBox3;
+    protected global::System.Web.UI.WebControls.Button btnAddUpdate;
     
     /// <summary>
-    /// lblExamName control.
+    /// btnCancel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblExamName;
+    protected global::System.Web.UI.WebControls.Button btnCancel;
     
     /// <summary>
-    /// CheckBoxList1 control.
+    /// lblMsg control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+    protected global::System.Web.UI.WebControls.Label lblMsg;
     
     /// <summary>
-    /// lblExamAbbr control.
+    /// lblDAPID control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblExamAbbr;
+    protected global::System.Web.UI.WebControls.Label lblDAPID;
     
     /// <summary>
-    /// TextBox1 control.
+    /// lblAction control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox TextBox1;
-    
-    /// <summary>
-    /// btnAdd control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnAdd;
-    
-    /// <summary>
-    /// Button2 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button Button2;
-    
-    /// <summary>
-    /// Button4 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button Button4;
+    protected global::System.Web.UI.WebControls.Label lblAction;
 }
