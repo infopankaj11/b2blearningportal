@@ -1418,7 +1418,7 @@ SET ANSI_PADDING OFF
 
 -- 1. Add Role_List
 
-/****** Object:  Table [dbo].[Role_List]    Script Date: 11/08/2009 22:39:31 ******/
+/****** Object:  Table [dbo].[Role_List]    Script Date: 11/08/2009 23:23:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1430,8 +1430,8 @@ CREATE TABLE [dbo].[Role_List](
 	[RoleName] [varchar](50) NULL,
 	[Created_By] [varchar](50) NULL,
 	[Created_Date] [datetime] NULL,
-	[Updated_By] [varchar](50) NULL,
-	[Updated_Date] [datetime] NULL,
+	[Modified_By] [varchar](50) NULL,
+	[Modified_Date] [datetime] NULL,
 	[Role_Remark] [varchar](500) NULL,
 	[Delete_Flag] [varchar](2) NULL,
  CONSTRAINT [PK_Role_List] PRIMARY KEY CLUSTERED 
