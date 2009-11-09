@@ -112,6 +112,13 @@
     <Compile Include="ACS\FAPMaintenance.aspx.designer.cs">
       <DependentUpon>FAPMaintenance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ACS\RoleMaintenance.aspx.cs">
+      <DependentUpon>RoleMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\RoleMaintenance.aspx.designer.cs">
+      <DependentUpon>RoleMaintenance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ACS\Roles.aspx.cs">
       <DependentUpon>Roles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -289,6 +296,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ACS\RoleMaintenance.aspx" />
     <Content Include="Images\aboutu2.gif" />
     <Content Include="Images\backheader.gif" />
     <Content Include="Images\backheader2.gif" />

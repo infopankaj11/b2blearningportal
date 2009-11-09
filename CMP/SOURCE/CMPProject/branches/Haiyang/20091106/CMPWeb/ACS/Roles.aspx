@@ -4,98 +4,129 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<div>
-    <table cellpadding="0" cellspacing = "0" width="100%">
-            <tr>
-            <td style="width:40%">
-                <table cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                <td style="height:30px; width:30%">
-                    <b>Role Name: 
-                </b> 
-                </td>
-                <td style="width:70%">
-                    <asp:TextBox runat="server" ID="tbRoleName" Width="120px"></asp:TextBox>
-                </td>
-                </tr>
-                
-                <tr>
-                <td valign="top" class="style5" >
-                    <b>FAPs: 
-                </b> 
-                </td>
-                <td class="style6" valign="top" >
-                    <asp:HyperLink runat="server" ID="hl_FAP1" Text="FAP1" NavigateUrl="~/Role.aspx?FAPName=fap1" /> <br />
-                    <asp:HyperLink runat="server" ID="hl_FAP2" Text="FAP2" NavigateUrl="~/Role.aspx?FAPName=fap2" /> <br />
-                    <asp:HyperLink runat="server" ID="hl_FAP3" Text="FAP3" NavigateUrl="~/Role.aspx?FAPName=fap3" /> <br />
-                </td>
-                </tr>
-                
-                <tr>
-                <td valign="top" class="style7" valign="top" >
-                    <b>DAPs: 
-                </b> 
-                </td>
-                <td class="style8" valign="top" >
-                    <asp:HyperLink runat="server" ID="hl_DAP1" Text="DAP1" NavigateUrl="~/Role.aspx?DAPName=dap1" /> <br />
-                    <asp:HyperLink runat="server" ID="hl_DAP2" Text="DAP2" NavigateUrl="~/Role.aspx?DAPName=dap2" /> <br />
-                    <asp:HyperLink runat="server" ID="hl_DAP3" Text="DAP3" NavigateUrl="~/Role.aspx?DAPName=dap3" /> <br />
-                </td>
-                </tr>
-                
-                <tr>
-                <td valign="top" >
-                    <b>Description:</b>
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="tbDesc" Height="100px" Width="200px" />
-                </td>
-                </tr>
-                
-                <tr>
-                <td colspan="2" align="center" >
-                    <asp:Button runat="server" ID="btnAdd" Text="Add" SkinID="button" />
-                    <asp:Button runat="server" ID="btnUpdate" Text="Update" SkinID="button" />
-                    <asp:Button runat="server" ID="btnDelete" Text="Delete" SkinID="button" />
-                </td>
-                </tr>
-                </table>
+<center><h1>Role Maintenance</h1></center>
+ 
+<table>
+<tr>
+<td>
+   <table class="search">
+        <tr align="right">
+            <td class="style1">
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <asp:Button ID="Button4" Text="Search" runat="server" />
             </td>
-            
+        </tr>
+        <tr align="right">
+            <td>
+                <asp:RadioButton id="RadioButton2" Text="by Company" runat="server"/>
+                <asp:RadioButton id="RadioButton3" Text="by Name" runat="server"/>
+            </td>
+        </tr>
+    </table>
+</td>
+</tr>
+
+<tr>
+<td>
+     <table cellpadding="0" cellspacing="0" width="100%" >
+        <tr>
             <td style="width:60%" valign="top" >
-                <asp:GridView Width="100%" runat="server" ID="gv_Roles" AutoGenerateColumns="false" >
+                <asp:GridView Width="100%" runat="server" ID="gv_Roles" AutoGenerateColumns="false" DataKeyNames="RoleListID" >
                 <Columns>
-                <asp:TemplateField HeaderText = "Role Name">
-                    <ItemTemplate>
-                        <asp:HyperLink runat="server" ID="HyperLink1" Text='<%#Eval("RoleName") %>' NavigateUrl = '<%#Eval("RoleName", "~/Role.aspx?RoleName={0}") %>' />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField HeaderText="Description" DataField = "Description" />
-                </Columns>
-                </asp:GridView>
-                
-                <p />
-                
-                <asp:GridView Width="100%" runat="server" ID="gv_DAPs" AutoGenerateColumns="false" >
-                <Columns>
-                    <asp:BoundField HeaderText="DAPName" DataField = "Description" />
-                    <asp:BoundField HeaderText="Description" DataField = "Description" />
-                </Columns>
-                </asp:GridView>
-                
-                <p />
-                
-                <asp:GridView Width="100%" runat="server" ID="gv_FAPs" AutoGenerateColumns="false" >
-                <Columns>
-                    <asp:BoundField HeaderText="FAPName" DataField = "Description" />
-                    <asp:BoundField HeaderText="Description" DataField = "Description" />
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:CheckBox runat="server" ID="cbSelectAll" /> 
+                        </HeaderTemplate>
+                        <itemstyle horizontalalign="Center" />
+                        <headerstyle horizontalalign="Center" />
+                        
+                        <itemtemplate>
+                            <asp:CheckBox id="chkSelectedRole" runat="server" />  
+                            <asp:HiddenField ID="hfRoleListID" Value='<%#Eval("RoleListID")%>' runat="server" />
+                        </itemtemplate>
+                    </asp:TemplateField>
+                     
+                    <asp:HyperLinkField DataNavigateUrlFields="RoleListID" DataNavigateUrlFormatString="~/ACS/RoleMaintenance.aspx?Action=Update&RoleID={0}"
+                         DataTextField="RoleName" NavigateUrl="~/ACS/RoleMaintenance.aspx" HeaderText = "Name"/>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbRoleRemarkHeader" Text="Remark" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbRoleRemark" Text='<%#Eval("Role_Remark") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbCreatedByHeader" Text="Created By" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbCreatedBy" Text='<%#Eval("Created_By") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbCreatedDateHeader" Text="Created Date" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbCreatedDate" Text='<%#Convert.ToDateTime(Eval("Created_Date")).ToString("dd-MMM-yyyy") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbModifiedByHeader" Text="Modified By" />
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbModifiedBy" Text='<%#Eval("Modified_By") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbModifiedDateHeader" Text="Modified Date" />
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:Label runat="server" ID="lbModifiedDate" Text='<%#Convert.ToDateTime(Eval("Modified_Date")).ToString("dd-MMM-yyyy") %>'/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
                 </Columns>
                 </asp:GridView>
             </td>
-            
-            </tr>
-        </table>
-    </div>
+        </tr>
+    </table>
     
+    <br />
+  </td>
+</tr>  
+<tr>
+<td>
+    <table>
+    <tr>
+        <td>
+        <asp:Button ID="btnAdd" Text="Add" runat="server" onclick="btnAdd_Click" />
+        </td>
+        <td>
+        <asp:Button ID="btnDelete" Text="Delete" runat="server" OnClick="btnDelete_Click" />
+        </td>
+    </tr>
+    </table>
+</td>
+</tr>
+
+<tr>
+<td>
+    <asp:Label runat="server" ID="lblMsg" ForeColor="Red" />
+</td>
+</tr>
+</table>    
 </asp:Content>
 
