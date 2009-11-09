@@ -13,103 +13,40 @@
 public partial class Roles {
     
     /// <summary>
-    /// tbRoleName control.
+    /// TextBox1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbRoleName;
+    protected global::System.Web.UI.WebControls.TextBox TextBox1;
     
     /// <summary>
-    /// hl_FAP1 control.
+    /// Button4 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.HyperLink hl_FAP1;
+    protected global::System.Web.UI.WebControls.Button Button4;
     
     /// <summary>
-    /// hl_FAP2 control.
+    /// RadioButton2 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.HyperLink hl_FAP2;
+    protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
     
     /// <summary>
-    /// hl_FAP3 control.
+    /// RadioButton3 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.HyperLink hl_FAP3;
-    
-    /// <summary>
-    /// hl_DAP1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.HyperLink hl_DAP1;
-    
-    /// <summary>
-    /// hl_DAP2 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.HyperLink hl_DAP2;
-    
-    /// <summary>
-    /// hl_DAP3 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.HyperLink hl_DAP3;
-    
-    /// <summary>
-    /// tbDesc control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbDesc;
-    
-    /// <summary>
-    /// btnAdd control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnAdd;
-    
-    /// <summary>
-    /// btnUpdate control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnUpdate;
-    
-    /// <summary>
-    /// btnDelete control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnDelete;
+    protected global::System.Web.UI.WebControls.RadioButton RadioButton3;
     
     /// <summary>
     /// gv_Roles control.
@@ -121,20 +58,29 @@ public partial class Roles {
     protected global::System.Web.UI.WebControls.GridView gv_Roles;
     
     /// <summary>
-    /// gv_DAPs control.
+    /// btnAdd control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.GridView gv_DAPs;
+    protected global::System.Web.UI.WebControls.Button btnAdd;
     
     /// <summary>
-    /// gv_FAPs control.
+    /// btnDelete control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.GridView gv_FAPs;
+    protected global::System.Web.UI.WebControls.Button btnDelete;
+    
+    /// <summary>
+    /// lblMsg control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblMsg;
 }
