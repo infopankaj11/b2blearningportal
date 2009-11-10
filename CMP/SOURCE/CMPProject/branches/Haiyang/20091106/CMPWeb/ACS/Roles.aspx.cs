@@ -42,7 +42,32 @@ public partial class Roles : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-
+        int[] RoleIDs = GetSelectedRoleIDs();
+        if (RoleIDs.Length == 0)
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please select Role before proceeding.";
+            return;
+        }
+        else
+        {
+            roleBL.DeleteRoles(RoleIDs);
+            lblMsg.ForeColor = System.Drawing.Color.Green;
+            lblMsg.Text = "Successfully deleted selected Role(s).";
+            PopulateRoleList();
+        }
     }
 
+    protected int[] GetSelectedRoleIDs()
+    {
+        ArrayList SelectedRoleIDs = new ArrayList();
+        CheckBox chkSelectedRole;
+        foreach (GridViewRow myRow in gv_Roles.Rows)
+        {
+            chkSelectedRole = (CheckBox)(myRow.FindControl("chkSelectedRole"));
+            if (chkSelectedRole.Checked)
+                SelectedRoleIDs.Add(gv_Roles.DataKeys[myRow.RowIndex].Value);
+        }
+        return (int[])SelectedRoleIDs.ToArray(typeof(int));
+    }
 }
