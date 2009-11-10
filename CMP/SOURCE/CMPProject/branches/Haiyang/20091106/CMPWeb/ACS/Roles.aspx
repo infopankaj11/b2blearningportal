@@ -112,10 +112,10 @@
     <table>
     <tr>
         <td>
-        <asp:Button ID="btnAdd" Text="Add" runat="server" onclick="btnAdd_Click" />
+        <asp:Button ID="btnAdd" Text="Add" runat="server" onclick="btnAdd_Click" Width="80px" />
         </td>
         <td>
-        <asp:Button ID="btnDelete" Text="Delete" runat="server" OnClick="btnDelete_Click" />
+        <asp:Button ID="btnDelete" Text="Delete" runat="server" OnClick="btnDelete_Click" Width="80px"/>
         </td>
     </tr>
     </table>
