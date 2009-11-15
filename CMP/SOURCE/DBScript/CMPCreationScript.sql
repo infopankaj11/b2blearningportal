@@ -1480,5 +1480,56 @@ CREATE TABLE [dbo].[Role_FAP](
 
 /********************************** End of Addition on 08-Nov-09 ******************/
 
+/********************************** Added By Haiyang on 15-Nov-09 *****************/
+-- It does following actions:
+-- 1. Added table UserAdmin_List
+-- 2. Added table UserAdmin_Master
 
+
+-- 1. Add table UserAdmin_List
+
+/****** Object:  Table [dbo].[UserAdmin_List]    Script Date: 11/15/2009 17:43:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[UserAdmin_List](
+	[UserAdminListID] [int] IDENTITY(1,1) NOT NULL,
+	[UserAdminName] [varchar](50) NULL,
+	[Created_By] [varchar](50) NULL,
+	[Created_Date] [datetime] NULL,
+	[Modified_By] [varchar](50) NULL,
+	[Modified_Date] [datetime] NULL,
+	[Delete_Flag] [varchar](2) NULL,
+	[UserAdmin_Remark] [varchar](500) NULL,
+ CONSTRAINT [PK_UserAdmin_List] PRIMARY KEY CLUSTERED 
+(
+	[UserAdminListID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+
+-- 2. Add table UserAdmin_Master
+
+/****** Object:  Table [dbo].[UserAdmin_Master]    Script Date: 11/15/2009 17:46:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserAdmin_Master](
+	[UserAdminMasterID] [int] IDENTITY(1,1) NOT NULL,
+	[UserAdminListID] [int] NULL,
+	[RoleID] [int] NULL,
+ CONSTRAINT [PK_UserAdmin_Master] PRIMARY KEY CLUSTERED 
+(
+	[UserAdminMasterID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/********************************** End of Addition on 15-Nov-09 ******************/
 
