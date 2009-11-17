@@ -1533,3 +1533,68 @@ CREATE TABLE [dbo].[UserAdmin_Master](
 
 /********************************** End of Addition on 15-Nov-09 ******************/
 
+/********************************** Added by Haiyang on 17-Nov-09 *****************/
+-- It does following actions;
+-- 1. Delete user_master
+-- 2. Delete user_role
+-- 3. Create User_List
+-- 4. Re-create User_Master
+
+
+
+
+-- 1. Delete user_master
+/****** Object:  Table [dbo].[user_master]    Script Date: 11/17/2009 13:52:17 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[user_master]') AND type in (N'U'))
+DROP TABLE [dbo].[user_master]
+
+-- 2. Delete user_role
+/****** Object:  Table [dbo].[user_role]    Script Date: 11/17/2009 13:52:51 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[user_role]') AND type in (N'U'))
+DROP TABLE [dbo].[user_role]
+
+-- 3. Create User_List
+/****** Object:  Table [dbo].[User_List]    Script Date: 11/17/2009 13:57:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[User_List](
+	[UserListID] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [varchar](50) NULL,
+	[UserPass] [varchar](50) NULL,
+	[Created_By] [varchar](50) NULL,
+	[Created_Date] [datetime] NULL,
+	[Modified_By] [varchar](50) NULL,
+	[Modified_Date] [datetime] NULL,
+	[User_Remark] [varchar](500) NULL,
+	[Delete_Flag] [char](2) NULL,
+ CONSTRAINT [PK_User_List] PRIMARY KEY CLUSTERED 
+(
+	[UserListID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+-- 4. Create User_Master
+/****** Object:  Table [dbo].[User_Master]    Script Date: 11/17/2009 13:59:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User_Master](
+	[UserMasterID] [int] IDENTITY(1,1) NOT NULL,
+	[UserListID] [int] NULL,
+	[RoleListID] [int] NULL,
+ CONSTRAINT [PK_User_Master] PRIMARY KEY CLUSTERED 
+(
+	[UserMasterID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+
