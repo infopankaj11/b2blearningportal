@@ -1488,7 +1488,7 @@ CREATE TABLE [dbo].[Role_FAP](
 
 -- 1. Add table UserAdmin_List
 
-/****** Object:  Table [dbo].[UserAdmin_List]    Script Date: 11/15/2009 17:43:42 ******/
+/****** Object:  Table [dbo].[UserAdmin_List]    Script Date: 11/17/2009 21:23:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1498,6 +1498,7 @@ GO
 CREATE TABLE [dbo].[UserAdmin_List](
 	[UserAdminListID] [int] IDENTITY(1,1) NOT NULL,
 	[UserAdminName] [varchar](50) NULL,
+	[UserAdminPass] [varchar](50) NULL,
 	[Created_By] [varchar](50) NULL,
 	[Created_Date] [datetime] NULL,
 	[Modified_By] [varchar](50) NULL,
