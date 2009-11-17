@@ -126,6 +126,20 @@
     <Compile Include="ACS\Roles.aspx.designer.cs">
       <DependentUpon>Roles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ACS\UserAdmin.aspx.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\UserAdmin.aspx.designer.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\UserAdminMaintenance.aspx.cs">
+      <DependentUpon>UserAdminMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\UserAdminMaintenance.aspx.designer.cs">
+      <DependentUpon>UserAdminMaintenance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ModuleAdd.aspx.cs">
       <DependentUpon>ModuleAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -297,6 +311,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACS\RoleMaintenance.aspx" />
+    <Content Include="ACS\UserAdmin.aspx" />
+    <Content Include="ACS\UserAdminMaintenance.aspx" />
     <Content Include="Images\aboutu2.gif" />
     <Content Include="Images\backheader.gif" />
     <Content Include="Images\backheader2.gif" />
