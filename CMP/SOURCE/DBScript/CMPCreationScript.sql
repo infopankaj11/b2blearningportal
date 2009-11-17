@@ -1609,7 +1609,9 @@ DROP TABLE [dbo].[company_master]
 
 
 -- 6. Re-Create Company_Master
-/****** Object:  Table [dbo].[Company_Master]    Script Date: 11/17/2009 22:43:23 ******/
+USE [CMP]
+GO
+/****** Object:  Table [dbo].[Company_Master]    Script Date: 11/17/2009 23:46:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1619,21 +1621,21 @@ GO
 CREATE TABLE [dbo].[Company_Master](
 	[CompanyID] [int] IDENTITY(1,1) NOT NULL,
 	[CompanyName] [varchar](100) NOT NULL,
-	[CompanyAddress1] [varchar](150) NOT NULL,
-	[CompanyAddress2] [varchar](150) NOT NULL,
-	[CompanyAddress3] [varchar](150) NOT NULL,
-	[PostalCode] [varchar](12) NOT NULL,
-	[ContactPerson] [varchar](50) NOT NULL,
-	[ContactEmail] [varchar](50) NOT NULL,
-	[ContactNo] [varchar](50) NOT NULL,
-	[SubscritionDate] [datetime] NOT NULL,
-	[CommMode] [varchar](12) NOT NULL,
-	[Created_By] [varchar](50) NOT NULL,
-	[Created_Date] [datetime] NOT NULL,
-	[ValidPeriod_From] [datetime] NOT NULL,
-	[ValidPeriod_To] [datetime] NOT NULL,
-	[Modified_By] [varchar](50) NOT NULL,
-	[Modified_Date] [datetime] NOT NULL,
+	[CompanyAddress1] [varchar](150) NULL,
+	[CompanyAddress2] [varchar](150) NULL,
+	[CompanyAddress3] [varchar](150) NULL,
+	[PostalCode] [varchar](12) NULL,
+	[ContactPerson] [varchar](50) NULL,
+	[ContactEmail] [varchar](50) NULL,
+	[ContactNo] [varchar](50) NULL,
+	[SubscritionDate] [datetime] NULL,
+	[CommMode] [varchar](12) NULL,
+	[Created_By] [varchar](50) NULL,
+	[Created_Date] [datetime] NULL,
+	[ValidPeriod_From] [datetime] NULL,
+	[ValidPeriod_To] [datetime] NULL,
+	[Modified_By] [varchar](50) NULL,
+	[Modified_Date] [datetime] NULL,
 	[Delete_Flag] [varchar](2) NULL,
 	[Company_Remark] [varchar](500) NULL,
  CONSTRAINT [PK_Company_Master_1] PRIMARY KEY CLUSTERED 
