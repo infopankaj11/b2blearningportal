@@ -1488,7 +1488,7 @@ CREATE TABLE [dbo].[Role_FAP](
 
 -- 1. Add table UserAdmin_List
 
-/****** Object:  Table [dbo].[UserAdmin_List]    Script Date: 11/17/2009 21:23:09 ******/
+/****** Object:  Table [dbo].[UserAdmin_List]    Script Date: 11/17/2009 23:42:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1497,6 +1497,7 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[UserAdmin_List](
 	[UserAdminListID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [int] NULL,
 	[UserAdminName] [varchar](50) NULL,
 	[UserAdminPass] [varchar](50) NULL,
 	[Created_By] [varchar](50) NULL,
@@ -1556,7 +1557,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[user_
 DROP TABLE [dbo].[user_role]
 
 -- 3. Create User_List
-/****** Object:  Table [dbo].[User_List]    Script Date: 11/17/2009 13:57:18 ******/
+/****** Object:  Table [dbo].[User_List]    Script Date: 11/17/2009 23:42:59 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1566,6 +1567,8 @@ GO
 CREATE TABLE [dbo].[User_List](
 	[UserListID] [int] IDENTITY(1,1) NOT NULL,
 	[UserName] [varchar](50) NULL,
+	[CompanyID] [int] NULL,
+	[UserAdminID] [int] NULL,
 	[UserPass] [varchar](50) NULL,
 	[Created_By] [varchar](50) NULL,
 	[Created_Date] [datetime] NULL,
