@@ -1,0 +1,392 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D485D032-4779-4878-99B4-EB8F6882A859}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMPWeb</RootNamespace>
+    <AssemblyName>CMPWeb</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ACS\DAP.aspx" />
+    <Content Include="ACS\DAPMaintenance.aspx" />
+    <Content Include="ACS\FAP.aspx" />
+    <Content Include="ACS\FAPMaintenance.aspx" />
+    <Content Include="ACS\Roles.aspx" />
+    <Content Include="Admin\ModuleAdd.aspx" />
+    <Content Include="Admin\ModuleMaintenance.aspx" />
+    <Content Include="Admin\PortalAdmin.aspx" />
+    <Content Include="Admin\PortalAdminAdd.aspx" />
+    <Content Include="Admin\PortalAdminCover.aspx" />
+    <Content Include="Admin\UserAdmin.aspx" />
+    <Content Include="CMS\Reports.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Home\Default.aspx" />
+    <Content Include="JScript.js" />
+    <Content Include="MCQ\Exam.aspx" />
+    <Content Include="MCQ\ExamAdd.aspx" />
+    <Content Include="MCQ\ExamMaintenance.aspx" />
+    <Content Include="MCQ\Exercise.aspx" />
+    <Content Include="MCQ\ExerciseAdd.aspx" />
+    <Content Include="MCQ\QuestionAdd.aspx" />
+    <Content Include="MCQ\QuestionMaintenance.aspx" />
+    <Content Include="MCQ\SectionAdd.aspx" />
+    <Content Include="MCQ\Sections.aspx" />
+    <Content Include="Styles.css" />
+    <Content Include="Survey\Survey.aspx" />
+    <Content Include="Survey\SurveyAdd.aspx" />
+    <Content Include="Survey\SurveyMaintenance.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACS\DAP.aspx.cs">
+      <DependentUpon>DAP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\DAP.aspx.designer.cs">
+      <DependentUpon>DAP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\DAPMaintenance.aspx.cs">
+      <DependentUpon>DAPMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\DAPMaintenance.aspx.designer.cs">
+      <DependentUpon>DAPMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\FAP.aspx.cs">
+      <DependentUpon>FAP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\FAP.aspx.designer.cs">
+      <DependentUpon>FAP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\FAPMaintenance.aspx.cs">
+      <DependentUpon>FAPMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\FAPMaintenance.aspx.designer.cs">
+      <DependentUpon>FAPMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\RoleMaintenance.aspx.cs">
+      <DependentUpon>RoleMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\RoleMaintenance.aspx.designer.cs">
+      <DependentUpon>RoleMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\UserAdmin.aspx.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\UserAdmin.aspx.designer.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\UserAdminMaintenance.aspx.cs">
+      <DependentUpon>UserAdminMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\UserAdminMaintenance.aspx.designer.cs">
+      <DependentUpon>UserAdminMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ModuleAdd.aspx.cs">
+      <DependentUpon>ModuleAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ModuleAdd.aspx.designer.cs">
+      <DependentUpon>ModuleAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ModuleMaintenance.aspx.cs">
+      <DependentUpon>ModuleMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ModuleMaintenance.aspx.designer.cs">
+      <DependentUpon>ModuleMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PortalAdmin.aspx.cs">
+      <DependentUpon>PortalAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PortalAdmin.aspx.designer.cs">
+      <DependentUpon>PortalAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PortalAdminAdd.aspx.cs">
+      <DependentUpon>PortalAdminAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PortalAdminAdd.aspx.designer.cs">
+      <DependentUpon>PortalAdminAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PortalAdminCover.aspx.cs">
+      <DependentUpon>PortalAdminCover.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PortalAdminCover.aspx.designer.cs">
+      <DependentUpon>PortalAdminCover.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserAdmin.aspx.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserAdmin.aspx.designer.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMS\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMS\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JScript.js.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JScript.js.designer.cs">
+      <DependentUpon>JScript.js.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\Exam.aspx.cs">
+      <DependentUpon>Exam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\Exam.aspx.designer.cs">
+      <DependentUpon>Exam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\ExamAdd.aspx.cs">
+      <DependentUpon>ExamAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\ExamAdd.aspx.designer.cs">
+      <DependentUpon>ExamAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\ExamMaintenance.aspx.cs">
+      <DependentUpon>ExamMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\ExamMaintenance.aspx.designer.cs">
+      <DependentUpon>ExamMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\Exercise.aspx.cs">
+      <DependentUpon>Exercise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\Exercise.aspx.designer.cs">
+      <DependentUpon>Exercise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\ExerciseAdd.aspx.cs">
+      <DependentUpon>ExerciseAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\ExerciseAdd.aspx.designer.cs">
+      <DependentUpon>ExerciseAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\ExerciseMaintenance.aspx.cs">
+      <DependentUpon>ExerciseMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\ExerciseMaintenance.aspx.designer.cs">
+      <DependentUpon>ExerciseMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\QuestionAdd.aspx.cs">
+      <DependentUpon>QuestionAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\QuestionAdd.aspx.designer.cs">
+      <DependentUpon>QuestionAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\QuestionMaintenance.aspx.cs">
+      <DependentUpon>QuestionMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\QuestionMaintenance.aspx.designer.cs">
+      <DependentUpon>QuestionMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\SectionAdd.aspx.cs">
+      <DependentUpon>SectionAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\SectionAdd.aspx.designer.cs">
+      <DependentUpon>SectionAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MCQ\Sections.aspx.cs">
+      <DependentUpon>Sections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MCQ\Sections.aspx.designer.cs">
+      <DependentUpon>Sections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Survey\Survey.aspx.cs">
+      <DependentUpon>Survey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Survey\Survey.aspx.designer.cs">
+      <DependentUpon>Survey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Survey\SurveyAdd.aspx.cs">
+      <DependentUpon>SurveyAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Survey\SurveyAdd.aspx.designer.cs">
+      <DependentUpon>SurveyAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Survey\SurveyMaintenance.aspx.cs">
+      <DependentUpon>SurveyMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Survey\SurveyMaintenance.aspx.designer.cs">
+      <DependentUpon>SurveyMaintenance.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ACS\RoleMaintenance.aspx" />
+    <Content Include="ACS\UserAdmin.aspx" />
+    <Content Include="ACS\UserAdminMaintenance.aspx" />
+    <Content Include="Images\aboutu2.gif" />
+    <Content Include="Images\backheader.gif" />
+    <Content Include="Images\backheader2.gif" />
+    <Content Include="Images\company registration.gif" />
+    <Content Include="Images\contact us.gif" />
+    <Content Include="Images\examination-over.gif" />
+    <Content Include="Images\examination.gif" />
+    <Content Include="Images\exercise-over.gif" />
+    <Content Include="Images\exercise.gif" />
+    <Content Include="Images\footer.gif" />
+    <Content Include="Images\footerLefr.gif" />
+    <Content Include="Images\footerMid.gif" />
+    <Content Include="Images\footerRight.gif" />
+    <Content Include="Images\line.gif" />
+    <Content Include="Images\logo.gif" />
+    <Content Include="Images\menubg.gif" />
+    <Content Include="Images\modules-over.gif" />
+    <Content Include="Images\modules.gif" />
+    <Content Include="Images\our services.gif" />
+    <Content Include="Images\PAdmin-over.gif" />
+    <Content Include="Images\PAdmin.gif" />
+    <Content Include="Images\Reports-over.gif" />
+    <Content Include="Images\Reports.gif" />
+    <Content Include="Images\survey-over.gif" />
+    <Content Include="Images\survey.gif" />
+    <Content Include="Images\userAdmin-over.gif" />
+    <Content Include="Images\userAdmin.gif" />
+    <Content Include="Images\userAdmin2-over.gif" />
+    <Content Include="Images\userAdmin2.gif" />
+    <Content Include="MasterPage.Master" />
+    <Content Include="MCQ\ExerciseMaintenance.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\header menu.psd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{296493F9-B8B8-4827-8B17-97BED93DE243}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{E9C4F942-5751-4528-94DB-39A41BEB02D4}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2527</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
