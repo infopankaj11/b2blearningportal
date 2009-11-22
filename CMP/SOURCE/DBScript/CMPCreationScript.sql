@@ -1608,9 +1608,7 @@ DROP TABLE [dbo].[company_master]
 
 
 -- 6. Re-Create Company_Master
-USE [CMP]
-GO
-/****** Object:  Table [dbo].[Company_Master]    Script Date: 11/17/2009 23:46:11 ******/
+/****** Object:  Table [dbo].[Company_Master]    Script Date: 11/22/2009 21:49:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1627,7 +1625,7 @@ CREATE TABLE [dbo].[Company_Master](
 	[ContactPerson] [varchar](50) NULL,
 	[ContactEmail] [varchar](50) NULL,
 	[ContactNo] [varchar](50) NULL,
-	[SubscritionDate] [datetime] NULL,
+	[SubscribeDate] [datetime] NULL,
 	[CommMode] [varchar](12) NULL,
 	[Created_By] [varchar](50) NULL,
 	[Created_Date] [datetime] NULL,
