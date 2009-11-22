@@ -1557,7 +1557,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[user_
 DROP TABLE [dbo].[user_role]
 
 -- 3. Create User_List
-/****** Object:  Table [dbo].[User_List]    Script Date: 11/17/2009 23:42:59 ******/
+/****** Object:  Table [dbo].[User_List]    Script Date: 11/22/2009 09:43:18 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1567,7 +1567,6 @@ GO
 CREATE TABLE [dbo].[User_List](
 	[UserListID] [int] IDENTITY(1,1) NOT NULL,
 	[UserName] [varchar](50) NULL,
-	[CompanyID] [int] NULL,
 	[UserAdminID] [int] NULL,
 	[UserPass] [varchar](50) NULL,
 	[Created_By] [varchar](50) NULL,
