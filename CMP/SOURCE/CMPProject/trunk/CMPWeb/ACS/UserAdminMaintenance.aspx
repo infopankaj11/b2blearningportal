@@ -25,6 +25,15 @@
         </tr>
         
         <tr>
+            <td style="background-color:Silver; font-weight:bold">
+                Company: 
+            </td>
+            <td>
+                <asp:DropDownList runat="server" ID="ddlCompany" DataTextField="CompanyName" DataValueField="CompanyID" />
+            </td>
+        </tr>
+        
+        <tr>
             <td style="background-color:Silver; font-weight:bold" />
             <td>
                 <asp:CheckBox runat="server" ID="chkChangePass" Text="Reset Password" OnCheckedChanged="chkChangePass_OnCheckedChanged" AutoPostBack="true" />
@@ -54,21 +63,23 @@
                 Roles:
             </td>
             <td>
-                <asp:GridView runat="server" ID="gv_Roles" AutoGenerateColumns="false" 
-                    OnRowDataBound="gv_Roles_RowDataBound" DataKeyNames="RoleListID" >
-                    <Columns>
-                        <asp:TemplateField>
-                            <itemstyle horizontalalign="Center" />
-                            
-                            <itemtemplate>
-                                <asp:CheckBox id="chkRoleSelected" runat="server" />
-                                <asp:HiddenField ID="hfdHasRole" Value='<%#Eval("HasRole")%>' runat="server" />
-                            </itemtemplate>
-                        </asp:TemplateField>    
-                        <asp:BoundField DataField="RoleName" HeaderText="Name" />             
-                        <asp:BoundField DataField="Role_Remark" HeaderText="Remark" />
-                    </Columns>
-                </asp:GridView>
+                <asp:Panel Height="250px" ScrollBars="Auto" runat="server" ID="pnlRoles">
+                    <asp:GridView runat="server" ID="gv_Roles" AutoGenerateColumns="false" 
+                        OnRowDataBound="gv_Roles_RowDataBound" DataKeyNames="RoleListID" >
+                        <Columns>
+                            <asp:TemplateField>
+                                <itemstyle horizontalalign="Center" />
+                                
+                                <itemtemplate>
+                                    <asp:CheckBox id="chkRoleSelected" runat="server" />
+                                    <asp:HiddenField ID="hfdHasRole" Value='<%#Eval("HasRole")%>' runat="server" />
+                                </itemtemplate>
+                            </asp:TemplateField>    
+                            <asp:BoundField DataField="RoleName" HeaderText="Name" />             
+                            <asp:BoundField DataField="Role_Remark" HeaderText="Remark" />
+                        </Columns>
+                    </asp:GridView>
+                </asp:Panel> 
             </td>
         </tr>
     </table>
