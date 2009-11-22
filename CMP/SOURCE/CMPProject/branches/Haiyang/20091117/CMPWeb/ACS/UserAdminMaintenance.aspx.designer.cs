@@ -32,6 +32,15 @@ namespace CMPWeb.ACS {
         protected global::System.Web.UI.WebControls.TextBox txtUserAdminRemark;
         
         /// <summary>
+        /// ddlCompany control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCompany;
+        
+        /// <summary>
         /// chkChangePass control.
         /// </summary>
         /// <remarks>
@@ -75,6 +84,15 @@ namespace CMPWeb.ACS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
+        
+        /// <summary>
+        /// pnlRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRoles;
         
         /// <summary>
         /// gv_Roles control.

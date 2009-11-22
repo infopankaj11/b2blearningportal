@@ -54,26 +54,28 @@ namespace WorkLayers.DataLayer
         }
 
         //This function will insert new User Admin and get ID of this User Admin.
-        public int InsertUserAdminGetUserAdminID(String UserAdminName, String Created_By, String UserAdmin_Remark, String UserAdminPass)
+        public int InsertUserAdminGetUserAdminID(String UserAdminName, String Created_By, String UserAdmin_Remark, String UserAdminPass, String CompanyID)
         {
-            strSQL = "INSERT INTO UserAdmin_List(UserAdminName, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag, UserAdmin_Remark, UserAdminPass) VALUES (";
+            strSQL = "INSERT INTO UserAdmin_List(UserAdminName, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag, UserAdmin_Remark, UserAdminPass, CompanyID) VALUES (";
             strSQL += "'" + UserAdminName + "','" + Created_By + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + Created_By + "','";
-            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0,'" + UserAdmin_Remark + "','" + CryptoDL.Encrypt(UserAdminPass) + "');";
+            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0,'" + UserAdmin_Remark + "','" + CryptoDL.Encrypt(UserAdminPass) + "'," + CompanyID + ");";
             strSQL += "SELECT UserAdminListID FROM UserAdmin_List WHERE UserAdminListID=@@IDENTITY; ";
             return (int)dbAccessManager.GetScalar(strSQL);
         }
 
         //This function will update the existing User Admin.
-        public void UpdateUserAdminInfo(int UserAdminID, String UserAdminName, String UserAdmin_Remark, String UserAdminPass)
+        public void UpdateUserAdminInfo(int UserAdminID, String UserAdminName, String UserAdmin_Remark, String UserAdminPass, String CompanyID)
         {
-            strSQL = "UPDATE UserAdmin_List SET UserAdminName='" + UserAdminName + "', UserAdmin_Remark='" + UserAdmin_Remark + "', UserAdminPass='" + CryptoDL.Encrypt(UserAdminPass) + "' WHERE UserAdminListID=" + UserAdminID.ToString();
+            strSQL = "UPDATE UserAdmin_List SET UserAdminName='" + UserAdminName + "', UserAdmin_Remark='" + UserAdmin_Remark;
+            strSQL += "', UserAdminPass='" + CryptoDL.Encrypt(UserAdminPass) + "', CompanyID=" + CompanyID + " WHERE UserAdminListID=" + UserAdminID.ToString();
             dbAccessManager.GetCommand(strSQL);
         }
 
         //This function will update the existing User Admin, except the password
-        public void UpdateUserAdminInfo(int UserAdminID, String UserAdminName, String UserAdmin_Remark)
+        public void UpdateUserAdminInfo(int UserAdminID, String UserAdminName, String UserAdmin_Remark, String CompanyID)
         {
-            strSQL = "UPDATE UserAdmin_List SET UserAdminName='" + UserAdminName + "', UserAdmin_Remark='" + UserAdmin_Remark + "' WHERE UserAdminListID=" + UserAdminID.ToString();
+            strSQL = "UPDATE UserAdmin_List SET UserAdminName='" + UserAdminName + "', UserAdmin_Remark='" + UserAdmin_Remark; 
+            strSQL += "',CompanyID=" + CompanyID + " WHERE UserAdminListID=" + UserAdminID.ToString();
             dbAccessManager.GetCommand(strSQL);
         }
 
