@@ -14,6 +14,7 @@ namespace CMPWeb.ACS
     public partial class UserAdminMaintenance : System.Web.UI.Page
     {
         UserAdminBL userAdminBL;
+        CompanyBL companyBL;
         HiddenField hfHasRole;
         CheckBox chkRoleSelected;
         DataTable dtRoles, dtUserAdminInfo;
@@ -21,6 +22,7 @@ namespace CMPWeb.ACS
         public UserAdminMaintenance()
         {
             userAdminBL = new UserAdminBL();
+            companyBL = new CompanyBL();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -40,8 +42,15 @@ namespace CMPWeb.ACS
                 }
                 if (lblAction.Text == "Add")
                     btnAddUpdate.Text = "Add";
+                PopulateCompanyList();
                 PopulateRoles();
             }
+        }
+
+        protected void PopulateCompanyList()
+        {
+            ddlCompany.DataSource = companyBL.GetAllCompanies();
+            ddlCompany.DataBind();
         }
             
         protected void PopulateUserAdminInfo()
@@ -51,6 +60,7 @@ namespace CMPWeb.ACS
             txtUserAdminRemark.Text = dtUserAdminInfo.Rows[0]["UserAdmin_Remark"].ToString();
             txtPassword.Text = dtUserAdminInfo.Rows[0]["UserAdminPass"].ToString();
             txtConfirmPassword.Text = dtUserAdminInfo.Rows[0]["UserAdminPass"].ToString();
+            ddlCompany.SelectedValue = dtUserAdminInfo.Rows[0]["CompanyID"].ToString();
         }
 
         protected void PopulateRoles()
@@ -77,7 +87,7 @@ namespace CMPWeb.ACS
         {
             int[] RoleIDs = GetSelectedRoleIDs();
 
-            if (String.IsNullOrEmpty(txtPassword.Text.Trim()))
+            if ((chkChangePass.Checked) && (String.IsNullOrEmpty(txtPassword.Text.Trim())))
             {
                 lblMsg.ForeColor = System.Drawing.Color.Red;
                 lblMsg.Text = "Please input password before proceeding.";
@@ -108,7 +118,7 @@ namespace CMPWeb.ACS
 
             if (lblAction.Text == "Add") //Add new User Admin
             {
-                userAdminBL.InsertUserAdminInfo(txtUserAdminName.Text, "Haiyang", txtUserAdminRemark.Text, RoleIDs, txtPassword.Text);
+                userAdminBL.InsertUserAdminInfo(txtUserAdminName.Text, "Haiyang", txtUserAdminRemark.Text, RoleIDs, txtPassword.Text, ddlCompany.SelectedValue.ToString());
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully added the new User Admin.";
             }
@@ -117,11 +127,11 @@ namespace CMPWeb.ACS
             {
                 if (chkChangePass.Checked) //if choose to change password, then will update the password, otherwise not.
                 {
-                    userAdminBL.UpdateUserAdminInfoNRoles(int.Parse(lblUserAdminID.Text), txtUserAdminName.Text, txtUserAdminRemark.Text, RoleIDs, txtPassword.Text);
+                    userAdminBL.UpdateUserAdminInfoNRoles(int.Parse(lblUserAdminID.Text), txtUserAdminName.Text, txtUserAdminRemark.Text, RoleIDs, txtPassword.Text, ddlCompany.SelectedValue.ToString());
                 }
                 else
                 {
-                    userAdminBL.UpdateUserAdminInfoNRoles(int.Parse(lblUserAdminID.Text), txtUserAdminName.Text, txtUserAdminRemark.Text, RoleIDs);
+                    userAdminBL.UpdateUserAdminInfoNRoles(int.Parse(lblUserAdminID.Text), txtUserAdminName.Text, txtUserAdminRemark.Text, RoleIDs, ddlCompany.SelectedValue.ToString());
                 }
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully updated the User Admin.";

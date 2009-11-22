@@ -72,21 +72,23 @@
                         
                         <tr>
                             <td>
-                                <asp:GridView runat="server" ID="gv_DAPs" AutoGenerateColumns="false" 
-                                        OnRowDataBound="gv_DAPs_RowDataBound" DataKeyNames="DAPListID" >
-                                    <Columns>
-                                        <asp:TemplateField>
-                                            <itemstyle horizontalalign="Center" />
-                                            
-                                            <itemtemplate>
-                                                <asp:CheckBox id="chkDAPSelected" runat="server" />
-                                                <asp:HiddenField ID="hfdHasDAP" Value='<%#Eval("HasDAP")%>' runat="server" />
-                                            </itemtemplate>
-                                        </asp:TemplateField>                    
-                                        <asp:BoundField DataField="DAPName" HeaderText="DAP Name" />
-                                        <asp:BoundField DataField="DAP_Remark" HeaderText="Remark" /> 
-                                    </Columns>
-                                </asp:GridView>
+                                <asp:Panel Height="250px" ScrollBars="Auto" runat="server" ID="pnlDAPs">
+                                    <asp:GridView runat="server" ID="gv_DAPs" AutoGenerateColumns="false" 
+                                            OnRowDataBound="gv_DAPs_RowDataBound" DataKeyNames="DAPListID" >
+                                        <Columns>
+                                            <asp:TemplateField>
+                                                <itemstyle horizontalalign="Center" />
+                                                
+                                                <itemtemplate>
+                                                    <asp:CheckBox id="chkDAPSelected" runat="server" />
+                                                    <asp:HiddenField ID="hfdHasDAP" Value='<%#Eval("HasDAP")%>' runat="server" />
+                                                </itemtemplate>
+                                            </asp:TemplateField>                    
+                                            <asp:BoundField DataField="DAPName" HeaderText="DAP Name" />
+                                            <asp:BoundField DataField="DAP_Remark" HeaderText="Remark" /> 
+                                        </Columns>
+                                    </asp:GridView>
+                                </asp:Panel> 
                             </td>
                         </tr>
                     </table>

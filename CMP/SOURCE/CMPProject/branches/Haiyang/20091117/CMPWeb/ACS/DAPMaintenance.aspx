@@ -29,22 +29,24 @@
                 Modules:
             </td>
             <td>
-                <asp:GridView runat="server" ID="gv_Modules" AutoGenerateColumns="false" 
-                    OnRowDataBound="gv_Modules_RowDataBound" DataKeyNames="module_id" >
-                    <Columns>
-                        <asp:TemplateField>
-                            <itemstyle horizontalalign="Center" />
-                            
-                            <itemtemplate>
-                                <asp:CheckBox id="chkModuleSelected" runat="server" />
-                                <asp:HiddenField ID="hfdHasModule" Value='<%#Eval("HasModule")%>' runat="server" />
-                            </itemtemplate>
-                        </asp:TemplateField>    
-                        <asp:BoundField DataField="module_name" HeaderText="Name" />             
-                        <asp:BoundField DataField="module_type" HeaderText="Type" />
-                        <asp:BoundField DataField="module_remarks" HeaderText="Remark" />
-                    </Columns>
-                </asp:GridView>
+                <asp:Panel Height="250px" ScrollBars="Auto" runat="server" ID="pnlModules">
+                    <asp:GridView runat="server" ID="gv_Modules" AutoGenerateColumns="false" 
+                        OnRowDataBound="gv_Modules_RowDataBound" DataKeyNames="module_id" >
+                        <Columns>
+                            <asp:TemplateField>
+                                <itemstyle horizontalalign="Center" />
+                                
+                                <itemtemplate>
+                                    <asp:CheckBox id="chkModuleSelected" runat="server" />
+                                    <asp:HiddenField ID="hfdHasModule" Value='<%#Eval("HasModule")%>' runat="server" />
+                                </itemtemplate>
+                            </asp:TemplateField>    
+                            <asp:BoundField DataField="module_name" HeaderText="Name" />             
+                            <asp:BoundField DataField="module_type" HeaderText="Type" />
+                            <asp:BoundField DataField="module_remarks" HeaderText="Remark" />
+                        </Columns>
+                    </asp:GridView>
+                </asp:Panel>
             </td>
         </tr>
     </table>
