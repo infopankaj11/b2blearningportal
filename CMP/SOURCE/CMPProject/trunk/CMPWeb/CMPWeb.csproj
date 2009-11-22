@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Documents and Settings\HaiyangSui\Desktop\AjaxControlToolkitBinary\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -126,6 +130,13 @@
     <Compile Include="ACS\Roles.aspx.designer.cs">
       <DependentUpon>Roles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ACS\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ACS\UserAdmin.aspx.cs">
       <DependentUpon>UserAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,6 +150,27 @@
     </Compile>
     <Compile Include="ACS\UserAdminMaintenance.aspx.designer.cs">
       <DependentUpon>UserAdminMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ACS\UserMaintenance.aspx.cs">
+      <DependentUpon>UserMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACS\UserMaintenance.aspx.designer.cs">
+      <DependentUpon>UserMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CompanyMaintenance.aspx.cs">
+      <DependentUpon>CompanyMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CompanyMaintenance.aspx.designer.cs">
+      <DependentUpon>CompanyMaintenance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ModuleAdd.aspx.cs">
       <DependentUpon>ModuleAdd.aspx</DependentUpon>
@@ -311,11 +343,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACS\RoleMaintenance.aspx" />
+    <Content Include="ACS\User.aspx" />
     <Content Include="ACS\UserAdmin.aspx" />
     <Content Include="ACS\UserAdminMaintenance.aspx" />
+    <Content Include="ACS\UserMaintenance.aspx" />
+    <Content Include="Admin\Company.aspx" />
+    <Content Include="Admin\CompanyMaintenance.aspx" />
     <Content Include="Images\aboutu2.gif" />
     <Content Include="Images\backheader.gif" />
     <Content Include="Images\backheader2.gif" />
+    <Content Include="Images\Calendar.gif" />
     <Content Include="Images\company registration.gif" />
     <Content Include="Images\contact us.gif" />
     <Content Include="Images\examination-over.gif" />

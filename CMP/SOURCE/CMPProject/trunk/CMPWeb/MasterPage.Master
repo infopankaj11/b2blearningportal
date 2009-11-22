@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html  xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
     <title>Content Management Portal</title>
@@ -13,7 +12,7 @@
       </head>
   <body onload="preloadImages();" style="height:100%">
     <form id="form1" runat="server">
-  
+    <asp:scriptmanager ID="Scriptmanager1" runat="server"></asp:scriptmanager>
   <table width="100%" class="main"  cellpadding=0 cellspacing=0 height=100%>
 <tr>
 <td valign="top">
@@ -53,12 +52,18 @@ if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) {%><img 
                 <%          
                    if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("PortalAdmin"))
                   { %>
-                  <a href="../ACS/DAP.aspx" >DAP Manager</a> &nbsp;|&nbsp; <a href="../ACS/FAP.aspx" >FAP Manager</a>&nbsp;|&nbsp;<a href="../ACS/Roles.aspx" >Roles Manager</a> &nbsp;|&nbsp;<a href="../Admin/PortalAdmin.aspx" >Portal Admin</a> &nbsp;|&nbsp;<a href="../ACS/UserAdmin.aspx" >User Admin Manager</a>&nbsp;|&nbsp;<a href="../Admin/ModuleMaintenance.aspx" >Module Manager</a>&nbsp;|&nbsp;<a href="../CMS/Reports.aspx" >Report Manager</a>
+                  <a href="../ACS/DAP.aspx" >DAP Manager</a> &nbsp;|&nbsp; <a href="../ACS/FAP.aspx" >FAP Manager</a>&nbsp;|&nbsp;<a href="../ACS/Roles.aspx" >Roles Manager</a> &nbsp;|&nbsp;<a href="../Admin/PortalAdmin.aspx" >Portal Admin</a> &nbsp;|&nbsp;
+                  <a href="../ACS/UserAdmin.aspx" >User Admin Manager</a>&nbsp;|&nbsp;<a href="../Admin/Company.aspx" >Company Manager</a>&nbsp;|&nbsp;<a href="../Admin/ModuleMaintenance.aspx" >Module Manager</a>&nbsp;|&nbsp;
+                  <a href="../CMS/Reports.aspx" >Report Manager</a>
                   
                   <%}
                   else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exams")) 
                   {%>
                   <a href="../MCQ/ExamMaintenance.aspx" >Exam Manager</a>&nbsp;|&nbsp;<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> &nbsp;|&nbsp<a href="../MCQ/Sections.aspx" >Section Manager</a>
+                  <%}
+                  else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("UserAdmin")) 
+                  {%>
+                  <a href="../ACS/UserAdmin.aspx" >User Admin</a>
                   <%}
                    else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Modules"))
                    {%>

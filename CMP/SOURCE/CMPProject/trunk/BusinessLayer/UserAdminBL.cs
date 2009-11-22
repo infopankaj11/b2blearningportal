@@ -32,21 +32,21 @@ namespace WorkLayers.BusinessLayer
             return userAdminDL.GetUserAdminInfoByUserAdminID(UserAdminID);
         }
 
-        public void InsertUserAdminInfo(String UserAdminName, String Created_By, String UserAdmin_Remark, int[] RoleIDs, String UserAdminPass)
+        public void InsertUserAdminInfo(String UserAdminName, String Created_By, String UserAdmin_Remark, int[] RoleIDs, String UserAdminPass, String CompanyID)
         {
-            int UserAdminID = userAdminDL.InsertUserAdminGetUserAdminID(UserAdminName, Created_By, UserAdmin_Remark, UserAdminPass);
+            int UserAdminID = userAdminDL.InsertUserAdminGetUserAdminID(UserAdminName, Created_By, UserAdmin_Remark, UserAdminPass, CompanyID);
             userAdminDL.UpdateUserAdminRoles(UserAdminID, RoleIDs);
         }
 
-        public void UpdateUserAdminInfoNRoles(int UserAdminID, String UserAdminName, String UserAdmin_Remark, int[] RoleIDs, String UserAdminPass)
+        public void UpdateUserAdminInfoNRoles(int UserAdminID, String UserAdminName, String UserAdmin_Remark, int[] RoleIDs, String UserAdminPass, String CompanyID)
         {
-            userAdminDL.UpdateUserAdminInfo(UserAdminID, UserAdminName, UserAdmin_Remark, UserAdminPass);
+            userAdminDL.UpdateUserAdminInfo(UserAdminID, UserAdminName, UserAdmin_Remark, UserAdminPass, CompanyID);
             userAdminDL.UpdateUserAdminRoles(UserAdminID, RoleIDs);
         }
 
-        public void UpdateUserAdminInfoNRoles(int UserAdminID, String UserAdminName, String UserAdmin_Remark, int[] RoleIDs)
+        public void UpdateUserAdminInfoNRoles(int UserAdminID, String UserAdminName, String UserAdmin_Remark, int[] RoleIDs, String CompanyID)
         {
-            userAdminDL.UpdateUserAdminInfo(UserAdminID, UserAdminName, UserAdmin_Remark);
+            userAdminDL.UpdateUserAdminInfo(UserAdminID, UserAdminName, UserAdmin_Remark, CompanyID);
             userAdminDL.UpdateUserAdminRoles(UserAdminID, RoleIDs);
         }
 
