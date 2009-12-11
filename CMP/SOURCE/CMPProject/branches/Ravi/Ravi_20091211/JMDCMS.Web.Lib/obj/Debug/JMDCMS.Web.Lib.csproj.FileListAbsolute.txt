@@ -1,0 +1,10 @@
+C:\CMP\JMDCMS.Web.Lib\obj\Debug\ResolveAssemblyReference.cache
+C:\CMP\JMDCMS.Web.Lib\bin\Debug\JMDCMS.Web.Lib.dll
+C:\CMP\JMDCMS.Web.Lib\bin\Debug\JMDCMS.Web.Lib.pdb
+C:\CMP\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.dll
+C:\CMP\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.pdb
+C:\Integration CMP\JMDCMS.Web.Lib\bin\Debug\JMDCMS.Web.Lib.dll
+C:\Integration CMP\JMDCMS.Web.Lib\bin\Debug\JMDCMS.Web.Lib.pdb
+C:\Integration CMP\JMDCMS.Web.Lib\obj\Debug\ResolveAssemblyReference.cache
+C:\Integration CMP\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.dll
+C:\Integration CMP\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.pdb

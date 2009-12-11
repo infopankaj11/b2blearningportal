@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +15,47 @@ namespace WorkLayers.DataLayer
         public UserDL()
         {
             dbAccessManager = new DBAccessManager();
+        }
+
+        //This function is for Login purpose
+        public bool Login(string userName, string password)
+        {
+            bool loginStatus = false;
+            DBAccessManager dbAccess = new DBAccessManager();
+            System.Data.SqlClient.SqlConnection dbCon = null;
+            System.Data.SqlClient.SqlDataReader dr = null;
+            string loginQuery = "SELECT COUNT(username) FROM USER_LIST WHERE username='{0}' AND userpass='{1}'";
+            try
+            {
+                string sLoginQuery = string.Format(loginQuery, userName, password);
+
+                object[] obj = dbAccessManager.GetDataReader(sLoginQuery);
+
+                dbCon = (System.Data.SqlClient.SqlConnection)obj[0];
+                dr = (System.Data.SqlClient.SqlDataReader)obj[1];
+                int recCount = 0;
+
+                if (dr.Read())
+                    recCount = dr.GetInt32(0);
+
+                if (recCount < 1)
+                    loginStatus = false;
+                else
+                    loginStatus = true;
+
+            }
+            catch (Exception ex)
+            {
+                //LogManager log = new LogManager("Login");
+                //log.WriteToFile(ex.Message + "\n" + ex.StackTrace);
+            }
+            finally
+            {
+                dr.Close();
+                dbCon.Close();
+            }
+
+            return loginStatus;
         }
 
         //This function will get all the Users.

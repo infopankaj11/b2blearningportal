@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +15,13 @@ namespace WorkLayers.BusinessLayer
         public UserBL()
         {
             userDL = new UserDL();
+        }
+
+        //This function is for Login purpose
+        public bool Login(string userName, string password)
+        {
+            bool loginStatus = userDL.Login(userName, password);
+            return loginStatus;
         }
 
         public DataTable GetAllUsers()
