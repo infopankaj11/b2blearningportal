@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Configuration;
 using System.Data;
@@ -15,8 +15,17 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-
+        if (Session["userName"] != null && Session["password"] != null)
+        {
+            if (Session["userName"].ToString().Length > 0 && Session["password"].ToString().Length > 0)
+            {
+                
+            }
+            else
+                Response.Redirect("../Home/Login.aspx");
+        }
+        else
+            Response.Redirect("../Home/Login.aspx");
     }
 
 

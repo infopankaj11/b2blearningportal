@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: Thiyagarajan Ravikumar
  * Version: 1.0
  * Remarks: The Access Manager Class. This class will get dataset, datatable, datareader, getcommand for 
@@ -47,7 +47,7 @@ namespace WorkLayers.DataLayer
 
         //getCommand method is used to retrieve records from table and have it in Datareader
         //Parameters Query & Database Connection
-        public object GetDataReader(String sQuery)
+        public object[] GetDataReader(String sQuery)
         {
             SqlDataReader dr = null;
             SqlConnection dbCon = null;
