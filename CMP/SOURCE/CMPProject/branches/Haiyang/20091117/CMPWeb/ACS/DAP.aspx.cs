@@ -12,7 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using WorkLayers.BusinessLayer;
 
-public partial class DAP : System.Web.UI.Page
+public partial class DAP : CMPWeb.BasePage
 {
     DAPBL dapBL;
 
@@ -23,8 +23,8 @@ public partial class DAP : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        CheckUserAccess();
         ConfigurationManager.AppSettings["CurrentMenu"] = "PortalAdmin";
-
         if (!Page.IsPostBack)
             PopulateDAPList();
     }

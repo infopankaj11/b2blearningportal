@@ -104,5 +104,27 @@ namespace WorkLayers.DataLayer
             strSQL = "UPDATE User_List SET Delete_Flag=1 WHERE UserListID IN (" + strUserIDs + ");";
             dbAccessManager.GetCommand(strSQL);
         }
+
+        //This function will check the user login, will return the no. of user matched, if 0 means no such user.
+        public Boolean CheckLogin(String UserName, String UserPass, String UserLevel)
+        {
+            int result = 0;
+            switch (UserLevel)
+            {
+                case "User":
+                    strSQL = "SELECT COUNT(*) FROM User_List WHERE UserName='" + UserName + "' AND UserPass='" + CryptoDL.Encrypt(UserPass) + "'";
+                    result = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "UserAdmin":
+                    strSQL = "SELECT COUNT(*) FROM UserAdmin_List WHERE UserAdminName='" + UserName + "' AND UserAdminPass='" + CryptoDL.Encrypt(UserPass) + "'";
+                    result = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "PortalAdmin":
+                    strSQL = "SELECT COUNT(*) FROM PortalAdmin_List WHERE PortalAdminName='" + UserName + "' AND PortalAdminPass='" + CryptoDL.Encrypt(UserPass) + "'";
+                    result = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+            }
+            return  result == 1? true:false;
+        }
     }
 }

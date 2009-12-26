@@ -54,5 +54,10 @@ namespace WorkLayers.BusinessLayer
         {
             userDL.DeleteUsers(UserIDs);
         }
+
+        public Boolean CheckLogin(String UserName, String UserPass, String UserLevel)
+        {
+            return userDL.CheckLogin(UserName, UserPass, UserLevel);
+        }
     }
 }
