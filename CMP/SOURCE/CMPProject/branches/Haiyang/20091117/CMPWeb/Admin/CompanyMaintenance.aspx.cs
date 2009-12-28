@@ -66,8 +66,8 @@ namespace CMPWeb.Admin
             if (lblAction.Text == "Add") //Add new company
             {
                 companyBL.InsertCompanyInfo(txtCompanyName.Text, txtAddress1.Text, txtAddress2.Text, txtAddress3.Text, txtPostalCode.Text,
-                    txtContactPerson.Text, txtContactEmail.Text, txtContactNo.Text, DateTime.Today.ToString("dd-MMM-yyyy"), "", "Haiyang",
-                    DateTime.Today.ToString("dd-MMM-yyyy"), txtValidFrom.Text, txtValidTo.Text, "Haiyang", DateTime.Today.ToString("dd-MMM-yyyy"),
+                    txtContactPerson.Text, txtContactEmail.Text, txtContactNo.Text, DateTime.Today.ToString("dd-MMM-yyyy"), "", Session["UserName"].ToString(),
+                    DateTime.Today.ToString("dd-MMM-yyyy"), txtValidFrom.Text, txtValidTo.Text, Session["UserName"].ToString(), DateTime.Today.ToString("dd-MMM-yyyy"),
                     txtCompanyRemark.Text);
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully added the new Company.";
@@ -77,7 +77,7 @@ namespace CMPWeb.Admin
             {
                 companyBL.UpdateCompanyInfo(lblCompanyID.Text, txtCompanyName.Text, txtAddress1.Text, txtAddress2.Text, txtAddress3.Text,
                     txtPostalCode.Text, txtContactPerson.Text, txtContactEmail.Text, txtContactNo.Text, txtValidFrom.Text, txtValidTo.Text,
-                    "Haiyang", DateTime.Today.ToString("dd-MMM-yyyy"), txtCompanyRemark.Text);
+                    Session["UserName"].ToString(), DateTime.Today.ToString("dd-MMM-yyyy"), txtCompanyRemark.Text);
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully updated the Customer.";
             }
