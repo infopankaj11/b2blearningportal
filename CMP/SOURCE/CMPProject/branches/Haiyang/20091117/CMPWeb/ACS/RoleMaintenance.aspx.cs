@@ -118,7 +118,7 @@ namespace CMPWeb.ACS
 
             if (lblAction.Text == "Add") //Add new Role
             {
-                roleBL.InsertRoleInfo(txtRoleName.Text, "Haiyang", txtRoleRemark.Text, FAPIDs, DAPIDs);
+                roleBL.InsertRoleInfo(txtRoleName.Text, Session["UserName"].ToString(), txtRoleRemark.Text, FAPIDs, DAPIDs);
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully added the new Role.";
             }

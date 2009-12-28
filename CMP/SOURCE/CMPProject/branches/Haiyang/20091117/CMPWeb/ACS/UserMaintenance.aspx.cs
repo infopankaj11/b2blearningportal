@@ -108,7 +108,7 @@ namespace CMPWeb.ACS
 
             if (lblAction.Text == "Add") //Add new User
             {
-                userBL.InsertUserInfo(txtUserName.Text, "Haiyang", txtUserRemark.Text, RoleIDs, txtPassword.Text);
+                userBL.InsertUserInfo(txtUserName.Text, Session["UserName"].ToString(), txtUserRemark.Text, RoleIDs, txtPassword.Text);
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully added the new User.";
             }
