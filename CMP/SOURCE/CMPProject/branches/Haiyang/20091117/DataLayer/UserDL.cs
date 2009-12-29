@@ -126,5 +126,27 @@ namespace WorkLayers.DataLayer
             }
             return  result == 1? true:false;
         }
+
+        //This function will retrieve the UserID after user log in
+        public int GetUserID(String UserName, String UserLevel)
+        {
+            int userID = 0;
+            switch (UserLevel)
+            {
+                case "User":
+                    strSQL = "SELECT UserListID FROM User_List WHERE UserName='" + UserName + "'";
+                    userID = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "UserAdmin":
+                    strSQL = "SELECT UserAdminListID FROM UserAdmin_List WHERE UserAdminName='" + UserName + "'";
+                    userID = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "PortalAdmin":
+                    strSQL = "SELECT PortalAdminID FROM PortalAdmin_List WHERE PortalAdminName='" + UserName + "'";
+                    userID = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+            }
+            return userID;
+        }
     }
 }
