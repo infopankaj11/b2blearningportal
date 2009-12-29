@@ -59,5 +59,10 @@ namespace WorkLayers.BusinessLayer
         {
             return userDL.CheckLogin(UserName, UserPass, UserLevel);
         }
+
+        public int GetUserID(String UserName, String UserLevel)
+        {
+            return userDL.GetUserID(UserName, UserLevel);
+        }
     }
 }

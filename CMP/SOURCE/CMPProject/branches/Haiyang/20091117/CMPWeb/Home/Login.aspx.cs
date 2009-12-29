@@ -27,6 +27,7 @@ using WorkLayers.BusinessLayer;
             }
             else
             {
+                Session["UserID"] = userBL.GetUserID(txtUserName.Text.Trim(), ddl_UserLevel.SelectedValue);
                 Session["UserName"] = txtUserName.Text.Trim();
                 Session["UserLevel"] = ddl_UserLevel.SelectedValue;
 
