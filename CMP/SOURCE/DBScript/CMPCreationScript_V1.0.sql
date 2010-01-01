@@ -6279,6 +6279,31 @@ BEGIN TRANSACTION
     Execute 
       JMD_PAGE_MOD_INIT @Site_URL
 
+	 
 COMMIT
 GO
 
+	/***************************************************************************
+    Table: PortalAdmin_List
+    Create table PortalAdmin_List
+  */
+  
+  /****** Object:  Table [dbo].[PortalAdmin_List]    Script Date: 01/01/2010 22:22:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PortalAdmin_List](
+	[PortalAdminID] [int] IDENTITY(1,1) NOT NULL,
+	[PortalAdminName] [varchar](50) NULL,
+	[PortalAdminPass] [varchar](50) NULL,
+ CONSTRAINT [PK_PortalAdmin_List] PRIMARY KEY CLUSTERED 
+(
+	[PortalAdminID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
