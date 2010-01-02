@@ -31,7 +31,7 @@
  </td>
 </tr>
 <tr>
-<td>
+<td valign="top" >
             <table CELLPADDING="0" CELLSPACING="0" style="height:100%">
             <tr class="sHeight" valign="top">
             <td valign="top" style="background-color:#09177E;">
@@ -45,10 +45,10 @@ if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) {%><img 
 <br> 
             </td>
 
-            <td>  
+            <td valign="top" >  
                 <table>
                 <tr>
-                <td>
+                <td valign="top" >
                 <%          
                    if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("PortalAdmin"))
                   { %>
@@ -63,7 +63,7 @@ if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) {%><img 
                   <%}
                   else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("UserAdmin")) 
                   {%>
-                  <a href="../ACS/UserAdmin.aspx" >User Admin</a>
+                  <a href="../ACS/User.aspx" >User Manager</a>
                   <%}
                    else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Modules"))
                    {%>
