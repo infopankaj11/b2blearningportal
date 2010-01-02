@@ -118,7 +118,7 @@ namespace CMPWeb.ACS
 
             if (lblAction.Text == "Add") //Add new User Admin
             {
-                userAdminBL.InsertUserAdminInfo(txtUserAdminName.Text, "Haiyang", txtUserAdminRemark.Text, RoleIDs, txtPassword.Text, ddlCompany.SelectedValue.ToString());
+                userAdminBL.InsertUserAdminInfo(txtUserAdminName.Text, Session["UserName"].ToString(), txtUserAdminRemark.Text, RoleIDs, txtPassword.Text, ddlCompany.SelectedValue.ToString());
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully added the new User Admin.";
             }

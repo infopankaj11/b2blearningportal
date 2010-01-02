@@ -90,7 +90,7 @@ public partial class DAPMaintenance : System.Web.UI.Page
 
         if (lblAction.Text == "Add") //Add new DAP
         {
-            dapBL.InsertDAPInfo(txtDAPName.Text, "Haiyang", txtDAPRemark.Text, ModuleIDs);
+            dapBL.InsertDAPInfo(txtDAPName.Text, Session["UserName"].ToString(), txtDAPRemark.Text, ModuleIDs);
             lblMsg.ForeColor = System.Drawing.Color.Green;
             lblMsg.Text = "Successfully added the new DAP.";
         }

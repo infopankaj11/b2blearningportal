@@ -20,7 +20,7 @@ namespace CMPWeb.CMS
         string _userName = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            _userName = Session["userName"].ToString();
+            _userName = Session["UserName"].ToString();
             if (!IsPostBack)
             {
                 lblCompanyName.Text = Request.QueryString["companyName"].ToString();

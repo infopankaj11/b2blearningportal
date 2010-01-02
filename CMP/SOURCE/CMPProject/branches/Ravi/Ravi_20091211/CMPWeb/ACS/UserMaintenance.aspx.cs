@@ -55,7 +55,8 @@ namespace CMPWeb.ACS
 
         protected void PopulateRoles()
         {
-            dtRoles = userBL.GetRolesByUserID(lblUserID.Text, "TBA");
+            //user admin can assign roles to user, but only from the roles he owns. 
+            dtRoles = userBL.GetRolesByUserID(lblUserID.Text, Session["UserID"].ToString());
             gv_Roles.DataSource = dtRoles;
             gv_Roles.DataBind();
         }
@@ -108,7 +109,7 @@ namespace CMPWeb.ACS
 
             if (lblAction.Text == "Add") //Add new User
             {
-                userBL.InsertUserInfo(txtUserName.Text, "Haiyang", txtUserRemark.Text, RoleIDs, txtPassword.Text);
+                userBL.InsertUserInfo(txtUserName.Text, Session["UserName"].ToString(), txtUserRemark.Text, RoleIDs, txtPassword.Text);
                 lblMsg.ForeColor = System.Drawing.Color.Green;
                 lblMsg.Text = "Successfully added the new User.";
             }
