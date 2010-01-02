@@ -92,7 +92,7 @@ public partial class FAPMaintenance : System.Web.UI.Page
 
         if (lblAction.Text == "Add") //Add new FAP
         {
-            fapBL.InsertFAPInfo(txtFAPName.Text, "Haiyang", txtFAPRemark.Text, FunctionIDs);
+            fapBL.InsertFAPInfo(txtFAPName.Text, Session["UserName"].ToString(), txtFAPRemark.Text, FunctionIDs);
             lblMsg.ForeColor = System.Drawing.Color.Green;
             lblMsg.Text = "Successfully added the new FAP.";
         }

@@ -19,8 +19,8 @@ namespace Web.CMS
         string _userName = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            //ConfigurationManager.AppSettings["CurrentMenu"] = "Modules";
-            _userName = Session["userName"].ToString();
+            ConfigurationManager.AppSettings["CurrentMenu"] = "Modules";
+            _userName = Session["UserName"].ToString();
             
             if (!IsPostBack)
             {
