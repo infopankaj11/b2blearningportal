@@ -55,7 +55,8 @@ namespace CMPWeb.ACS
 
         protected void PopulateRoles()
         {
-            dtRoles = userBL.GetRolesByUserID(lblUserID.Text, "TBA");
+            //user admin can assign roles to user, but only from the roles he owns. 
+            dtRoles = userBL.GetRolesByUserID(lblUserID.Text, Session["UserID"].ToString());
             gv_Roles.DataSource = dtRoles;
             gv_Roles.DataBind();
         }
