@@ -1,115 +1,133 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="QuestionMaintenance.aspx.cs" Inherits="QuestionMaintenance" Title="Question maintenance" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="QuestionMaintenance.aspx.cs" Inherits="QuestionMaintenance" Title="Question Maintenance" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<center><h1> Question Maintenance</h1></center>
-<center><h2> Sun Certified Java Developer (SCJD)</h2></center>
-<center><h3> Object-Oriented Analysis and Design Using UML</h3></center>
- <table style="width: 598px">
-<tr align="right">
-<td>
-<asp:DropDownList ID="ddlQType" runat="server">
-<asp:ListItem>Simple</asp:ListItem>
-<asp:ListItem>Moderate</asp:ListItem>
-<asp:ListItem>Complex</asp:ListItem>
-</asp:DropDownList>
-<asp:DropDownList ID="DropDownList1" runat="server">
-<asp:ListItem>Exam</asp:ListItem>
-<asp:ListItem>Exercise</asp:ListItem>
-</asp:DropDownList>
-<asp:Button ID="btnGo" Text="Search" runat="server" />
-</td>
-</tr>
-</table>
-<table>
-<tr>
-<td>
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tr>
-    <td>
+    <center><h1> Add Question</h1></center>
+<center><h2>     <asp:Label id="lblExamName" Text="" runat="server"></asp:Label></h2></center>
+<center><h3> <asp:Label id="lblSectionName" Text="" runat="server"></asp:Label> </h3></center>
+        <table cellspacing="0" cellpadding="3">
+    <tr>    
+    <td >
+    <asp:Label id="Label5" Text="Question Level" runat="server"></asp:Label>
     </td>
     <td>
-    Question ID
-    </td>
-    <td>
-    Question
-    </td>
-    <td>
-    Question Type
-    </td>
-    <td>
-    Exam Type
-    </td>
-    <td>
-    Question Level
+    <asp:DropDownList ID="ddlQLevel" runat="server">
+        <asp:ListItem Value ="Simple" >Simple</asp:ListItem>
+        <asp:ListItem  Value ="Moderate">Moderate</asp:ListItem>
+        <asp:ListItem  Value ="Complex" >Complex</asp:ListItem>
+    </asp:DropDownList>
     </td>
     </tr>
     <tr>
-    <td>
-    <asp:RadioButton ID="chk01" runat="server" />
+    <td >
+    <asp:Label id="lblQuestion" Text="Question" runat="server"></asp:Label>
     </td>
     <td>
-    <a href="QuestionAdd.aspx">Qn001</a>
-    </td>
-    <td>
-    What is your name?
-    </td>
-    <td>
-            Multiple Choice
-    </td>
-    <td>
-    Exam
-    </td>
-    <td>
-    Easy
+    <asp:TextBox ID="txtQuestion" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
     </td>
     </tr>
     <tr>
-    <td>
-    <asp:RadioButton ID="chk02" Text="" runat="server" />
+    <td >
+    <asp:Label id="lblExamAbbr" Text="Question Type" runat="server"></asp:Label>
     </td>
     <td>
-    <a href="QuestionAdd.aspx">Qn002</a>
-    </td>
-    <td>
-    Where do you live?
-    </td>
-    <td>
-    Mutually Exclusive
-    </td>
-    <td>
-    Exam
-    </td>
-    <td>
-    Easy
+    <asp:DropDownList ID="ddlQnType" runat="server">
+    <asp:ListItem Value="Multiple" >Multiple Choice</asp:ListItem>
+    <asp:ListItem Value="Exclusive">Mutually Exclusive</asp:ListItem>
+    </asp:DropDownList>
     </td>
     </tr>
-    </table>
-</td>
-</tr>
-</table>    
+    <tr>
+    <td >
+    <asp:Label id="Label2" Text="Exam Type" runat="server"></asp:Label>
+    </td>
+    <td>
+    <asp:DropDownList ID="ddlExamType" runat="server">
+    <asp:ListItem>Exam</asp:ListItem>
+    <asp:ListItem>Exercise</asp:ListItem>
+    </asp:DropDownList>
+    </td>
+    </tr>
 
-    <br />
+    <tr>
+    <td >Choices:<br>(Check the correct answers)
+    </td>
+    <td>
+    
+    <asp:GridView Width="100%" runat="server" ID="gv_Object" AutoGenerateColumns="false" DataKeyNames="option_id" >
+                <Columns>                                                          
+                       
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbAns" Text="is Answer?"  />      
+                        </HeaderTemplate>
+                        <itemstyle horizontalalign="Center" />
+                        <headerstyle horizontalalign="Center" />
+                        
+                        <itemtemplate>
+                            <asp:CheckBox id="chkSelectedAnswer" runat="server" Checked='<%#Eval("isAnswer")%>'  />  
+                            <asp:HiddenField ID="hfObjectID" Value='<%#Eval("option_id")%>' runat="server" />
+                        </itemtemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label runat="server" ID="OptText" Text="Option Text"  />
+                             <asp:Button ID="btnAddOpt" Text="Add" runat="server"  OnClick="btnAddOpt_Click"/> 
+                        </HeaderTemplate>
+                        
+                        <ItemTemplate>
+                            <asp:TextBox runat="server" ID="txtOptiontxt" Text='<%#Eval("OptText") %>'/>                              
+                        </ItemTemplate>
+                    </asp:TemplateField>                  
+                   
+                    <asp:TemplateField>                       
+                        <ItemTemplate>
+                              <asp:Button ID="btnDeleteOpt" Text="Delete" runat="server"  OnClick="btnDeleteOpt_Click"/>              
+                        </ItemTemplate>
+                    </asp:TemplateField>        
+                    
+                </Columns>
+                </asp:GridView>    
+    
+    </td>
+    <td>
+       </td>
+    </tr>
+    <tr>
+    <td class="style1">  
+    
+
+</td>
+</tr></table>        
     <table>
     <tr>
     <td>
-    <asp:Button ID="btnAdd" Text="Add" runat="server" onclick="btnAdd_Click" />
+    <asp:Button ID="btnAddUpdate" Text="Add" runat="server"  OnClick="btnAddUpdate_Click"/>
     </td>
     <td>
-    <asp:Button ID="btnDelete" Text="Delete" runat="server" />
+    <asp:Button ID="btnClear" Text="Clear" runat="server" />
     </td>
     <td>
-    <asp:Button ID="Button1" Text="Modify" runat="server" />
-    </td>
-    <td>
-    <asp:Button ID="Button2" Text="View" runat="server" />
-    </td>
-    <td>
-    <asp:Button ID="btnCancel" Text="Cancel" runat="server" />
+    <asp:Button ID="btnCancel" Text="Back to Questions" runat="server"
+            onclick="btnCancel_Click" />
     </td>
     </tr>
     </table>
+    
+     <table>
+        <tr>
+            <td>
+                <asp:Label runat="server" ID="lblMsg" ForeColor="Red" Text="" />
+                <asp:Label runat="server" ID="lblExamID2" Visible="false" Text="" />
+                <asp:Label runat="server" ID="lblSectionID2" Visible="false" Text="" />    
+                <asp:Label runat="server" ID="lblQID" Visible="false" Text="" />    
+                <asp:Label runat="server" ID="lblAction" Visible="false" Text="" />
+            </td>
+        </tr>
+    </table>
+    
 </asp:Content>
 

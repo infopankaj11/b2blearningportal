@@ -1,47 +1,96 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
+using System.Configuration;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 using WorkLayers.BusinessLayer;
+using System.Data;
 
-namespace CMPWeb.Home
-{
     public partial class Login : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        UserBL userBL;
+        public Login()
         {
-            
+            userBL = new UserBL();
         }
 
-        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            string userName = Login1.UserName;
-            string password = Login1.Password;
-            bool loginStatus = false;
+        }
 
-            UserBL userBL = new UserBL();
-
-            loginStatus = userBL.Login(userName, password);
-            
-            if (loginStatus)
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (!CheckLogin())
             {
-                Session["userName"] = userName;
-                Session["password"] = password;
-
-                Response.Redirect("../Admin/Company.aspx");
+                lblMsg.Text = "Invalid User ID or Password. Please try again.";
             }
             else
             {
-                Response.Redirect("Login.aspx");
+                Session["UserID"] = userBL.GetUserID(txtUserName.Text.Trim(), ddl_UserLevel.SelectedValue);                                    
+                Session["UserName"] = txtUserName.Text.Trim();
+                Session["UserLevel"] = ddl_UserLevel.SelectedValue;
+
+                switch(ddl_UserLevel.SelectedValue)
+                {
+                    case "User":
+                        getModules();
+                        Response.Redirect("../CMSClient/ClientHome.aspx");
+                        //Response.Redirect("../Admin/PortalAdmin.aspx");
+                        break;
+                    case "UserAdmin":
+                        Response.Redirect("../Admin/UserAdmin.aspx");
+                        break;
+                    case "PortalAdmin":
+                        Response.Redirect("../Admin/PortalAdmin.aspx");
+                        break;
+                }
             }
         }
+
+        protected Boolean CheckLogin()
+        {
+            Boolean result = false;
+            switch (ddl_UserLevel.SelectedValue)
+            {
+                case "User":
+                    result = userBL.CheckLogin(txtUserName.Text.Trim(), txtUserPass.Text.Trim(), "User");
+                    break;
+                case "UserAdmin":
+                    result = userBL.CheckLogin(txtUserName.Text.Trim(), txtUserPass.Text.Trim(), "UserAdmin");
+                    break;
+                case "PortalAdmin":
+                    result = userBL.CheckLogin(txtUserName.Text.Trim(), txtUserPass.Text.Trim(), "PortalAdmin");
+                    break;
+            }
+            return result;
+        }
+
+        private void getModules()
+        {
+            UserBL userBL = new UserBL();
+            DataTable dtModule = userBL.GetModuleType(Session["UserName"].ToString(), Session["UserID"].ToString());
+            string moduleType = "";
+            foreach (DataRow drModuleType in dtModule.Rows)
+            {
+                if (drModuleType["MODULE_TYPE"].ToString() == "CONTENT")
+                {
+                    moduleType  += "CONTENT,";
+                }
+                else if (drModuleType["MODULE_TYPE"].ToString() == "MCQ")
+                {
+                    moduleType += "MCQ,";
+                }
+                else if (drModuleType["MODULE_TYPE"].ToString() == "EXERCISE")
+                {
+                    moduleType += "EXERCISE,";
+                }
+                else if (drModuleType["MODULE_TYPE"].ToString() == "SURVEY")
+                {
+                    moduleType += "SURVEY,";
+                }
+            }
+            ConfigurationManager.AppSettings["CurrentMenu"] = moduleType;
+        }
     }
-}

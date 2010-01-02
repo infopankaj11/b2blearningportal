@@ -57,7 +57,7 @@ namespace WorkLayers.BusinessLayer
 
         public int UpdateModuleMaster(string companyName, string siteName, string userName)
         {
-            int returnValue = cmsDL.UpdateModuleMaster(companyName, siteName, userName);            
+            int returnValue = cmsDL.UpdateModuleMaster(companyName, siteName, userName);
             return returnValue;
         }
 
@@ -137,7 +137,7 @@ namespace WorkLayers.BusinessLayer
             return dtPage;
         }
 
-        public int DeletePage(string siteId, string pageID,string childPageID)
+        public int DeletePage(string siteId, string pageID, string childPageID)
         {
             int returnValue = cmsDL.DeletePage(siteId, pageID, childPageID);
             return returnValue;
@@ -173,7 +173,7 @@ namespace WorkLayers.BusinessLayer
             return returnNumber;
         }
 
-        
+
         public int JMD_PAGE_SAVE(string pageId, string siteURL, string pageName,
             string pageCaption, string metaTitle, string metaDesc,
             string metaKeywords, string parentPageName, string isPublished,
@@ -182,8 +182,8 @@ namespace WorkLayers.BusinessLayer
             string moveRoles, string addModuleRoles, string isInternal,
             string loadShared_Modules, string pageSort, string isViewStateEnabled)
         {
-            int returnValue = cmsDL.JMD_PAGE_SAVE(pageId, siteURL, pageName, pageCaption, metaTitle, metaDesc, metaKeywords, 
-                parentPageName, isPublished, isRoot, isMenuItem, viewRoles, addRoles, editRoles, deleteRoles, moveRoles, 
+            int returnValue = cmsDL.JMD_PAGE_SAVE(pageId, siteURL, pageName, pageCaption, metaTitle, metaDesc, metaKeywords,
+                parentPageName, isPublished, isRoot, isMenuItem, viewRoles, addRoles, editRoles, deleteRoles, moveRoles,
                 addModuleRoles, isInternal, loadShared_Modules, pageSort, isViewStateEnabled);
             return returnValue;
         }

@@ -8,3 +8,8 @@ C:\Integration CMP\JMDCMS.Web.Lib\bin\Debug\JMDCMS.Web.Lib.pdb
 C:\Integration CMP\JMDCMS.Web.Lib\obj\Debug\ResolveAssemblyReference.cache
 C:\Integration CMP\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.dll
 C:\Integration CMP\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.pdb
+E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\JMDCMS.Web.Lib\bin\Debug\JMDCMS.Web.Lib.dll
+E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\JMDCMS.Web.Lib\bin\Debug\JMDCMS.Web.Lib.pdb
+E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\JMDCMS.Web.Lib\obj\Debug\ResolveAssemblyReference.cache
+E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.dll
+E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\JMDCMS.Web.Lib\obj\Debug\JMDCMS.Web.Lib.pdb
