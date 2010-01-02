@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,47 +17,6 @@ namespace WorkLayers.DataLayer
             dbAccessManager = new DBAccessManager();
         }
 
-        //This function is for Login purpose
-        public bool Login(string userName, string password)
-        {
-            bool loginStatus = false;
-            DBAccessManager dbAccess = new DBAccessManager();
-            System.Data.SqlClient.SqlConnection dbCon = null;
-            System.Data.SqlClient.SqlDataReader dr = null;
-            string loginQuery = "SELECT COUNT(username) FROM USER_LIST WHERE username='{0}' AND userpass='{1}'";
-            try
-            {
-                string sLoginQuery = string.Format(loginQuery, userName, password);
-
-                object[] obj = dbAccessManager.GetDataReader(sLoginQuery);
-
-                dbCon = (System.Data.SqlClient.SqlConnection)obj[0];
-                dr = (System.Data.SqlClient.SqlDataReader)obj[1];
-                int recCount = 0;
-
-                if (dr.Read())
-                    recCount = dr.GetInt32(0);
-
-                if (recCount < 1)
-                    loginStatus = false;
-                else
-                    loginStatus = true;
-
-            }
-            catch (Exception ex)
-            {
-                //LogManager log = new LogManager("Login");
-                //log.WriteToFile(ex.Message + "\n" + ex.StackTrace);
-            }
-            finally
-            {
-                dr.Close();
-                dbCon.Close();
-            }
-
-            return loginStatus;
-        }
-
         //This function will get all the Users.
         public DataTable GetAllUsers()
         {
@@ -69,7 +28,7 @@ namespace WorkLayers.DataLayer
         public DataTable GetRolesByUserID(String UserID, String UserAdminID)
         {
             if (String.IsNullOrEmpty(UserID)) //means no User is selected, we will show all the Roles. Since the User Admin can only assign
-                                              //the roles he owns to user, so must link to UserAdmin Table also.
+            //the roles he owns to user, so must link to UserAdmin Table also.
             {
                 UserAdminID = "1";
                 strSQL = "";
@@ -144,6 +103,76 @@ namespace WorkLayers.DataLayer
             strUserIDs += "-1"; //-1 is a dummy value, it's used to avoid the trouble to remove the last comma.
             strSQL = "UPDATE User_List SET Delete_Flag=1 WHERE UserListID IN (" + strUserIDs + ");";
             dbAccessManager.GetCommand(strSQL);
+        }
+
+        //This function will check the user login, will return the no. of user matched, if 0 means no such user.
+        public Boolean CheckLogin(String UserName, String UserPass, String UserLevel)
+        {
+            int result = 0;
+            switch (UserLevel)
+            {
+                case "User":
+                    strSQL = "SELECT COUNT(*) FROM User_List WHERE UserName='" + UserName + "' AND UserPass='" + CryptoDL.Encrypt(UserPass) + "'";
+                    result = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "UserAdmin":
+                    strSQL = "SELECT COUNT(*) FROM UserAdmin_List WHERE UserAdminName='" + UserName + "' AND UserAdminPass='" + CryptoDL.Encrypt(UserPass) + "'";
+                    result = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "PortalAdmin":
+                    strSQL = "SELECT COUNT(*) FROM PortalAdmin_List WHERE PortalAdminName='" + UserName + "' AND PortalAdminPass='" + CryptoDL.Encrypt(UserPass) + "'";
+                    result = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+            }
+            return result == 1 ? true : false;
+        }
+
+        //This function will retrieve the UserID after user log in
+        public int GetUserID(String UserName, String UserLevel)
+        {
+            int userID = 0;
+            switch (UserLevel)
+            {
+                case "User":
+                    strSQL = "SELECT UserListID FROM User_List WHERE UserName='" + UserName + "'";
+                    userID = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "UserAdmin":
+                    strSQL = "SELECT UserAdminListID FROM UserAdmin_List WHERE UserAdminName='" + UserName + "'";
+                    userID = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+                case "PortalAdmin":
+                    strSQL = "SELECT PortalAdminID FROM PortalAdmin_List WHERE PortalAdminName='" + UserName + "'";
+                    userID = (int)dbAccessManager.GetScalar(strSQL);
+                    break;
+            }
+            return userID;
+        }
+
+        public DataTable GetUserModule(string UserName, string ListID, string type)
+        {
+            switch (type)
+            {
+                case "module":
+                    strSQL = "select id, module_id, module_name, module_type from module_master m, role_dap r, user_master u, jmd_site " +
+                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id and site_url=module_name";
+                    break;
+                case "mcq":
+                    strSQL = "select module_id, module_name, module_type from module_master m, role_dap r, user_master u " +
+                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id";
+                    break;
+            }
+
+            DataTable dtModule = dbAccessManager.GetDataTable(strSQL);
+            return dtModule;
+        }
+
+        public DataTable GetModuleType(string UserName, string ListID)
+        {
+            strSQL = "select distinct module_type from module_master m, role_dap r, user_master u " +
+                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id";
+            DataTable dtModule = dbAccessManager.GetDataTable(strSQL);
+            return dtModule;
         }
     }
 }

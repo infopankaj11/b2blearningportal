@@ -20,7 +20,7 @@ namespace WorkLayers.DataLayer
         #region "Site Maintenance Query"
 
         string SqlGet_AllSites = "SELECT JMD_SITE.COMPANYID COMPANYID,ID SITE_ID,SITE_URL SITE_NAME,STYLE_SHEET,SITE_FOLDER,COMPANYNAME " +
-                                 "FROM JMD_SITE,COMPANY_MASTER WHERE JMD_SITE.DELETE_FLAG=0 AND COMPANY_MASTER.DELETE_FLAG=0 AND " + 
+                                 "FROM JMD_SITE,COMPANY_MASTER WHERE JMD_SITE.DELETE_FLAG=0 AND COMPANY_MASTER.DELETE_FLAG=0 AND " +
                                  "JMD_SITE.COMPANYID=COMPANY_MASTER.COMPANYID ORDER BY SITE_NAME";
         string SqlGet_AllCompany = "SELECT COMPANYID,COMPANYNAME FROM COMPANY_MASTER WHERE VALIDPERIOD_TO>'{0}' and DELETE_FLAG=0 ORDER BY COMPANYNAME";
         string SqlGet_Site = "SELECT JMD_SITE.COMPANYID COMPANYID,ID SITE_ID, SITE_URL SITE_NAME, STYLE_SHEET,SITE_FOLDER FROM JMD_SITE WHERE COMPANYID='{0}' AND ID={1}";
@@ -32,7 +32,7 @@ namespace WorkLayers.DataLayer
         string SqlDelete_Site = "UPDATE JMD_SITE SET DELETE_FLAG=1,MODIFIED_BY='{0}',MODIFIED_DATE='{1}' WHERE COMPANYID='{2}' AND ID={3}";
         string SqlInsert_ModuleMaster = "INSERT INTO MODULE_MASTER VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')";
         string SqlDelete_ModuleMaster = "UPDATE MODULE_MASTER SET DELETE_FLAG=1,MODIFIED_BY='{0}',MODIFIED_DATE='{1}' WHERE MODULE_ID='{2}' AND MODULE_TYPE='CONTENT'";
-        
+
         #endregion
 
         #region "Page Maintenance Query"
@@ -52,11 +52,11 @@ namespace WorkLayers.DataLayer
 
         string SqlGet_AllAdditionalPages = "SELECT JMD_PAGE.ID CHILD_PAGE_ID, PAGE_NAME, PAGE_CAPTION, META_TITLE,META_KEYWORDS FROM JMD_PAGE WHERE SITE_ID={0} AND IS_INTERNAL=0 AND IS_DELETED=0 AND ID NOT IN (" +
                                            "SELECT CHILD_PAGE_ID FROM CMS_SITE_TREEVIEW WHERE SITE_ID={0}) ORDER BY PAGE_NAME";
-        string SqlGet_AdditionalPage = "SELECT JMD_PAGE.ID CHILD_PAGE_ID, PAGE_NAME, PAGE_CAPTION, META_TITLE,META_KEYWORDS FROM JMD_PAGE,CMS_SITE_TREEVIEW WHERE " + 
+        string SqlGet_AdditionalPage = "SELECT JMD_PAGE.ID CHILD_PAGE_ID, PAGE_NAME, PAGE_CAPTION, META_TITLE,META_KEYWORDS FROM JMD_PAGE,CMS_SITE_TREEVIEW WHERE " +
                                        "JMD_PAGE.SITE_ID={0} AND ID={1} AND IS_INTERNAL=0 AND IS_DELETED=0 AND ID = CHILD_PAGE_ID";
         string SqlDelete_AdditionalPage = "UPDATE JMD_PAGE SET IS_DELETED=1 WHERE ID={0} AND SITE_ID={1}";
-        
-        
+
+
         #endregion
 
         #region "Pyramid Maintenance Query"
@@ -151,7 +151,7 @@ namespace WorkLayers.DataLayer
             try
             {
                 dtSite = new DataTable();
-                dtSite = dbAccessManager.GetDataTable(string.Format(SqlGet_DuplicateSite,siteName, companyID));
+                dtSite = dbAccessManager.GetDataTable(string.Format(SqlGet_DuplicateSite, siteName, companyID));
                 if (dtSite.Rows.Count > 1)
                     returnNumber = 10;
                 else
@@ -186,45 +186,45 @@ namespace WorkLayers.DataLayer
             return returnNumber;
         }
 
-        public int CreateSite(string companyId, string siteName, string aliasSiteId, 
-                                string styleSheet, string siteVersion ,string siteFolder, string userName)
+        public int CreateSite(string companyId, string siteName, string aliasSiteId,
+                                string styleSheet, string siteVersion, string siteFolder, string userName)
         {
-            int returnValue=0;
-                /*string tempSql = string.Format(SqlCreate_Site, companyId, siteId, siteURL, aliasSiteId, styleSheet, siteVersion, siteFolder, userName, DateTime.Now, userName, DateTime.Now, "0");
-                returnValue = dbAccessManager.GetCommand(tempSql);*/
-                DBConnManager dbConn = new DBConnManager();
-                SqlConnection myConn = dbConn.GetDBConnection();
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.CommandText = "EXEC JMD_SITE_CREATE '" + siteName + "','admin@jmdcms.com'";
-                    command.CommandType = CommandType.Text;
-                    command.Connection = myConn;
-                    command.ExecuteNonQuery();
-                    command.Dispose();
+            int returnValue = 0;
+            /*string tempSql = string.Format(SqlCreate_Site, companyId, siteId, siteURL, aliasSiteId, styleSheet, siteVersion, siteFolder, userName, DateTime.Now, userName, DateTime.Now, "0");
+            returnValue = dbAccessManager.GetCommand(tempSql);*/
+            DBConnManager dbConn = new DBConnManager();
+            SqlConnection myConn = dbConn.GetDBConnection();
+            try
+            {
+                SqlCommand command = new SqlCommand();
+                command.CommandText = "EXEC JMD_SITE_CREATE '" + siteName + "','admin@jmdcms.com'";
+                command.CommandType = CommandType.Text;
+                command.Connection = myConn;
+                command.ExecuteNonQuery();
+                command.Dispose();
 
-                    returnValue = dbAccessManager.GetCommand(string.Format(SqlCreate_Site, companyId, styleSheet, siteFolder, userName,DateTime.Now, siteName));
-                }
-                catch (Exception ex)
-                {
-                    returnValue = -1;
-                }
-                finally
-                {
-                    dbConn.CloseDBConnection(myConn);
-                }           
+                returnValue = dbAccessManager.GetCommand(string.Format(SqlCreate_Site, companyId, styleSheet, siteFolder, userName, DateTime.Now, siteName));
+            }
+            catch (Exception ex)
+            {
+                returnValue = -1;
+            }
+            finally
+            {
+                dbConn.CloseDBConnection(myConn);
+            }
             return returnValue;
         }
 
-        public int UpdateModuleMaster(string companyName,string siteName, string userName)
+        public int UpdateModuleMaster(string companyName, string siteName, string userName)
         {
             int returnValue = 0;
             try
             {
-                DataTable dtSite = new DataTable();                
+                DataTable dtSite = new DataTable();
                 dtSite = dbAccessManager.GetDataTable(string.Format(SqlGet_DuplicateSite, siteName, companyName));
 
-                string tempSql = string.Format(SqlInsert_ModuleMaster, dtSite.Rows[0]["SITE_ID"].ToString(), siteName, "", "CONTENT", userName, DateTime.Now, userName, DateTime.Now, "0");
+                string tempSql = string.Format(SqlInsert_ModuleMaster, dtSite.Rows[0]["SITE_ID"].ToString(), siteName, "CONTENT", "", userName, DateTime.Now, userName, DateTime.Now, "0");
                 dbAccessManager.GetCommand(tempSql);
 
             }
@@ -348,13 +348,13 @@ namespace WorkLayers.DataLayer
 
             return returnNumber;
         }
-        
+
         public int CreateOutline(string siteID, string pageName, string remark, string sortNum, string isOutline, string userName)
         {
             int returnValue = 0;
             try
             {
-                string tempSql = string.Format(SqlCreate_Outline, siteID, pageName,remark, sortNum, isOutline, userName, DateTime.Now, userName);
+                string tempSql = string.Format(SqlCreate_Outline, siteID, pageName, remark, sortNum, isOutline, userName, DateTime.Now, userName);
                 returnValue = dbAccessManager.GetCommand(tempSql);
             }
             catch (Exception ex)
@@ -432,7 +432,7 @@ namespace WorkLayers.DataLayer
             return dtPage;
         }
 
-        public int GetDuplicatePageSort(string siteID,string outlineID, string sortNum)
+        public int GetDuplicatePageSort(string siteID, string outlineID, string sortNum)
         {
             DataTable dtPage = null;
             int returnNumber = 0;
@@ -532,7 +532,7 @@ namespace WorkLayers.DataLayer
             }
             return returnValue;
         }
-                
+
         public int JMD_PAGE_SAVE(string pageId, string siteURL, string pageName,
             string pageCaption, string metaTitle, string metaDesc,
             string metaKeywords, string parentPageName, string isPublished,
@@ -572,7 +572,7 @@ namespace WorkLayers.DataLayer
                 command.Parameters.Add(new SqlParameter("@IS_MENU_ITEM", SqlDbType.Int));
                 command.Parameters["@IS_MENU_ITEM"].Value = isMenuItem;
                 command.Parameters.Add(new SqlParameter("@VIEW_ROLES", SqlDbType.NVarChar, 1000));
-                command.Parameters["@VIEW_ROLES"].Value =  viewRoles;
+                command.Parameters["@VIEW_ROLES"].Value = viewRoles;
                 command.Parameters.Add(new SqlParameter("@ADD_ROLES", SqlDbType.NVarChar, 1000));
                 command.Parameters["@ADD_ROLES"].Value = addRoles;
                 command.Parameters.Add(new SqlParameter("@EDIT_ROLES", SqlDbType.NVarChar, 1000));
@@ -596,7 +596,7 @@ namespace WorkLayers.DataLayer
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                returnValue = (int)command.Parameters["@Return_Page_Id"].Value;                
+                returnValue = (int)command.Parameters["@Return_Page_Id"].Value;
             }
             catch (Exception ex)
             {
@@ -606,7 +606,7 @@ namespace WorkLayers.DataLayer
             {
                 dbConn.CloseDBConnection(myConn);
             }
-            return returnValue;            
+            return returnValue;
         }
 
 
@@ -735,7 +735,7 @@ namespace WorkLayers.DataLayer
                 else
                     tempSql = string.Format(SqlUpdate_UsageTime, duration, userName, DateTime.Now, userID, siteID, pageID);
 
-                    dbAccessManager.GetCommand(tempSql);
+                dbAccessManager.GetCommand(tempSql);
 
             }
             catch (Exception ex)
@@ -746,6 +746,6 @@ namespace WorkLayers.DataLayer
 
         #endregion
 
-        
+
     }
 }
