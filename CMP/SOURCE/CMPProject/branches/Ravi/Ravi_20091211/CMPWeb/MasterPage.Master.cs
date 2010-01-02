@@ -15,17 +15,17 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["userName"] != null && Session["password"] != null)
+        if (Session["UserName"] != null && Session["UserID"] != null)
         {
-            if (Session["userName"].ToString().Length > 0 && Session["password"].ToString().Length > 0)
+            if (Session["UserName"].ToString().Length > 0 && Session["UserID"].ToString().Length > 0)
             {
                 
             }
             else
-                Response.Redirect("../Home/Login.aspx");
+                Response.Redirect("/Home/Login.aspx");
         }
         else
-            Response.Redirect("../Home/Login.aspx");
+            Response.Redirect("/Home/Login.aspx");
     }
 
 

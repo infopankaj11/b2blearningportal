@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +15,6 @@ namespace WorkLayers.BusinessLayer
         public UserBL()
         {
             userDL = new UserDL();
-        }
-
-        //This function is for Login purpose
-        public bool Login(string userName, string password)
-        {
-            bool loginStatus = userDL.Login(userName, password);
-            return loginStatus;
         }
 
         public DataTable GetAllUsers()
@@ -60,6 +53,26 @@ namespace WorkLayers.BusinessLayer
         public void DeleteUsers(int[] UserIDs)
         {
             userDL.DeleteUsers(UserIDs);
+        }
+
+        public Boolean CheckLogin(String UserName, String UserPass, String UserLevel)
+        {
+            return userDL.CheckLogin(UserName, UserPass, UserLevel);
+        }
+
+        public int GetUserID(String UserName, String UserLevel)
+        {
+            return userDL.GetUserID(UserName, UserLevel);
+        }
+
+        public DataTable GetUserModule(string UserName, string ListID, string type)
+        {
+            return userDL.GetUserModule(UserName, ListID, type);
+        }
+
+        public DataTable GetModuleType(string UserName, string ListID)
+        {
+            return userDL.GetModuleType(UserName, ListID);
         }
     }
 }

@@ -45,11 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CMSBL.cs" />
     <Compile Include="CompanyBL.cs" />
     <Compile Include="DAPBL.cs" />
     <Compile Include="FAPBL.cs" />
+    <Compile Include="MCQBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleBL.cs" />
+    <Compile Include="SurveyBL.cs" />
     <Compile Include="UserAdminBL.cs" />
     <Compile Include="UserBL.cs" />
   </ItemGroup>
