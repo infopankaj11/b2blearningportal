@@ -1,0 +1,7 @@
+username = george716
+password = ninigeorge
+
+mssql9.myhsphere.biz
+SQL Server: george7_nini716
+ninigeorge
+

@@ -1,0 +1,1107 @@
+/*
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2007 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the default CSS file used by the editor area. It defines the
+ * initial font of the editor and background color.
+ *
+ * A user can configure the editor to use another CSS file. Just change
+ * the value of the FCKConfig.EditorAreaCSS key in the configuration
+ * file.
+ */
+
+/*
+    The "body" styles should match your editor web site, mainly regarding
+    background color and font family and size.
+*/
+
+body
+{
+	font-family: verdana, tahoma, sans-serif;
+	font-size: 11px;
+	background-image: url(images/BodyBg.jpg);
+	background-color: #ffffff;
+	background-repeat: repeat;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+/************ GLOBAL TAGS ************************************************/
+hr
+{
+	color: #6600cc;
+	background-color: #000;
+	height: 2px;
+	border-style: solid;
+}
+h1, h2, h3, h4, h5
+{
+	margin: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0em;
+	padding-top: 0.3em;
+	line-height: 1.4em;
+}
+h1 {
+	font-size:14px;
+	}
+
+h2 {
+	font-size:13px;
+	}
+
+h3 {
+	font-size:12px;
+	}
+
+h4 {
+	font-size:11px;
+	}
+
+h5 {
+	font-size:10px;
+	}
+
+p
+{
+
+	margin: 0px;
+	padding-right: 0.2em;
+	padding-left: 0.2em;
+	padding-bottom: 1em;
+	padding-top: 0.4em;
+}
+/************ LISTS ************************************************/
+ul
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: .5em;
+	padding-top: 0.5em;
+}
+li
+{
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+/************ BULLETS ************************************************/
+
+
+
+/************ BASE LAYOUT ***************************************************/
+.ContainerOuter
+{
+	width: 790px;
+	position: relative;
+	line-height: 160%;
+	padding-bottom: 0px; /*background-position: 0% 0%;*/
+	background-color: #b5b6c1;
+	margin: 0px auto;
+	padding-top: 0px;
+}
+
+
+.Container
+{
+	width: 780px;
+	position: relative;
+	line-height: 160%;
+	padding-bottom: 0px; /*background-position: 0% 0%;*/
+	background-color: #ffffff;
+	margin: 0px auto;
+	padding-top: 0px;
+	border-right: #f6f6f6 5px solid;
+	border-left: #f6f6f6 5px solid;
+
+}
+
+.Top
+{
+	width: 100%;
+	text-align: right;
+	color: #ffffff;
+	padding-bottom: 2px;
+	background-color: #006699;
+	
+}
+
+.Header
+{
+	width: 100%;
+	position: relative;
+	padding-bottom: 0px;
+	margin: 0px auto;
+	padding-top: 0px;
+}
+.SubHeader
+{
+	color: #006599;
+	padding-left: 5px;
+}
+
+.Left
+{
+	float: left;
+	width: 205px;
+	margin-top: 5px;
+	line-height: 140%;
+}
+.Right
+{
+	width: 205px;
+	margin-top: 5px;
+	float: right;
+	line-height: 140%;
+}
+.Middle
+{
+	float: left;
+	margin-top: 5px;
+	width: 360px;
+	margin-left: 5px;
+}
+.Middle-Full
+{
+	float: left;
+	width: 780px;
+	margin-top: 5px;
+}
+.Middle-Left
+{
+	float: left;
+	margin-top: 5px;
+	width: 570px;
+	/*width: 690px;*/
+	margin-left: 5px;
+}
+.Middle-Right
+{
+	float: left;
+	margin-top: 5px;
+	/*width: 690px;*/
+	width: 570px;
+	margin-right: 5px;
+}
+.Footer
+{
+	/*background:url(/images/footer-bg.jpg) no-repeat;*/ /*border:6px solid #8C8D8C;*/
+	width: 100%; /*height: 116px;*/
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	clear: both;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	text-align: center;
+	background-color: #f6f6f6;
+	color: #696969;
+}
+
+.PoweredBy
+{
+	width: 100%; /*height: 116px;*/
+	margin-left: auto;
+	position: relative;
+	white-space: nowrap;
+	clear: both;
+	text-align: center;
+	margin-left: auto;
+	font-size: 10px;
+	color: #696969;
+	background-color: #a9a9a9;
+}
+
+/************ BASE LAYOUT END **********************************************/
+
+/*********** MODULE LAYOUTS ************************************************/
+
+/*--------------------------------------------------------------------------
+* GENERAL MODULE HEADER
+*/
+.ModHeaderDiv
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+/*
+* GENERAL MODULE CONTAINTER
+*/
+.ModContainerDiv
+{
+	padding-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	margin: 0px;
+}
+/*
+* GENERAL MODULE FOOTER
+*/
+.ModFooterDiv
+{
+}
+
+/*--------------------------------------------------------------------------
+* LEFT MODULE HEADER
+*/
+.ModWrapper
+{
+	clear: none;
+	background-color: #a8cbef;
+	
+}
+
+.ModHeaderLeft, .ModHeaderRight, .ModHeaderMiddle, .ModHeaderMiddle-Full, .ModHeaderMiddle-Left, .ModHeaderMiddle-Right
+{
+	position: relative;
+	top: -3px;
+	left: -3px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fcfef5;
+	border-right: #e3edf8 2px solid;
+	border-top: #e3edf8 2px solid;
+	border-left: #e3edf8 2px solid;
+	font-weight: bold;
+	color: #006599;
+	font-size: 120%;
+}
+
+
+/*
+	color: #ff9600;
+	font-size: 16px;
+	background-color: #99ffff; 
+	top: -3px;
+	left: -3px;
+	padding-left: 6px;
+	padding-right: 6px;
+*/ /*
+	background: url(Images/MainMenuBg1.png) repeat-x center bottom;
+	border-right: #e3edf8 2px solid;
+	border-top: #e3edf8 2px solid;
+	border-left: #e3edf8 2px solid;
+	border-bottom: #e3edf8 2px solid;
+	color: #696969;
+	*/
+
+.ModContainerLeft, .ModContainerRight, .ModContainerMiddle, 
+.ModContainerMiddle-Full, .ModContainerMiddle-Right, .ModContainerMiddle-Left
+{  
+	background-color: #fcfef5;
+	position: relative;
+	top: -3px;
+	left: -3px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-right: #e3edf8 2px solid;
+	border-top: #e3edf8 2px solid;
+	border-left: #e3edf8 2px solid;
+	margin-bottom: 10px; 
+}	
+
+	/*
+	border-right: #a9a9a9 1px solid;
+	border-top: #a9a9a9 1px solid;
+	border-left: #a9a9a9 1px solid;
+	border-bottom: #a9a9a9 1px solid;
+	color: black;
+	padding-top: 5px;
+	*/
+ 
+
+.ModHeaderLeft
+{
+/*
+		height: 22px;
+		padding-left: 15px;
+		padding-top: 5px;
+*/
+}
+/*
+* LEFT MODULE CONTAINTER
+*/
+.ModContainerLeft
+{
+
+}
+/*
+* LEFT MODULE FOOTER
+*/
+.ModFooterLeft
+{
+}
+
+/*--------------------------------------------------------------------------
+* RIGHT MODULE HEADER
+*/
+.ModHeaderRight
+{
+/*
+	height: 22px;
+	padding-left: 15px;
+	padding-top: 5px;
+*/
+}
+/*
+* RIGHT MODULE CONTAINTER
+*/
+.ModContainerRight
+{
+/*
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+*/	
+}
+/*
+* RIGHT MODULE FOOTER
+*/
+.ModFooterRight
+{
+}
+
+/*--------------------------------------------------------------------------
+* MIDDLE MODULE HEADER
+*/
+.ModHeaderMiddle
+{
+/*
+	height: 22px;
+	padding-left: 15px;
+	padding-top: 5px;
+*/
+}
+/*
+* MIDDLE MODULE CONTAINTER
+*/
+.ModContainerMiddle
+{
+/*
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+*/	
+}
+
+/*
+* MIDDLE MODULE FOOTER
+*/
+
+/*--------------------------------------------------------------------------
+* MIDDLE-FULL MODULE HEADER
+*/
+.ModHeaderMiddle-Full
+{
+/*	
+	height: 22px;
+	padding-left: 15px;
+	padding-top: 5px;
+*/
+}
+
+/*
+* MIDDLE-FULL MODULE CONTAINTER
+*/
+.ModContainerMiddle-Full
+{
+/*
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+*/	
+}
+
+
+/*
+* MIDDLE-FULL MODULE FOOTER
+*/
+
+/*--------------------------------------------------------------------------
+* MIDDLE-LEFT MODULE HEADER
+*/
+.ModHeaderMiddle-Left
+{
+/*
+	height: 22px;
+	padding-left: 15px;
+	padding-top: 5px;
+*/
+}
+
+
+/*
+* MIDDLE-LEFT MODULE CONTAINTER
+*/
+.ModContainerMiddle-Left
+{
+/*
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+*/	
+}
+
+/*
+* MIDDLE-LEFT MODULE FOOTER
+*/
+
+/*--------------------------------------------------------------------------
+* MIDDLE-RIGHT MODULE HEADER
+*/
+.ModHeaderMiddle-Right
+{
+/*	
+	height: 22px;
+	padding-left: 15px;
+	padding-top: 5px;
+*/	
+}
+
+/*
+* MIDDLE-RIGHT MODULE CONTAINTER
+*/
+
+.ModContainerMiddle-Right
+{
+/*
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+*/	
+}
+
+/*
+* MIDDLE-RIGHT MODULE FOOTER
+*/
+
+
+
+/************ LINKS ************************************************/
+a:link, a:visited
+{
+	color: #0000ff;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #ff6600;
+}
+
+.Top a:link, .Top a:visited
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.Top a:hover
+{
+	color: #ff6600;
+	text-decoration: none;
+}
+
+.PoweredBy a:link, .PoweredBy a:visited, .Footer a:link, .Footer a:visited
+{
+	color: #696969;
+	text-decoration: none;
+}
+.PoweredBy a:hover, .Footer a:hover
+{
+	color: #ff3333;
+	text-decoration: none;
+}
+.SubHeader a:link, .SubHeader a:visited
+{
+	color: #006599;
+	border-bottom: #006599 1px dotted;
+	
+}
+.SubHeader a:hover
+{
+	color: #ff6600;
+	border-bottom: #ff6600 1px dotted;
+	
+}
+.TableForm a:link, .TableForm a:visited
+{
+	color: #ffcc66;
+	text-decoration: underline;
+}
+.TableForm a:hover
+{
+	text-decoration: underline;
+	color: #ffff66;
+}
+
+.copyright a:link, .copyright a:visited
+{
+	text-decoration: underline;
+	color: #a9a9a9;
+}
+.copyright a:hover
+{
+	text-decoration: underline;
+	color: #ff6666;
+}
+
+/************ Main Menu ***************************************************/
+
+.MainMenu
+{
+	height: 25px;
+	text-align: center;
+	padding-left: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
+	background: url(Images/MainMenuBg.jpg) repeat-x center bottom;
+	border-top: #4d97bd 1px solid;
+	border-bottom: #4d97bd 1px inset;
+	border-left: #4d97bd 1px solid;
+	border-right: #4d97bd 1px solid;
+	
+}
+
+.MainMenu ul
+{
+	padding: 0;
+	list-style: none;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.MainMenu li
+{
+	margin: 0;
+	float: left;
+	height: 25px;
+	padding: 0;
+	
+
+}
+
+.MainMenu a:link, .MainMenu a:visited
+{
+	display: block;
+	float: left;
+	line-height: 25px;
+	height: 25px;
+	padding: 0 25px;
+	color: #000000;
+	border-right: #4d97bd 1px inset;
+	text-decoration: none;
+	border-bottom-style: none;
+	font-weight: bold;
+}
+
+.MainMenu a:hover
+{
+	text-decoration: none;
+	border-bottom: 0;
+	color: #ff6600;
+	font-weight: bold;
+	
+}
+
+/*
+.MainMenu
+{
+	height: 62px; 
+	text-align: center;
+	background: url(images/MainMenuBg1-8.png) repeat-x left bottom;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.MainMenu ul
+{
+	list-style: none;
+	text-align: center;
+}
+
+.MainMenu li
+{
+	margin: 0px 3px;
+	float: left;
+	text-align: center;
+	height: 62px;
+}
+
+.MainMenu a:link, .MainMenu a:visited
+{
+	display: block;
+	height: 62px;
+	float: left;
+	line-height: 70px;
+	color: #000000;
+	border-bottom: 0;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	background: url(Images/MainMenuLinkBg.png) no-repeat left bottom;
+	width: 94px;
+}
+
+.MainMenu a:hover
+{
+	background: url(Images/MainMenuLinkBg.png) no-repeat left bottom;
+	text-decoration: none;
+	border-bottom: 0;
+}
+*/
+/*
+#b24a2f
+a.contentpagetitle:link, a.contentpagetitle:visited {
+  padding-top: 5px;
+	font-size: 18px;
+ 	font-weight: normal;
+	color: #4971BA;
+	text-align: left;
+	width: 100%;
+}
+
+a.contentpagetitle:hover {
+	color: #ff0000;
+}
+
+
+a.mainlevel {
+  display: block;
+  border-bottom: 1px solid #ddd;
+.MainMenu a:link, a:visited
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+
+}
+*/
+
+/******* New Left Menu ****************************************************/
+
+.MenuLeft
+{
+
+}
+
+.MenuLeft ul
+{
+	padding: 0;
+	list-style: none;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.MenuLeft h1
+{
+	vertical-align: middle;
+	text-align: center;
+	font-size: 12px;
+}
+
+	/*
+	border-top-color: #daedf6;
+	border-left-color: #daedf6;
+	border-bottom-color: #4d97bd;
+	border-right-color: #4d97bd;	
+	*/
+.MenuLeft h1 a
+{
+	color: #006599;
+}
+
+.MenuLeft li
+{
+	padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	background: url(images/BlueArrow.gif) no-repeat 0% center;
+	padding-left: 15px;
+}
+.MenuLeft li a:link
+{
+	color: #006599;
+	border-bottom: #006599 1px dotted;
+	
+}
+.MenuLeft li a:visited
+{
+	color: #006599;
+	border-bottom: #006599 1px dotted;
+	
+}
+.MenuLeft li a:hover
+{
+	color: #ff6600;
+	border-bottom: #ff6600 1px dotted;
+	
+}
+
+
+/******* Left Menu ****************************************************/
+
+.LeftBox
+{
+	width: 100%;
+	margin: 0px;
+	text-align: left;
+}
+
+.Level1, .Level1:visited, .Level2, .Level2:visited, .Level3, .Level3:visited
+{
+	text-decoration: none;
+	border-left: #0000ff 1px dotted;
+	border-bottom: #0000ff 1px dotted;
+	padding-top: 4px;
+	float: left;
+	
+}
+.Level1:Hover,  .Level2:Hover, .Level3:Hover
+{
+	border-left: #ff6600 1px dotted;
+	border-bottom: #ff6600 1px dotted;
+}
+.Level1, .Level1:visited
+{
+	padding-left: 3px;
+}
+.LevelBack, .LevelBack:visited
+{
+	padding-left: 1px;
+	text-decoration: none;
+}
+.LevelBack:Hover
+{
+	color: #99ff66;
+}
+.Level2, .Level2:visited
+{
+	padding-left: 3px;
+	margin-left: 10px;
+}
+.Level3, .Level3:visited
+{
+	padding-left: 3px;
+	margin-left: 18px;
+}
+
+
+/******* Table FORMS**************************************************/
+.TableForm
+{
+	border-collapse: collapse;
+	margin-bottom: 10px;
+	border-right: #51628c 1px dotted;
+	border-top: #51628c 1px dotted;
+	border-left: #51628c 1px dotted;
+	border-bottom: #51628c 1px dotted;
+	width: 100%;
+}
+.TableForm th
+{
+	text-align: center;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #006699;
+	font-weight: bold;
+	color: #ffffff;
+}
+.TableForm td
+{
+	vertical-align: top;
+	border-right: #a9a9a9 1px dotted;
+	border-top: #a9a9a9 1px dotted;
+	border-left: #a9a9a9 1px dotted;
+	border-bottom: #a9a9a9 1px dotted;
+	padding-bottom: 10px;
+	padding-top: 5px;
+}
+.TableFormTdLeft
+{
+	width: 55%;
+	color: #000000;
+	background-color: #ffffff;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.TableFormTdRight
+{
+	width: 45%;
+	vertical-align: top;
+	background-color: #dcdcdc;
+	color: black;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+}
+
+.TableFormAction
+{
+	text-align: right;
+	color: #ff0000;
+}
+.TableForm h1
+{
+	color: #3b4678;
+	font-size: 12px;
+}
+
+.TableForm h2
+{
+	color: #ffffff;
+	font-size: 12px;
+}
+.TableForm li
+{
+	padding-bottom: 5px;
+	padding-left: 0px;
+}
+
+.TableFormErrorMessage
+{
+	text-align: left;
+	font-weight: normal;
+	color: #ffffff;
+}
+.TableFormErrorMessage li
+{
+	text-align: left;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-top: 0px;
+}
+
+/******* FORMS **********************************************/
+.SingleLineClass
+{
+	width: 98%;
+}
+.CheckBoxClass
+{
+	width: 98%;
+}
+.CheckBoxListClass
+{
+	width: 98%;
+}
+.TextBoxClass
+{
+	width: 98%;
+}
+.ComboBoxClass
+{
+	width: 98%;
+}
+.DateTimeClass
+{
+	width: 98%;
+}
+.ListBoxClass
+{
+	width: 98%;
+}
+.LookupClass
+{
+	width: 85%;
+}
+.LookupClassButton
+{
+	width: 10%;
+}
+.MoneyClass
+{
+	width: 98%;
+}
+.MultiLineClass
+{
+	width: 98%;
+}
+.NumberClass
+{
+	width: 98%;
+}
+.RadioButtonClass
+{
+	width: 98%;
+}
+.PanelClass
+{
+	width: 96%;
+	height: 150px;
+	border-right: #000000 1px dotted;
+	border-top: #000000 1px dotted;
+	border-left: #000000 1px dotted;
+	border-bottom: #000000 1px dotted;
+	background-color: #ffffcc;
+}
+
+/******* IMAGES **************************************************/
+img
+{
+}
+.photo {
+padding: 5px;
+display: block;
+margin: 0 auto 15px auto;
+background-color: #f0f0f0;
+}
+
+.photo1
+{
+	padding: 5px;
+	margin: 5px;
+	background-color: #f0f0f0;
+	float: left;
+}
+
+.photo2
+{
+	padding: 5px;
+	margin: 5px;
+	background-color: #f0f0f0;
+	float: right;
+}
+.photo3
+{
+	padding: 5px;
+	display: block;
+	margin: 0 auto 15px auto;
+	background-color: #f0f0f0;
+	text-align: center;
+}
+
+.Container img
+{
+	text-decoration: none;
+	border: none;
+	padding-right: 3px;
+	padding-left: 3px;
+	vertical-align: middle;
+}
+
+/******* Table BROWSE **********************************************/
+.Browse
+{
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 5px;
+	border-right: #51628c 1px solid;
+	border-top: #51628c 1px solid;
+	border-left: #51628c 1px solid;
+	border-bottom: #51628c 1px solid;
+}
+.Browse th
+{
+	padding-right: 5px;
+	padding-left: 5px;
+	color: #ffffff;
+	background-color: #696969;
+	text-align: left;
+}
+
+.Browse td
+{
+	border-right: #a9a9a9 1px solid;
+	border-bottom: #a9a9a9 1px solid;
+	padding-left: 5px;
+}
+
+.Browse tr.AltRow
+{
+	background-color: #d3d3d3;
+}
+.Browse img
+{
+	text-decoration: none;
+	border: none;
+	padding-right: 3px;
+	padding-left: 3px;
+	vertical-align: middle;
+}
+.ModHeaderArrow
+{
+}
+/*****************************************************************************
+	Input Sub Header
+*/
+.InputHeader
+{
+	width: 100%;
+	background-color: #6699cc;
+	vertical-align: middle;
+	text-align: left;
+}
+.InputHeader td
+{
+	padding-right: .5em;
+	padding-left: .5em;
+	padding-bottom: .5em;
+	padding-top: .5em;
+	vertical-align: middle;
+}
+
+.copyright
+{
+	color: #a9a9a9;
+	text-align: center;
+	font-size: x-small;
+}
+
+.Code
+{
+	padding-right: 5px;
+	padding-left: 5px;
+	color: #000000;
+	font-family: 'Courier New' , Monospace;
+	background-color: #fffacd;
+	border-right: #d3d3d3 1px dashed;
+	border-top: #d3d3d3 1px dashed;
+	border-left: #d3d3d3 1px dashed;
+	border-bottom: #d3d3d3 1px dashed;
+}
