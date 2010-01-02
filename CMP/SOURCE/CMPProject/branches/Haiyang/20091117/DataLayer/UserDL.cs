@@ -30,7 +30,6 @@ namespace WorkLayers.DataLayer
             if (String.IsNullOrEmpty(UserID)) //means no User is selected, we will show all the Roles. Since the User Admin can only assign
                                               //the roles he owns to user, so must link to UserAdmin Table also.
             {
-                UserAdminID = "1";
                 strSQL = "";
                 strSQL += "SELECT RoleListID, RoleName, Role_Remark, 'No' as 'HasRole' FROM Role_List WHERE Delete_Flag=0 AND RoleListID IN ";
                 strSQL += "(SELECT RoleListID FROM UserAdmin_Master WHERE UserAdminListID=" + UserAdminID + ") ORDER BY RoleName;";
@@ -40,7 +39,8 @@ namespace WorkLayers.DataLayer
                 strSQL = "";
                 strSQL += " SELECT r.RoleListID, r.RoleName, r.Role_Remark, ";
                 strSQL += " CASE ISNULL(TempTB.UserListID,0) WHEN 0 THEN 'No' ELSE 'Yes' END AS 'HasRole'";
-                strSQL += " FROM Role_List r";
+                strSQL += " FROM (select rl.* from Useradmin_Master um INNER JOIN Role_List rl ";
+                strSQL += " ON um.RoleListID = rl.RoleListID WHERE um.UserAdminListID=" + UserAdminID.ToString() + ") AS r";
                 strSQL += " LEFT OUTER JOIN (SELECT * FROM User_Master WHERE UserListID=" + UserID + ") AS TempTB";
                 strSQL += " ON r.RoleListID=TempTB.RoleListID WHERE r.Delete_Flag=0";
                 strSQL += " ORDER BY HasRole DESC, r.RoleName";
