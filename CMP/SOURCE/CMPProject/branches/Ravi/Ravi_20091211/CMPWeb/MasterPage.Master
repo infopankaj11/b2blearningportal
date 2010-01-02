@@ -82,12 +82,12 @@ if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) {%><img 
                   <%}
                   else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("UserAdmin")) 
                   {%>
-                  <a href="../ACS/UserAdmin.aspx" >User Admin</a>
+                  <a href="../ACS/User.aspx" >User Manager</a>
                   <%}
-                    else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) 
-                   {%>
-                     <a href="../MCQ/ExerciseMaintenance.aspx" >Exercise Manager</a> &nbsp;|&nbsp<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> &nbsp;|&nbsp<a href="../MCQ/Sections.aspx" >Section Manager</a>
-                   <%}
+                  else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Exercise")) 
+                  {%>
+                    <a href="../MCQ/ExerciseMaintenance.aspx" >Exercise Manager</a> &nbsp;|&nbsp<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> &nbsp;|&nbsp<a href="../MCQ/Sections.aspx" >Section Manager</a>
+                  <%}
                    else if (ConfigurationManager.AppSettings["CurrentMenu"].Equals("Survey")) 
                    {%>
                          <a href="../MCQ/ExerciseMaintenance.aspx" >Survey Manager</a> &nbsp;|&nbsp<a href="../MCQ/QuestionMaintenance.aspx" >Question pool Manager</a> 

@@ -21,9 +21,8 @@ namespace CMPWeb.CMSClient
         {
             if (!IsPostBack)
             {                
-                hdnStartTime.Value = System.DateTime.Now.TimeOfDay.ToString(); ;
-                hdnUserName.Value = "Temp";
-                hdnSiteID.Value = "1";
+                hdnStartTime.Value = System.DateTime.Now.TimeOfDay.ToString(); ;                
+                hdnSiteID.Value = Request.QueryString["siteID"].ToString();
                 LoadTreeView();
                 //tvwPhoneBook.ForeColor = System.Drawing.Color.Black;                
             }
