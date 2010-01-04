@@ -81,3 +81,4 @@ E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\CM
 E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\CMPWeb\bin\JMDCMS.Web.Lib.pdb
 E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\CMPWeb\obj\Debug\CMPWeb.dll
 E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\CMPWeb\obj\Debug\CMPWeb.pdb
+E:\Ravi\Pers\M.Tech\Project\CMP\SOURCE\CMPProject\branches\Ravi\Ravi_20091211\CMPWeb\bin\FredCK.FCKeditorV2.pdb

@@ -26,7 +26,7 @@
                     </asp:TemplateField>
                      
                     <asp:HyperLinkField DataNavigateUrlFields="squestion_id,survey_id" DataNavigateUrlFormatString="~/Survey/SurveyQuestionMaintenance.aspx?Action=Update&QID={0}&SurveyID={1}"
-                         DataTextField="question" NavigateUrl="~/Survey/SurveyQuestionMaintenance.aspx" HeaderText = "Question ID"/>
+                         DataTextField="squestion_id" NavigateUrl="~/Survey/SurveyQuestionMaintenance.aspx" HeaderText = "Question ID"/>
                         
                     <asp:TemplateField>
                         <HeaderTemplate>

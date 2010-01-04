@@ -33,5 +33,6 @@
 </td>
 </tr>
 </table>
+<asp:HiddenField id="hdnType" runat="server" />
 </asp:Content>
 

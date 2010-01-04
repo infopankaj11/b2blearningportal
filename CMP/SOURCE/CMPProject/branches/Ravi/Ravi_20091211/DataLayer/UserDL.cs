@@ -28,8 +28,9 @@ namespace WorkLayers.DataLayer
         public DataTable GetRolesByUserID(String UserID, String UserAdminID)
         {
             if (String.IsNullOrEmpty(UserID)) //means no User is selected, we will show all the Roles. Since the User Admin can only assign
-            //the roles he owns to user, so must link to UserAdmin Table also.
+                                              //the roles he owns to user, so must link to UserAdmin Table also.
             {
+                UserAdminID = "1";
                 strSQL = "";
                 strSQL += "SELECT RoleListID, RoleName, Role_Remark, 'No' as 'HasRole' FROM Role_List WHERE Delete_Flag=0 AND RoleListID IN ";
                 strSQL += "(SELECT RoleListID FROM UserAdmin_Master WHERE UserAdminListID=" + UserAdminID + ") ORDER BY RoleName;";
@@ -39,8 +40,7 @@ namespace WorkLayers.DataLayer
                 strSQL = "";
                 strSQL += " SELECT r.RoleListID, r.RoleName, r.Role_Remark, ";
                 strSQL += " CASE ISNULL(TempTB.UserListID,0) WHEN 0 THEN 'No' ELSE 'Yes' END AS 'HasRole'";
-                strSQL += " FROM (select rl.* from Useradmin_Master um INNER JOIN Role_List rl ";
-                strSQL += " ON um.RoleListID = rl.RoleListID WHERE um.UserAdminListID=" + UserAdminID.ToString() + ") AS r";
+                strSQL += " FROM Role_List r";
                 strSQL += " LEFT OUTER JOIN (SELECT * FROM User_Master WHERE UserListID=" + UserID + ") AS TempTB";
                 strSQL += " ON r.RoleListID=TempTB.RoleListID WHERE r.Delete_Flag=0";
                 strSQL += " ORDER BY HasRole DESC, r.RoleName";
@@ -124,7 +124,7 @@ namespace WorkLayers.DataLayer
                     result = (int)dbAccessManager.GetScalar(strSQL);
                     break;
             }
-            return result == 1 ? true : false;
+            return  result == 1? true:false;
         }
 
         //This function will retrieve the UserID after user log in
@@ -158,19 +158,23 @@ namespace WorkLayers.DataLayer
                        "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id and site_url=module_name";
                     break;
                 case "mcq":
-                    strSQL = "select module_id, module_name, module_type from module_master m, role_dap r, user_master u " +
-                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id";
+                    strSQL = "select exam_id id, module_id, module_name, module_type from module_master m, role_dap r, user_master u, mcq_exam_master " +
+                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id and module_name=exam_name";
+                    break;
+                case "survey":
+                    strSQL = "select survey_id id, module_id, module_name, module_type from module_master m, dap_master d, role_dap r, user_master u, survey_master " +
+                       "where userlistid=" + ListID + "  and u.rolelistid=r.rolelistid and r.daplistid=d.daplistid and d.dapmoduleid=module_id and module_name COLLATE Latin1_General_CI_AS =survey_name";
                     break;
             }
-
+            
             DataTable dtModule = dbAccessManager.GetDataTable(strSQL);
             return dtModule;
         }
 
         public DataTable GetModuleType(string UserName, string ListID)
         {
-            strSQL = "select distinct module_type from module_master m, role_dap r, user_master u " +
-                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id";
+            strSQL = "select distinct module_type from module_master m, dap_master d, role_dap r, user_master u " +
+                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and r.daplistid=d.daplistid and d.dapmoduleid=module_id";
             DataTable dtModule = dbAccessManager.GetDataTable(strSQL);
             return dtModule;
         }
