@@ -2,7 +2,7 @@
 * Table Name: mcq_exam_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /*****Object:  Table [dbo].[mcq_exam_master]  ******/
 SET ANSI_NULLS ON
@@ -38,7 +38,7 @@ GO
 /****************************************************
 * Table Name: mcq_section_master
 ****************************************************/
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[mcq_section_master]    ******/
 SET ANSI_NULLS ON
@@ -80,7 +80,7 @@ GO
 * Table Name: mcq_question_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[mcq_question_master]   ******/
 SET ANSI_NULLS ON
@@ -90,9 +90,9 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[mcq_question_master](
-	[exam_id] [varchar](25) NOT NULL,
-	[section_id] [varchar](20) NOT NULL,
-	[question_id] [varchar](25) NOT NULL,
+	[exam_id] [int] NOT NULL,
+	[section_id] [int] NOT NULL,
+	[question_id] [int] IDENTITY(1,1) NOT NULL,
 	[question_text] [varchar](250) NOT NULL,
 	[exam_type] [varchar](25) NOT NULL,
 	[question_level] [varchar](25) NOT NULL,
@@ -124,7 +124,7 @@ GO
 * Table Name: mcq_user_exam
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -133,17 +133,17 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[mcq_user_exam](
-	[user_exam_id] [varchar](25) NOT NULL,
-	[exam_id] [varchar](25) NOT NULL,
-	[user_id] [varchar](10) NOT NULL,
-	[qn_id] [varchar](25) NOT NULL,
-	[choice_id] [varchar](25) NOT NULL,
+	[user_exam_id] [int] IDENTITY(1,1) NOT NULL,
+	[exam_id] [int] NOT NULL,
+	[section_id] [int] NOT NULL,
+	[user_id] [int] NOT NULL,
+	[qn_id] [int] NOT NULL,
 	[exam_date] [datetime] NULL,
-	[created_by] [varchar](50) NOT NULL,
+	[created_by] [varchar](50) COLLATE Latin1_General_CI_AI NOT NULL,
 	[created_date] [datetime] NOT NULL,
-	[modified_by] [varchar](50) NOT NULL,
-	[modified_date] [datetime] NOT NULL,
-	[delete_flag] [varchar](2) NULL,
+	[modified_by] [varchar](50) COLLATE Latin1_General_CI_AI NULL,
+	[modified_date] [datetime] NULL,
+	[delete_flag] [varchar](2) COLLATE Latin1_General_CI_AI NULL,
  CONSTRAINT [pk_mcq_user_exam] PRIMARY KEY CLUSTERED 
 (
 	[user_exam_id] ASC
@@ -159,7 +159,7 @@ GO
 * Table Name: mcq_exam_result
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[mcq_exam_result]    ******/
 SET ANSI_NULLS ON
@@ -169,16 +169,16 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[mcq_exam_result](
-	[exam_id] [varchar](25) NOT NULL,
-	[user_id] [varchar](10) NOT NULL,
-	[qn_id] [varchar](25) NOT NULL,
-	[result] [varchar](10) NULL,
+	[exam_id] [varchar](25) COLLATE Latin1_General_CI_AI NOT NULL,
+	[user_id] [varchar](10) COLLATE Latin1_General_CI_AI NOT NULL,
+	[qn_id] [varchar](25) COLLATE Latin1_General_CI_AI NOT NULL,
+	[result] [varchar](10) COLLATE Latin1_General_CI_AI NULL,
 	[total_time_taken] [numeric](5, 2) NOT NULL,
-	[created_by] [varchar](50) NOT NULL,
+	[created_by] [varchar](50) COLLATE Latin1_General_CI_AI NOT NULL,
 	[created_date] [datetime] NOT NULL,
-	[modified_by] [varchar](50) NOT NULL,
+	[modified_by] [varchar](50) COLLATE Latin1_General_CI_AI NOT NULL,
 	[modified_date] [datetime] NOT NULL,
-	[delete_flag] [varchar](2) NULL,
+	[delete_flag] [varchar](2) COLLATE Latin1_General_CI_AI NULL,
  CONSTRAINT [pk_mcq_exam_result] PRIMARY KEY CLUSTERED 
 (
 	[exam_id] ASC,
@@ -196,7 +196,7 @@ GO
 * Table Name: mcq_exam_section_result
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[mcq_exam_section_result]    ******/
 SET ANSI_NULLS ON
@@ -233,7 +233,7 @@ GO
 * Table Name: mcq_question_options
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[mcq_question_options]    Script Date: 12/11/2009 17:01:54 ******/
 SET ANSI_NULLS ON
@@ -243,7 +243,7 @@ GO
 CREATE TABLE [dbo].[mcq_question_options](
 	[option_id] [int] IDENTITY(1,1) NOT NULL,
 	[question_id] [int] NOT NULL,
-	[OptText] [nvarchar](max) NOT NULL,
+	[OptText] [nvarchar](max) COLLATE Latin1_General_CI_AI NOT NULL,
 	[isAnswer] [bit] NULL,
  CONSTRAINT [PK_mcq_question_options] PRIMARY KEY CLUSTERED 
 (
@@ -254,10 +254,29 @@ GO
 
 
 /****************************************************
+* Table Name: mcq_user_answer
+****************************************************/
+
+USE [CMP]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[mcq_user_answer](
+	[mcq_user_answer_id] [int] IDENTITY(1,1) NOT NULL,
+	[user_exam_id] [int] NOT NULL,	
+	[choice_id] [int] NOT NULL,
+	[correct] [bit] NULL
+) ON [PRIMARY]
+
+
+
+/****************************************************
 * Table Name: survey_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -267,14 +286,13 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[survey_master](
 	[survey_id] [int] IDENTITY(1,1) NOT NULL,
-	[survey_name] [varchar](50) NULL,
-	[survey_abbr] [varchar](50) NULL,
-	[total_qns] [int] NOT NULL,
-	[created_by] [varchar](50) NOT NULL,
+	[survey_name] [varchar](50) COLLATE Latin1_General_CI_AI NULL,
+	[survey_abbr] [varchar](50) COLLATE Latin1_General_CI_AI NULL,
+	[created_by] [varchar](50) COLLATE Latin1_General_CI_AI NOT NULL,
 	[created_date] [datetime] NOT NULL,
-	[modified_by] [varchar](50) NOT NULL,
+	[modified_by] [varchar](50) COLLATE Latin1_General_CI_AI NOT NULL,
 	[modified_date] [datetime] NOT NULL,
-	[delete_flag] [varchar](2) NULL,
+	[delete_flag] [varchar](2) COLLATE Latin1_General_CI_AI NULL,
  CONSTRAINT [pk_survey_master] PRIMARY KEY CLUSTERED 
 (
 	[survey_id] ASC
@@ -287,10 +305,10 @@ GO
 
 
 /****************************************************
-* Table Name: survey_choice_master
+* Table Name: survey_qn_options
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -298,18 +316,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[survey_choice_master](
-	[qn_id] [int] IDENTITY(1,1) NOT NULL,
-	[survey_id] [int] NOT NULL,
-	[choice] [varchar](50) NULL,
-	[created_by] [varchar](50) NOT NULL,
-	[created_date] [datetime] NOT NULL,
-	[modified_by] [varchar](50) NOT NULL,
-	[modified_date] [datetime] NOT NULL,
-	[delete_flag] [varchar](2) NULL,
+CREATE TABLE [dbo].[survey_qn_options](
+	[opt_id] [int] IDENTITY(1,1) NOT NULL,
+	[question_id] [int] NOT NULL,
+	[choice] [varchar](50) COLLATE Latin1_General_CI_AI NULL,
  CONSTRAINT [PK_survey_choice_master_1] PRIMARY KEY CLUSTERED 
 (
-	[qn_id] ASC
+	[opt_id] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -319,10 +332,43 @@ GO
 
 
 /****************************************************
+* Table Name: survey_qn_master
+****************************************************/
+
+USE [CMP]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[survey_qn_master](
+	[squestion_id] [int] IDENTITY(1,1) NOT NULL,
+	[survey_id] [int] NOT NULL,
+	[question] [varchar](50) COLLATE Latin1_General_CI_AI NULL,
+	[qn_type] [varchar](25) COLLATE Latin1_General_CI_AI NOT NULL,
+	[created_by] [varchar](50) COLLATE Latin1_General_CI_AI NOT NULL,
+	[created_date] [datetime] NOT NULL,
+	[modified_by] [varchar](50) COLLATE Latin1_General_CI_AI NOT NULL,
+	[modified_date] [datetime] NOT NULL,
+	[delete_flag] [varchar](2) COLLATE Latin1_General_CI_AI NULL,
+ CONSTRAINT [PK_survey_qn_master_1] PRIMARY KEY CLUSTERED 
+(
+	[squestion_id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+
+/****************************************************
 * Table Name: survey_result
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -361,7 +407,7 @@ GO
 * Table Name: module_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -381,7 +427,9 @@ CREATE TABLE [dbo].[Module_Master](
 	[delete_flag] [varchar](2) NULL,
  CONSTRAINT [pk_module_master] PRIMARY KEY CLUSTERED 
 (
-	[module_id] ASC
+	[module_id] ASC,
+	[module_name] ASC,
+	[module_type] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -396,7 +444,7 @@ GO
 * Table Name: company_module
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -429,7 +477,7 @@ GO
 * Table Name: cms_user_content_usage
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -465,7 +513,7 @@ GO
 * Table Name: company_sites
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -499,7 +547,7 @@ GO
 * Table Name: user_role
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -523,7 +571,7 @@ GO
 * Table Name: dap_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -546,7 +594,7 @@ GO
 * Table Name: dap_list
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[DAP_List]    Script Date: 11/06/2009 23:50:45 ******/
 SET ANSI_NULLS ON
@@ -579,7 +627,7 @@ GO
 * Table Name: fap_list
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -613,7 +661,7 @@ GO
 * Table Name: fap_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -636,7 +684,7 @@ GO
 * Table Name: fap_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 
 SET ANSI_NULLS ON
@@ -671,7 +719,7 @@ GO
 * Table Name: jmd_user
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[JMD_USER]    Script Date: 12/11/2009 16:59:41 ******/
 SET ANSI_NULLS ON
@@ -709,7 +757,7 @@ GO
 * Table Name: jmd_user_address
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[JMD_USER_ADDRESS]    Script Date: 12/11/2009 17:00:19 ******/
 SET ANSI_NULLS ON
@@ -748,7 +796,7 @@ GO
 * Table Name: user_role
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[user_role]    Script Date: 12/11/2009 17:04:59 ******/
 SET ANSI_NULLS ON
@@ -783,7 +831,7 @@ GO
 * Table Name: jmd_role
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  Table [dbo].[JMD_ROLE]    Script Date: 12/11/2009 16:58:47 ******/
 SET ANSI_NULLS ON
@@ -815,7 +863,7 @@ GO
 * Table Name: company_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -858,7 +906,7 @@ GO
 * Table Name: user_master
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -975,7 +1023,7 @@ GO
 CREATE TABLE [dbo].[UserAdmin_Master](
 	[UserAdminMasterID] [int] IDENTITY(1,1) NOT NULL,
 	[UserAdminListID] [int] NULL,
-	[RoleID] [int] NULL,
+	[RoleListID] [int] NULL,
  CONSTRAINT [PK_UserAdmin_Master] PRIMARY KEY CLUSTERED 
 (
 	[UserAdminMasterID] ASC
@@ -1018,7 +1066,7 @@ GO
 * Table Name: jmd_div
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1043,7 +1091,7 @@ GO
 * Table Name: jmd_mod
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1072,7 +1120,7 @@ GO
 * Table Name: jmd_mod_admin
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1105,7 +1153,7 @@ GO
 * Table Name: jmd_obj
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1134,7 +1182,7 @@ GO
 * Table Name: jmd_mod_cj_category
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1160,7 +1208,7 @@ GO
 * Table Name: jmd_mod_html
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1184,7 +1232,7 @@ GO
 * Table Name: jmd_page_mod
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1217,7 +1265,7 @@ GO
 * Table Name: jmd_page
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1258,7 +1306,7 @@ GO
 * Table Name: jmd_col_ext
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1280,7 +1328,7 @@ GO
 * Table Name: jmd_col_type
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1303,7 +1351,7 @@ GO
 * Table Name: jmd_page_mod_exclude
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1326,7 +1374,7 @@ GO
 * Table Name: jmd_site
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1362,7 +1410,7 @@ GO
 * Table Name: jmd_col
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -1479,7 +1527,7 @@ INSERT INTO [FAP_Master]([FAPListID],[FAPFunctionID]) VALUES (3,4)
 * SP Name: JMD_MOD_CJ_CATEGORY_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_CJ_CATEGORY_SAVE]    Script Date: 12/11/2009 16:50:34 ******/
 SET ANSI_NULLS ON
@@ -1579,7 +1627,7 @@ GO
 * SP Name: JMD_MOD_HTML_Select
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_HTML_Select]    Script Date: 12/11/2009 16:50:40 ******/
 SET ANSI_NULLS ON
@@ -1620,7 +1668,7 @@ GO
 * SP Name: JMD_OBJ_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 
 /****** Object:  StoredProcedure [dbo].[JMD_OBJ_SELECT]    Script Date: 12/11/2009 16:50:52 ******/
@@ -1656,7 +1704,7 @@ GO
 * View Name: JMD_PAGE_MOD_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 
 
@@ -1754,7 +1802,7 @@ GO
 * SP Name: JMD_PAGE_MOD_DELETE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_MOD_DELETE]    Script Date: 12/11/2009 16:50:59 ******/
 SET ANSI_NULLS ON
@@ -1794,7 +1842,7 @@ GO
 * SP Name: JMD_PAGE_MOD_EXCLUDE_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_MOD_EXCLUDE_SELECT]    Script Date: 12/11/2009 16:51:03 ******/
 SET ANSI_NULLS ON
@@ -1829,7 +1877,7 @@ GO
 * View Name: JMD_COL_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  View [dbo].[JMD_COL_SELECT]    Script Date: 12/11/2009 17:05:27 ******/
 SET ANSI_NULLS ON
@@ -1857,7 +1905,7 @@ GO
 * SP Name: JMD_COL_EXT_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_COL_EXT_SAVE]    Script Date: 12/11/2009 16:50:01 ******/
 SET ANSI_NULLS ON
@@ -1908,7 +1956,7 @@ GO
 * Function Name: JMD_GET_SITE_ID
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  UserDefinedFunction [dbo].[JMD_GET_SITE_ID]    Script Date: 12/11/2009 17:05:25 ******/
 SET ANSI_NULLS ON
@@ -1975,7 +2023,7 @@ GO
 * SP Name: JMD_SITE_INSERT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_SITE_INSERT]    Script Date: 12/11/2009 16:51:32 ******/
 SET ANSI_NULLS ON
@@ -2022,7 +2070,7 @@ GO
 * SP Name: JMD_COL_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_COL_SAVE]    Script Date: 12/11/2009 16:50:09 ******/
 SET ANSI_NULLS ON
@@ -2137,7 +2185,7 @@ GO
 * SP Name: JMD_OBJ_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_OBJ_SAVE]    Script Date: 12/11/2009 16:50:51 ******/
 SET ANSI_NULLS ON
@@ -2205,7 +2253,7 @@ GO
 * SP Name: JMD_OBJ_SELECT_TABLES
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_OBJ_SELECT_TABLES]    Script Date: 12/11/2009 16:50:53 ******/
 SET ANSI_NULLS ON
@@ -2249,7 +2297,7 @@ GO
 * Function Name: JMD_GET_TABLE_NAME
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  UserDefinedFunction [dbo].[JMD_GET_TABLE_NAME]    Script Date: 12/11/2009 17:05:26 ******/
 SET ANSI_NULLS ON
@@ -2308,7 +2356,7 @@ GO
 * SP Name: JMD_COL_SELECT_COLUMNS
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_COL_SELECT_COLUMNS]    Script Date: 12/11/2009 16:50:12 ******/
 SET ANSI_NULLS ON
@@ -2347,7 +2395,7 @@ GO
 * SP Name: JMD_MOD_BreadCrumbs
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_BreadCrumbs]    Script Date: 12/11/2009 16:50:32 ******/
 SET ANSI_NULLS ON
@@ -2487,7 +2535,7 @@ GO
 * SP Name: JMD_MAIN_MENU
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MAIN_MENU]    Script Date: 12/11/2009 16:50:29 ******/
 SET ANSI_NULLS ON
@@ -2549,7 +2597,7 @@ GO
 * SP Name: JMD_MOD_HTML_LEFT_MENU
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_HTML_LEFT_MENU]    Script Date: 12/11/2009 16:50:36 ******/
 SET ANSI_NULLS ON
@@ -2662,7 +2710,7 @@ GO
 * SP Name: JMD_PAGE_MOD_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_MOD_SAVE]    Script Date: 12/11/2009 16:51:08 ******/
 SET ANSI_NULLS ON
@@ -2816,7 +2864,7 @@ GO
 * SP Name: JMD_PAGE_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_SELECT]    Script Date: 12/11/2009 16:51:19 ******/
 SET ANSI_NULLS ON
@@ -2891,7 +2939,7 @@ GO
 * SP Name: JMD_PAGE_DELETE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_DELETE]    Script Date: 12/11/2009 16:50:56 ******/
 SET ANSI_NULLS ON
@@ -2982,7 +3030,7 @@ GO
 * SP Name: JMD_PAGE_MOD_EXCLUDE_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_MOD_EXCLUDE_SAVE]    Script Date: 12/11/2009 16:51:01 ******/
 SET ANSI_NULLS ON
@@ -3062,7 +3110,7 @@ GO
 * SP Name: JMD_PAGE_AUTH
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_AUTH]    Script Date: 12/11/2009 16:50:54 ******/
 SET ANSI_NULLS ON
@@ -3118,7 +3166,7 @@ GO
 * SP Name: JMD_PAGE_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_SAVE]    Script Date: 12/11/2009 16:51:17 ******/
 SET ANSI_NULLS ON
@@ -3309,7 +3357,7 @@ GO
 * SP Name: JMD_SITE_DELETE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_SITE_DELETE]    Script Date: 12/11/2009 16:51:30 ******/
 SET ANSI_NULLS ON
@@ -3361,7 +3409,7 @@ GO
 * SP Name: JMD_LOAD_MODS
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_LOAD_MODS]    Script Date: 12/11/2009 16:50:28 ******/
 SET ANSI_NULLS ON
@@ -3453,7 +3501,7 @@ GO
 * SP Name: JMD_PAGE_MOD_SELECT_Sp
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_MOD_SELECT_Sp]    Script Date: 12/11/2009 16:51:09 ******/
 SET ANSI_NULLS ON
@@ -3489,7 +3537,7 @@ GO
 * SP Name: JMD_USER_ROLE_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_USER_ROLE_INIT]    Script Date: 12/11/2009 16:51:42 ******/
 SET ANSI_NULLS ON
@@ -3543,7 +3591,7 @@ GO
 * SP Name: JMD_COL_SELECT_COL
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_COL_SELECT_COL]    Script Date: 12/11/2009 16:50:10 ******/
 SET ANSI_NULLS ON
@@ -3582,7 +3630,7 @@ GO
 * SP Name: JMD_USER_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_USER_SAVE]    Script Date: 12/11/2009 16:51:46 ******/
 SET ANSI_NULLS ON
@@ -3669,7 +3717,7 @@ GO
 * SP Name: JMD_USER_INSERT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_USER_INSERT]    Script Date: 12/11/2009 16:51:41 ******/
 SET ANSI_NULLS ON
@@ -3764,7 +3812,7 @@ GO
 * SP Name: JMD_USER_AUTH
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_USER_AUTH]    Script Date: 12/11/2009 16:51:34 ******/
 SET ANSI_NULLS ON
@@ -3829,7 +3877,7 @@ GO
 * SP Name: JMD_USER_DELETE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_USER_DELETE]    Script Date: 12/11/2009 16:51:36 ******/
 SET ANSI_NULLS ON
@@ -3883,7 +3931,7 @@ GO
 * SP Name: JMD_USER_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_USER_SELECT]    Script Date: 12/11/2009 16:51:47 ******/
 SET ANSI_NULLS ON
@@ -3945,7 +3993,7 @@ GO
 * SP Name: JMD_ROLE_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_ROLE_SELECT]    Script Date: 12/11/2009 16:51:25 ******/
 SET ANSI_NULLS ON
@@ -4004,7 +4052,7 @@ GO
 * SP Name: JMD_ROLE_DELETE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_ROLE_DELETE]    Script Date: 12/11/2009 16:51:20 ******/
 SET ANSI_NULLS ON
@@ -4058,7 +4106,7 @@ GO
 * SP Name: JMD_ROLE_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_ROLE_SAVE]    Script Date: 12/11/2009 16:51:23 ******/
 SET ANSI_NULLS ON
@@ -4122,7 +4170,7 @@ GO
 * SP Name: JMD_COL_TYPE_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_COL_TYPE_SAVE]    Script Date: 12/11/2009 16:50:18 ******/
 SET ANSI_NULLS ON
@@ -4188,7 +4236,7 @@ GO
 * SP Name: JMD_COL_TYPE_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_COL_TYPE_SELECT]    Script Date: 12/11/2009 16:50:20 ******/
 SET ANSI_NULLS ON
@@ -4235,7 +4283,7 @@ GO
 * SP Name: JMD_DIV_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_DIV_SAVE]    Script Date: 12/11/2009 16:50:25 ******/
 SET ANSI_NULLS ON
@@ -4305,7 +4353,7 @@ GO
 * SP Name: JMD_DIV_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_DIV_SELECT]    Script Date: 12/11/2009 16:50:27 ******/
 SET ANSI_NULLS ON
@@ -4350,7 +4398,7 @@ GO
 * SP Name: JMD_SITE_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_SITE_SELECT]    Script Date: 12/11/2009 16:51:33 ******/
 SET ANSI_NULLS ON
@@ -4393,7 +4441,7 @@ GO
 * SP Name: JMD_SITE_ALIAS
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_SITE_ALIAS]    Script Date: 12/11/2009 16:51:26 ******/
 SET ANSI_NULLS ON
@@ -4464,7 +4512,7 @@ GO
 * SP Name: JMD_MOD_SAVE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_SAVE]    Script Date: 12/11/2009 16:50:46 ******/
 SET ANSI_NULLS ON
@@ -4536,7 +4584,7 @@ GO
 * SP Name: JMD_MOD_SELECT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_SELECT]    Script Date: 12/11/2009 16:50:48 ******/
 SET ANSI_NULLS ON
@@ -4597,7 +4645,7 @@ GO
 * SP Name: JMD_MOD_ADMIN_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_ADMIN_INIT]    Script Date: 12/11/2009 16:50:30 ******/
 SET ANSI_NULLS ON
@@ -4677,7 +4725,7 @@ GO
 * SP Name: JMD_PAGE_MOD_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_MOD_INIT]    Script Date: 12/11/2009 16:51:04 ******/
 SET ANSI_NULLS ON
@@ -5631,7 +5679,7 @@ GO
 * SP Name: JMD_COL_TYPE_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_COL_TYPE_INIT]    Script Date: 12/11/2009 16:50:14 ******/
 SET ANSI_NULLS ON
@@ -5712,7 +5760,7 @@ GO
 * SP Name: JMD_MOD_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_MOD_INIT]    Script Date: 12/11/2009 16:50:41 ******/
 SET ANSI_NULLS ON
@@ -5881,7 +5929,7 @@ GO
 * SP Name: JMD_PAGE_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_PAGE_INIT]    Script Date: 12/11/2009 16:50:57 ******/
 SET ANSI_NULLS ON
@@ -6063,7 +6111,7 @@ GO
 * SP Name: JMD_ROLE_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 SET ANSI_NULLS ON
 GO
@@ -6098,7 +6146,7 @@ GO
 * SP Name: JMD_USER_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_USER_INIT]    Script Date: 12/11/2009 16:51:38 ******/
 SET ANSI_NULLS ON
@@ -6135,7 +6183,7 @@ GO
 * SP Name: JMD_DIV_INIT
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_DIV_INIT]    Script Date: 12/11/2009 16:50:22 ******/
 SET ANSI_NULLS ON
@@ -6186,7 +6234,7 @@ GO
 * SP Name: JMD_SITE_CREATE
 ****************************************************/
 
-USE [CMP_Temp]
+USE [CMP]
 GO
 /****** Object:  StoredProcedure [dbo].[JMD_SITE_CREATE]    Script Date: 12/11/2009 16:51:29 ******/
 SET ANSI_NULLS ON
