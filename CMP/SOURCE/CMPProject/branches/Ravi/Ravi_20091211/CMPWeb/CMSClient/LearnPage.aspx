@@ -4,7 +4,8 @@
     <title>Content Management Portal</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<script type="text/javascript" language="javascript">
+
+    <script type="text/javascript" language="javascript">
 function callNextPrev(pageName)
 {
     document.form1.action = "LearnPage.aspx?pageName=" + pageName;
@@ -14,14 +15,14 @@ function callNextPrev(pageName)
 
 <table>
 <tr>
-<td>
+<td width="50%">
     <asp:XmlDataSource ID="treeSource" runat="server"></asp:XmlDataSource>
     <asp:TreeView ID="tvContent" runat="server" 
         onselectednodechanged="tvContent_SelectedNodeChanged" >    
     </asp:TreeView>
             
 </td>
-<td>            
+<td width="50%">
 <asp:Literal ID="literal1" runat="server"></asp:Literal>
                     
 </td>
