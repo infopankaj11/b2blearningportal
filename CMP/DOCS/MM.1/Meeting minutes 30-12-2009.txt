@@ -1,0 +1,22 @@
+Hi All,
+
+Ravi came back today, after talking with him, we decided to have a meeting as follows:
+
+Date: 30-Dec-09 (Wed this week)
+Time: 7:30PM
+Venue: SMU Campus
+Agenda:
+1. go through our integrated system (Ravi will get system integrated before Wed.), and
+2. discuss how to proceed from there.
+3. Please bring your laptop, we will install the integrated system on everyone's laptop.
+4. Please make sure your laptop has these software installed: IIS, .NET Framework 3.5, Visual Studio 2008, SQL Server 2005
+
+Regards,
+Haiyang
+
+Please let me know your availability.
+
+Regards,
+Haiyang
+
+New Email names for you! 
