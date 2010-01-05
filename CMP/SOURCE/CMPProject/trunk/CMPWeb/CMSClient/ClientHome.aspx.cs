@@ -25,9 +25,9 @@ namespace CMPWeb.CMSClient
         {
             if (Request.QueryString["type"] != null)
             {
-                string type = Request.QueryString["type"].ToString();
+                hdnType.Value = Request.QueryString["type"].ToString();
                 UserBL userBL = new UserBL();
-                DataTable dtModule = userBL.GetUserModule(Session["UserName"].ToString(), Session["UserID"].ToString(), type);
+                DataTable dtModule = userBL.GetUserModule(Session["UserName"].ToString(), Session["UserID"].ToString(), hdnType.Value);
 
                 dgModules.DataSource = dtModule;
                 if ((dgModules.Items.Count % dgModules.PageSize == 1) &&
@@ -47,7 +47,12 @@ namespace CMPWeb.CMSClient
             dgi = (DataGridItem)chkTemp.Parent.Parent;
             dgModules.SelectedIndex = dgi.ItemIndex;
             string ID = dgModules.Items[dgModules.SelectedIndex].Cells[0].Text;
-            Response.Redirect("../CMSClient/LearnPage.aspx?siteID=" + ID, false);
+            if (hdnType.Value == "module")
+                Response.Redirect("../CMSClient/LearnPage.aspx?siteID=" + ID, false);
+            else if (hdnType.Value == "mcq")
+                Response.Redirect("../MCQ/UserExamPage.aspx?EXAMID=" + ID, false);
+            else if (hdnType.Value == "survey")
+                Response.Redirect("../Survey/UserSurveyPage.aspx?SurveyID=" + ID, false);
         }
     }
 }
