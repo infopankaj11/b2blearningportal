@@ -66,8 +66,8 @@ namespace WorkLayers.BusinessLayer
         }
 
         public DataTable GetUserModule(string UserName, string ListID, string type)
-        {
-            return userDL.GetUserModule(UserName, ListID, type);
+        {            
+            return userDL.GetUserModule(UserName,ListID, type);
         }
 
         public DataTable GetModuleType(string UserName, string ListID)

@@ -74,19 +74,19 @@ using System.Data;
             string moduleType = "";
             foreach (DataRow drModuleType in dtModule.Rows)
             {
-                if (drModuleType["MODULE_TYPE"].ToString() == "CONTENT")
+                if (drModuleType["MODULE_TYPE"].ToString().ToUpper() == "CONTENT")
                 {
                     moduleType  += "CONTENT,";
                 }
-                else if (drModuleType["MODULE_TYPE"].ToString() == "MCQ")
+                else if (drModuleType["MODULE_TYPE"].ToString().ToUpper() == "MCQ")
                 {
                     moduleType += "MCQ,";
                 }
-                else if (drModuleType["MODULE_TYPE"].ToString() == "EXERCISE")
+                else if (drModuleType["MODULE_TYPE"].ToString().ToUpper() == "EXERCISE")
                 {
                     moduleType += "EXERCISE,";
                 }
-                else if (drModuleType["MODULE_TYPE"].ToString() == "SURVEY")
+                else if (drModuleType["MODULE_TYPE"].ToString().ToUpper() == "SURVEY")
                 {
                     moduleType += "SURVEY,";
                 }
