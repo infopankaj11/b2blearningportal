@@ -42,11 +42,15 @@ namespace WorkLayers.DataLayer
             strSQL = "INSERT INTO MCQ_EXAM_MASTER(Exam_name,Exam_abbr, total_qns, total_marks, pass_mark, exam_duration, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag) VALUES (";
             strSQL += "'" + exName + "','" + exAbbr + "'," + total_qns + "," + total_mark + "," + pass_mark + "," + exam_duration + ",'" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','";
             strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
-            strSQL += "INSERT INTO module_master(module_name, module_type, Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
-            strSQL += "'" + exName + "','MCQ','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") +"','" + modifiedBy + "','";
-            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
             strSQL += "SELECT exam_id FROM MCQ_EXAM_MASTER WHERE exam_id=@@IDENTITY; ";
-            return (int)dbAccessManager.GetScalar(strSQL);
+
+            int id = (int)dbAccessManager.GetScalar(strSQL);
+
+            strSQL = "INSERT INTO module_master(module_id, module_name, module_type, module_remarks, Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
+            strSQL += id + ",'" + exName + "','MCQ','','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") +"','" + modifiedBy + "','";
+            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
+            dbAccessManager.GetScalar(strSQL);
+            return id;
 
         }
 
