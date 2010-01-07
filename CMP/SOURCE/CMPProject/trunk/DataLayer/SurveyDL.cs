@@ -38,13 +38,17 @@ namespace WorkLayers.DataLayer
 
         public int InsertSurvey(String exName, String exAbbr, String createdBy, String modifiedBy)
         {
-            strSQL = "INSERT INTO survey_MASTER(Survey_name,Survey_abbr, Created_By, Created_Date,  Delete_Flag) VALUES (";
-            strSQL += "'" + exName + "','" + exAbbr + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + ",0);";
-            strSQL += "INSERT INTO module_master(module_name, module_type, Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
-            strSQL += "'" + exName + "','Survey','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','";
-            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
+            strSQL = "INSERT INTO survey_MASTER(Survey_name,Survey_abbr, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag) VALUES (";
+            strSQL += "'" + exName + "','" + exAbbr + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "',0);";
             strSQL += "SELECT Survey_id FROM survey_MASTER WHERE Survey_id=@@IDENTITY; ";
-            return (int)dbAccessManager.GetScalar(strSQL);
+            
+            int id = (int)dbAccessManager.GetScalar(strSQL);
+
+            strSQL = "INSERT INTO module_master(module_id,module_name, module_type, module_remarks,Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
+            strSQL += id + ",'" + exName + "','Survey','','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','";
+            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
+            dbAccessManager.GetScalar(strSQL);
+            return id;
 
         }
 
@@ -87,8 +91,8 @@ namespace WorkLayers.DataLayer
 
         public int InsertQuestion(int Survey_id, String question, String qn_type, String createdBy)
         {
-            strSQL = "INSERT INTO survey_qn_master(Survey_id, question, qn_type, Created_By, Created_Date, Delete_Flag) VALUES (";
-            strSQL += Survey_id + ",'" + question + "','" + qn_type + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "', 0);";
+            strSQL = "INSERT INTO survey_qn_master(Survey_id, question, qn_type, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag) VALUES (";
+            strSQL += Survey_id + ",'" + question + "','" + qn_type + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "', 0);";
             strSQL += "SELECT squestion_id FROM survey_qn_master WHERE squestion_id=@@IDENTITY; ";
             return (int)dbAccessManager.GetScalar(strSQL);
         }
