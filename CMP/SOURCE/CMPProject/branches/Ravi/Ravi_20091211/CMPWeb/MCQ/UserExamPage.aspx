@@ -2,18 +2,62 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<h3> <asp:Label ID="lblExamName"  runat="server" Text="Label"></asp:Label></h3>
+    <h3> <asp:Label ID="lblExamName"  runat="server" Text="Label"></asp:Label></h3>
 <h4> <asp:Label ID="lblInfo"  runat="server" Text=""></asp:Label></h4>
 
-  
-       <table cellpadding="0" cellspacing="0" width="100%" >
+  <table>
+       <tr>
+       <td>
+       <asp:Label ID="lblTotalQnsText" Text="Total Questions" runat="server"></asp:Label>       
+       </td>
+       <td>
+       <asp:Label ID="Label1" Text=":" runat="server"></asp:Label>       
+       </td>
+       <td>
+       <asp:Label ID="lblTotalQns" runat="server"></asp:Label>
+       </td>
+       </tr>
+       <tr>
+       <td>
+       <asp:Label ID="lblTotalMarksText" Text="Total Marks" runat="server"></asp:Label>
+       </td>
+       <td>
+       <asp:Label ID="Label2" Text=":" runat="server"></asp:Label>       
+       </td>
+       <td>
+       <asp:Label ID="lblTotalMarks" runat="server"></asp:Label>       
+       </td>
+       </tr>
+       <tr>
+       <td>
+       <asp:Label ID="lblPassMarksText" Text="Pass Marks" runat="server"></asp:Label>
+       </td>
+       <td>
+       <asp:Label ID="Label3" Text=":" runat="server"></asp:Label>       
+       </td>
+       <td>
+       <asp:Label ID="lblPassMarks" runat="server"></asp:Label>
+       </td>
+       </tr>
+       <tr>
+       <td>
+       <asp:Label ID="lblExamDurationText" Text="Exam Duration" runat="server"></asp:Label>
+       </td>
+       <td>
+       <asp:Label ID="Label4" Text=":" runat="server"></asp:Label>       
+       </td>
+       <td>
+       <asp:Label ID="lblExamDuration" runat="server"></asp:Label>
+       </td>
+       </tr>
+       </table>
+       <br />
+       <br />
+       <table cellpadding="0" cellspacing="0" width="100%" >       
         <tr>
-            <td style="width:60%" valign="top" >
+            <td valign="top" >
                 <asp:GridView Width="80%" runat="server" ID="gv_Object" AutoGenerateColumns="false" DataKeyNames="section_id" >
-                <Columns>
-                    
-                    <asp:HyperLinkField DataNavigateUrlFields="section_id,exam_id" DataNavigateUrlFormatString="~/MCQ/UserExamQuestion.aspx?Action=First&SID={0}&ExamID={1}"
-                         DataTextField="section_name" NavigateUrl="~/MCQ/UserExamQuestion.aspx" HeaderText = "Section Name"/>
+                <Columns>                    
                         
                     <asp:TemplateField>
                         <HeaderTemplate>
@@ -23,17 +67,7 @@
                         <ItemTemplate>
                             <asp:Label runat="server" ID="lbsection_abbr" Text='<%#Eval("section_abbr") %>'/>
                         </ItemTemplate>
-                    </asp:TemplateField> 
-                    
-                    <asp:TemplateField>
-                        <HeaderTemplate>
-                            <asp:Label runat="server" ID="lbsection_seq" Text="Section Sequence" />
-                        </HeaderTemplate>
-                        
-                        <ItemTemplate>
-                            <asp:Label runat="server" ID="lbsection_seq" Text='<%#Eval("section_seq") %>'/>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
+                    </asp:TemplateField>                     
                     
                    <asp:TemplateField>        
                          <HeaderTemplate>
@@ -111,6 +145,11 @@
                 </asp:GridView>
             </td>
         </tr>
+        <tr>
+        <td>
+        <asp:Button id="btnStart" Text="Start Exam" runat="server" onclick="btnStart_Click" />
+        </td>
+        </tr>
     </table>
    
     <br />
@@ -121,6 +160,7 @@
                 <asp:Label runat="server" ID="lblMsg" ForeColor="Red" Text="" />
                 <asp:Label runat="server" ID="lblExamID2" Visible="false" Text="" />
                 <asp:Label runat="server" ID="lblAction" Visible="false" Text="" />
+                <asp:Label runat="server" ID="lblSectionID" Visible="false" Text="" />
             </td>
         </tr>
     </table>

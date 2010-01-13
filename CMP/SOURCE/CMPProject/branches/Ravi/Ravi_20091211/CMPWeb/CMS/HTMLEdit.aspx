@@ -23,8 +23,7 @@ function Button5_onclick() {
     <tr>
         <th class="TableFormTdLeft" colspan="2">
             <h2 class="TableFormH2">
-                Module Contents</h2>
-                Hint: You can use <a href="FileManager.aspx" target="_blank">File Manager</a> to upload images.                
+                Module Contents</h2>                
         </th>
     </tr>
     
@@ -46,6 +45,14 @@ function Button5_onclick() {
             </asp:MultiView>
             <br />
         </td>
+    </tr>
+    <tr>
+    <td>
+     <br />
+        <b><asp:Label ID="lblMessage" runat="server"></asp:Label></b>
+        <br />
+        <br />
+    </td>
     </tr>
     <tr>
         <td style="width: 402px">

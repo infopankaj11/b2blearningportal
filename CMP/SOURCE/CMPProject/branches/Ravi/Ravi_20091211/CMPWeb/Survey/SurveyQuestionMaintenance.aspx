@@ -20,12 +20,12 @@
     <asp:Label id="lblQuestion" Text="Question" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtQuestion" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtQuestion" TextMode="MultiLine" Rows="5" runat="server" MaxLength="50"></asp:TextBox>
     </td>
     </tr>
     <tr>
     <td >
-    <asp:Label id="lblSurveyAbbr" Text="Question Type" runat="server"></asp:Label>
+    <asp:Label id="lblSurveyAbbr" Text="Question Type" runat="server" MaxLength="50"></asp:Label>
     </td>
     <td>
     <asp:DropDownList ID="ddlQnType" runat="server">
@@ -51,7 +51,7 @@
                         </HeaderTemplate>
                         
                         <ItemTemplate>
-                            <asp:TextBox runat="server" ID="txtOptiontxt" Text='<%#Eval("Choice") %>'/>                              
+                            <asp:TextBox runat="server" ID="txtOptiontxt" Text='<%#Eval("Choice") %>' MaxLength="50"/>                              
                         </ItemTemplate>
                     </asp:TemplateField>                  
                    
@@ -66,10 +66,7 @@
 
     
     
-     <asp:Panel ID="pnlOptions" runat="server" Width="170px">
-    </asp:Panel>    
-    
-    
+      
     </td>
     <td>
        </td>
@@ -80,20 +77,26 @@
 
 </td>
 </tr></table>        
+    <br />
+        <br />
+        <br />
+        <br />
+        <br />
     <table>
     <tr>
     <td>
     <asp:Button ID="btnAddUpdate" Text="Add" runat="server"  OnClick="btnAddUpdate_Click"/>
     </td>
     <td>
-    <asp:Button ID="btnClear" Text="Clear" runat="server" />
+    <asp:Button ID="btnClear" Text="Clear" runat="server"  OnClick="btnClear_Click" />
     </td>
     <td>
-    <asp:Button ID="btnCancel" Text="Cancel" runat="server"
+    <asp:Button ID="btnCancel" Text="Back to Surveys" runat="server"
             onclick="btnCancel_Click" />
     </td>
     </tr>
     </table>
+        
      <table>
         <tr>
             <td>

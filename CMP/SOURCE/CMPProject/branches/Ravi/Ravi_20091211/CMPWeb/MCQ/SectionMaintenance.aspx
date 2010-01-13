@@ -21,15 +21,15 @@
     <asp:Label id="lblSectionName" Text="Section Name" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtSectionName" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtSectionName" runat="server" MaxLength="50"></asp:TextBox>
     </td>
     </tr>
     <tr>
     <td >
-    <asp:Label id="lblSectionAbbr" Text="Section Abbreviation" runat="server"></asp:Label>
+    <asp:Label id="lblSectionAbbr" Text="Section Abbreviation" runat="server" ></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtSectionAbbr" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtSectionAbbr" runat="server" MaxLength="50"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -50,7 +50,7 @@
     <asp:Label id="Label2" Text="Section Weight (%)" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtSectionWeigth" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtSectionWeigth" runat="server" MaxLength="2"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -58,7 +58,7 @@
     <asp:Label id="Label3" Text="Total Easy Question" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtEasy" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtEasy" runat="server" MaxLength="2"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -66,7 +66,7 @@
     <asp:Label id="Label4" Text="Easy Question Weight" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtEasyWgt" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtEasyWgt" runat="server" MaxLength="2"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -74,7 +74,7 @@
     <asp:Label id="Label5" Text="Total Medium Question" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtMed" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtMed" runat="server" MaxLength="2"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -82,7 +82,7 @@
     <asp:Label id="Label6" Text="Medium Question Weight" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtMedWgt" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtMedWgt" runat="server" MaxLength="2"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -90,7 +90,7 @@
     <asp:Label id="Label7" Text="Total High Question" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtHard" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtHard" runat="server" MaxLength="2"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -98,11 +98,11 @@
     <asp:Label id="Label8" Text="High Question Weight" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtHrdWgt" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtHrdWgt" runat="server" MaxLength="2"></asp:TextBox>
     </td>
     </tr>
     </table>
-        <br />
+        
     <table>
     <tr>
     <td>

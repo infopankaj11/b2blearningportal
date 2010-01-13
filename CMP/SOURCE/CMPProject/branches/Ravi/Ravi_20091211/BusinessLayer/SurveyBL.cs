@@ -111,5 +111,36 @@ namespace WorkLayers.BusinessLayer
         {
             surveyDL.InsertQuestionOptions(question_id, OptText);   
         }
+
+        public DataTable getUserSurveys()
+        {
+            return surveyDL.getUserSurveys();
+        }
+        
+        public DataTable GetPreviousQuestion(int curQuestioId, int survey_id, String username)
+        {
+            return surveyDL.GetPreviousQuestion(curQuestioId, survey_id, username); 
+        }
+
+        public DataTable GetNextQuestion(int curQuestioId, int survey_id, String username)
+        {
+            return surveyDL.GetNextQuestion(curQuestioId,survey_id, username); 
+        }
+
+        public void InsertAnswerQuestion(int survey_id, int qn_id, int opt_id, String username)
+        {
+            surveyDL.InsertAnswerQuestion(survey_id, qn_id,  opt_id,  username); 
+
+        }
+        
+        public void DeleteAnswerQuestion(String username, int qn_id)
+        {
+            surveyDL.DeleteAnswerQuestion(username, qn_id);  
+        }
+
+        public DataTable GetUserAnswer(int qn_id, String username)
+        {
+            return surveyDL.GetUserAnswer(qn_id, username); 
+        }
     }
 }

@@ -16,10 +16,10 @@
     </tr>
     <tr>
     <td >
-    <asp:Label id="lblExamName" Text="Exam Name" runat="server"></asp:Label>
+    <asp:Label id="lblExamName" Text="Exam Name" runat="server" ></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtExamName" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtExamName" runat="server" MaxLength="50" ></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -27,7 +27,7 @@
     <asp:Label id="lblExamAbbr" Text="Exam Abbreviation" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtAbbr" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtAbbr" runat="server" MaxLength="50" ></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -35,7 +35,7 @@
     <asp:Label id="Label1" Text="Total Questions" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtTotQns" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtTotQns" runat="server" MaxLength="3"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -43,7 +43,7 @@
     <asp:Label id="Label2" Text="Total Marks" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtTotMarks" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtTotMarks" runat="server" MaxLength="3"> </asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -51,7 +51,7 @@
     <asp:Label id="Label3" Text="Pass Marks" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtPassMark" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtPassMark" runat="server" MaxLength="3"></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -59,10 +59,14 @@
     <asp:Label id="Label4" Text="Exam Duration (in Mins)" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtDuration" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtDuration" runat="server" MaxLength=4></asp:TextBox>
     </td>
     </tr>
     </table>
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
     <table>
     <tr>
@@ -70,10 +74,10 @@
     <asp:Button ID="btnAddUpdate" Text="Add" runat="server" onclick="btnAddUpdate_Click" />
     </td>
     <td>
-    <asp:Button ID="Button1" Text="Clear" runat="server" />
+    <asp:Button ID="Button1" Text="Clear" runat="server" onclick="btnClear_Click"/>
     </td>
     <td>
-    <asp:Button ID="btnCancel" Text="Cancel" runat="server" onclick="btnCancel_Click" />
+    <asp:Button ID="btnCancel" Text="Back to Exams" runat="server" onclick="btnCancel_Click" />
     </td>
     </tr>
     </table>

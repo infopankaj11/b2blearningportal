@@ -20,7 +20,7 @@ namespace Web.CMS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _userName = Session["UserName"].ToString();
+            _userName = Session["userName"].ToString();
             if (!IsPostBack)
             {
                 //btnClear.Attributes.Add("onclick", "ClearFields()");
@@ -154,23 +154,30 @@ namespace Web.CMS
 
                 if (returnNumber == 1)
                 {
-                    lblMessage.Text = "Record Updated Successfully";
+                    if (lblTitle.Text == "Add Company-Site")
+                    {
+                        lblMessage.Text = "Successfully added a new site.";
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Successfully updated the site.";
+                    }
                     lblMessage.ForeColor = System.Drawing.Color.Green;
                     
                 }
-                else if (returnNumber == 10)
+                else if (siteNumber == 10)
                 {
                     lblMessage.Text = "Site already exist";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
-                else if (returnNumber == 11)
+                else if (folderNumber == 11)
                 {
                     lblMessage.Text = "Folder already exist";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    lblMessage.Text = "Record Not Updated";
+                    lblMessage.Text = "Site Not Updated";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
             }

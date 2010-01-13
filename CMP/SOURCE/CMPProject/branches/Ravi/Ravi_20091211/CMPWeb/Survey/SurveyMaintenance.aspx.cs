@@ -70,6 +70,11 @@ public partial class SurveyMaintenance : System.Web.UI.Page
   
    }
 
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        txtSurveyName.Text = "";
+        txtAbbr.Text = "";
+    }
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("Survey.aspx");

@@ -229,6 +229,16 @@ public partial class QuestionMaintenance : System.Web.UI.Page
     
 
      }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        txtQuestion.Text = "";
+        ddlExamType.Text = "";
+        ddlQLevel.Text = "";
+        ddlQnType.Text = "";
+
+    }
+    
     
 
     protected bool checkParam()

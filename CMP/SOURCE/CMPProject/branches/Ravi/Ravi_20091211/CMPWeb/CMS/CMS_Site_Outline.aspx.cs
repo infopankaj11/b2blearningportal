@@ -20,7 +20,7 @@ namespace CMPWeb.CMS
         string _userName = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            _userName = Session["UserName"].ToString();
+            _userName = Session["userName"].ToString();
             if (!IsPostBack)
             {
                 lblCompanyName.Text = Request.QueryString["companyName"].ToString();
@@ -28,10 +28,10 @@ namespace CMPWeb.CMS
                 if (Request.QueryString["siteID"] != null)
                 {
                     hdnSiteID.Value = Request.QueryString["siteID"].ToString();
-                    LoadOutlineDetails();
-                    SetGrdRadiosOnClick();
+                    LoadOutlineDetails();                    
                 }
 
+                SetGrdRadiosOnClick();
             }
         }
 
@@ -52,15 +52,15 @@ namespace CMPWeb.CMS
             {
                 CMSBL cmsBL = new CMSBL();
                 DataTable siteDT = cmsBL.GetAllOutlines(hdnSiteID.Value);
-
                 dgOutline.DataSource = siteDT;
-                if ((dgOutline.Items.Count % dgOutline.PageSize == 1) &&
+                dgOutline.DataBind();
+
+                /*if ((dgOutline.Items.Count % dgOutline.PageSize == 1) &&
                     (dgOutline.CurrentPageIndex == dgOutline.PageCount - 1) &&
                     (dgOutline.CurrentPageIndex != 0))
                 {
                     dgOutline.CurrentPageIndex = dgOutline.CurrentPageIndex - 1;
-                }
-                dgOutline.DataBind();
+                }*/
             }
             catch (Exception ex)
             {
@@ -134,13 +134,13 @@ namespace CMPWeb.CMS
 
             if (returnNumber > 0)
             {
-                lblMessage.Text = "Record Deleted Successfully";
+                lblMessage.Text = "Successfully deleted the Outline.";
                 lblMessage.ForeColor = System.Drawing.Color.Green;
                 LoadOutlineDetails();
             }
             else
             {
-                lblMessage.Text = "Record Not Deleted";
+                lblMessage.Text = "Outline Not Deleted.";
                 lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
@@ -154,6 +154,10 @@ namespace CMPWeb.CMS
                 string pageID = dgOutline.Items[rowNumber].Cells[0].Text;
                 string outlineName = dgOutline.Items[rowNumber].Cells[1].Text;
                 Response.Redirect("../CMS/CMS_Pages.aspx?companyName=" + lblCompanyName.Text + "&siteName=" + lblSiteName.Text + "&outlineName=" + outlineName + "&siteID=" + hdnSiteID.Value + "&pageID=" + pageID, false);
+            }
+            else
+            {
+                lblMessage.Text = "Please select an outline before proceeding.";
             }
             /*for (int i = 0; i < dgOutline.Items.Count; i++)
             {
@@ -176,6 +180,13 @@ namespace CMPWeb.CMS
         protected void btnAdditionalPage_Click(object sender, EventArgs e)
         {
             Response.Redirect("../CMS/CMS_Additional_Pages.aspx?companyName=" + lblCompanyName.Text + "&siteName=" + lblSiteName.Text + "&siteID=" + hdnSiteID.Value, false);
+        }
+
+        protected void dgOutline_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
+        {
+            dgOutline.CurrentPageIndex = e.NewPageIndex;
+            LoadOutlineDetails();
+            SetGrdRadiosOnClick();
         }
 
     }

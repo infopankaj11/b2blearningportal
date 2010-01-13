@@ -10,7 +10,8 @@
     <tr>
     <td width="100%" >
         <asp:datagrid id="dgSites" runat="server" Font-Size="Medium" AutoGenerateColumns="False"
-			AllowPaging="True"  BorderStyle="Solid">
+			AllowPaging="True" PageSize="10" BorderStyle="Solid" 
+            onpageindexchanged="dgSites_PageIndexChanged">
 			<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#CE5D5A"></SelectedItemStyle>
 			<EditItemStyle></EditItemStyle>
 			<AlternatingItemStyle></AlternatingItemStyle>

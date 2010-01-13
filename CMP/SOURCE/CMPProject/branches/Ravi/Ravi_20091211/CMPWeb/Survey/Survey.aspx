@@ -6,23 +6,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    <center><h1>Surveys</h1></center>
     
-  <table>
+  <table class ="middle">
 <tr>
 <td>
-    <table class="search">
-    <tr align="right">
-    <td>
-    <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-    <asp:Button ID="btnSearch" Text="Search" runat="server" />
-    </td>
-    </tr>
-    <tr align="right">
-    <td>
-    <asp:RadioButton id="rb1" Text="by survey" runat="server"/>
-    <asp:RadioButton id="RadioButton1" Text="by Module" runat="server"/>
-    </td>
-    </tr>
-    </table>
+    
 
 </td>
 </tr>
@@ -35,7 +22,7 @@
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
-                            <asp:CheckBox runat="server" ID="cbSelectAll" AutoPostBack="True"  OnCheckedChanged="cbSelectAll_OnCheckedChanged"  /> 
+                            <asp:CheckBox runat="server" ID="cbSelectAll" AutoPostBack="True" Visible=false  OnCheckedChanged="cbSelectAll_OnCheckedChanged"  /> 
                         </HeaderTemplate>
                         <itemstyle horizontalalign="Center" />
                         <headerstyle horizontalalign="Center" />
@@ -103,7 +90,11 @@
             </td>
         </tr>
     </table>
-    
+            <br />
+        <br />
+        <br />
+        <br />
+        <br />
     <table>
     <tr>
     <td>
