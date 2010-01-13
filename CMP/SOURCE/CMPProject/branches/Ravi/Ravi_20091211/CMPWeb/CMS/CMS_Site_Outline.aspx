@@ -16,7 +16,8 @@
     <tr>
     <td width="100%" >
         <asp:datagrid id="dgOutline" runat="server" Font-Size="Medium" AutoGenerateColumns="False"
-			AllowPaging="True"  BorderStyle="Solid">
+			AllowPaging="True"  BorderStyle="Solid" PageSize="10"
+            onpageindexchanged="dgOutline_PageIndexChanged">
 			<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#CE5D5A"></SelectedItemStyle>
 			<EditItemStyle></EditItemStyle>
 			<AlternatingItemStyle></AlternatingItemStyle>
@@ -77,7 +78,7 @@
     <td>
     <asp:Button ID="btnAdd" Text="Add" runat="server" onclick="btnAdd_Click" />
     <asp:Button ID="btnDelete" Text="Delete" runat="server" onclick="btnDelete_Click" />    
-    <asp:Button ID="btnManageContent" Text="Manage Content" runat="server" 
+    <asp:Button ID="btnManageContent" Text="Manage Page" runat="server" 
             onclick="btnManageContent_Click" />
     <asp:Button ID="btnAdditionalPage" Text="Create Addtnl Page" runat="server" 
             onclick="btnAdditionalPage_Click" />        

@@ -16,12 +16,12 @@ using WorkLayers.BusinessLayer;
 public partial class UserExamQuestion : System.Web.UI.Page
 {
     MCQBL mcqBL;
-    int userID;
+    string userName;
 
     public UserExamQuestion()
     {
        mcqBL = new MCQBL();
-       userID = 1; //set USER ID here
+       userName = "user1";//Session["UserName"].ToString(); //set USER ID here
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -66,25 +66,25 @@ public partial class UserExamQuestion : System.Web.UI.Page
     private void PopulateQuestion()
     {
 
-        DataTable dtQuestion;
+        DataTable dtQuestion = null;
 
         btnPrevious.Visible = false; //is previous really required?
 
         if (lblAction.Text == "Previous")
         {
-            dtQuestion = mcqBL.GetPreviousQuestion(int.Parse(lblQID.Text), int.Parse(lblExamID2.Text), int.Parse(lblSectionID2.Text), userID); 
+            dtQuestion = mcqBL.GetPreviousQuestion(int.Parse(lblQID.Text), int.Parse(lblExamID2.Text), int.Parse(lblSectionID2.Text), userName); 
         }
         else if (lblAction.Text == "Next")
         {
-            dtQuestion = mcqBL.GetNextQuestion(int.Parse(lblQID.Text), int.Parse(lblExamID2.Text), int.Parse(lblSectionID2.Text), userID);
-            btnConfirm.Enabled = true;
-            btnNext.Enabled = false;
+            //dtQuestion = mcqBL.GetNextQuestion(int.Parse(lblQID.Text), int.Parse(lblExamID2.Text), int.Parse(lblSectionID2.Text), userName);
+            //btnConfirm.Enabled = true;
+            //btnNext.Enabled = false;
         }
         else //FIRST or from section
         {
-            dtQuestion = mcqBL.GetNextQuestion(0, int.Parse(lblExamID2.Text), int.Parse(lblSectionID2.Text), userID);
-            btnConfirm.Enabled = true;
-            btnNext.Enabled = false;
+            //dtQuestion = mcqBL.GetNextQuestion(0, int.Parse(lblExamID2.Text), int.Parse(lblSectionID2.Text), userName);
+            //btnConfirm.Enabled = true;
+            //btnNext.Enabled = false;
         }
 
         if (dtQuestion.Rows.Count > 0)
@@ -97,14 +97,14 @@ public partial class UserExamQuestion : System.Web.UI.Page
         else
         {
             lblQuestion.Text = "Finished with this section.";
-            btnConfirm.Enabled = false; 
+            //btnConfirm.Enabled = false; 
         }
         
         DataTable dtExam = mcqBL.GetExam(int.Parse(lblExamID2.Text));
         lblExamName.Text = dtExam.Rows[0]["exam_name"] + " (" + dtExam.Rows[0]["exam_abbr"] + ")";
 
-        DataTable dtSection = mcqBL.GetSection(int.Parse(lblSectionID2.Text));
-        lblSectionName.Text = dtSection.Rows[0]["section_name"] + " (" + dtSection.Rows[0]["section_abbr"] + ")";
+        //DataTable dtSection = mcqBL.GetSection(int.Parse(lblSectionID2.Text));
+        //lblSectionName.Text = dtSection.Rows[0]["section_name"] + " (" + dtSection.Rows[0]["section_abbr"] + ")";
         
         
     }
@@ -140,7 +140,7 @@ public partial class UserExamQuestion : System.Web.UI.Page
                 mcqBL.InsertAnswerQuestion(int.Parse(lblUserExamId.Text), aAnsOpt[i]);
             }
 
-            String sResult = mcqBL.isCorrect(int.Parse(lblUserExamId.Text));
+            /*String sResult = mcqBL.isCorrect(int.Parse(lblUserExamId.Text));
             btnConfirm.Enabled = false;
             lblMsg.Text = "Your answer is " + sResult;
             if (sResult.Equals("Correct"))  
@@ -149,7 +149,7 @@ public partial class UserExamQuestion : System.Web.UI.Page
                 lblMsg.ForeColor = System.Drawing.Color.Red;
 
             btnConfirm.Enabled = false;
-            btnNext.Enabled = true;
+            btnNext.Enabled = true;*/
 
         }
     }

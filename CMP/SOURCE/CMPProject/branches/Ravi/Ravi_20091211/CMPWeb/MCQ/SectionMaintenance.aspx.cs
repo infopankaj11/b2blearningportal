@@ -105,61 +105,77 @@ public partial class SectionMaintenance : System.Web.UI.Page
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
- ///
-        //clear
+        txtSectionName.Text = "";
+        txtSectionAbbr.Text = "";
+        //ddlSeq.SelectedIndex  = ddlSeq.Items.IndexOf(dtExam.Rows[0]["section_seq"].ToString()); 
+        txtSectionWeigth.Text = "";
+        txtEasy.Text = "";
+        txtEasyWgt.Text = "";
+        txtMed.Text = "";
+        txtMedWgt.Text = "";
+        txtHard.Text = "";
+        txtHrdWgt.Text = "";
 
     }
 
     protected bool checkParam()
     {
 
-        //if (String.IsNullOrEmpty(txtExamName.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Exam name before proceeding.";
-        //    return false;
-        //}
-        //else if (String.IsNullOrEmpty(txtAbbr.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Exam abbreviation  before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtTotQns.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give total questions (numeric) before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtTotMarks.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Total Marks (numeric) before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtPassMark.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Passing mark (numeric) before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtDuration.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Exam duration in minutes (numeric) name before proceeding.";
-        //    return false;
-        //}
+        if (String.IsNullOrEmpty(txtSectionName.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give Section name before proceeding.";
+            return false;
+        }
+        else if (String.IsNullOrEmpty(txtSectionAbbr.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give Section abbreviation  before proceeding.";
+            return false;
+        }
+        else if (!mcqBL.checkEmptyInteger(txtSectionWeigth.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give Section weight (numeric) before proceeding.";
+            return false;
+        }
+        else if (!mcqBL.checkEmptyInteger(txtEasy.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give number of EASY QUESTION (numeric) before proceeding.";
+            return false;
+        }
+        else if (!mcqBL.checkEmptyInteger(txtEasyWgt.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give EASY QUESTION WEIGHT (numeric) before proceeding.";
+            return false;
+        }
+        else if (!mcqBL.checkEmptyInteger(txtMed.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give number of MEDIUM QUESTION (numeric) before proceeding.";
+            return false;
+        }
+        else if (!mcqBL.checkEmptyInteger(txtMedWgt.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give MEDIUM QUESTION WEIGHT (numeric) before proceeding.";
+            return false;
+        }
+        else if (!mcqBL.checkEmptyInteger(txtHard.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give number of HARD QUESTION (numeric) before proceeding.";
+            return false;
+        }
+        else if (!mcqBL.checkEmptyInteger(txtHrdWgt.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give HARD QUESTION WEIGHT (numeric) before proceeding.";
+            return false;
+        }
 
-        ////check for validity 
-        //int totMarks = int.Parse( txtTotMarks.Text);
-        //int passMark = int.Parse(txtPassMark.Text);
-
-        //if (passMark > totMarks)
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Passing mark cannot be more than the total marks.";
-        //    return false;
-        //}
                 
         return true;
     } 

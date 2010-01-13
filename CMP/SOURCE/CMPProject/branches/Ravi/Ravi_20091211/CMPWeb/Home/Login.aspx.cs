@@ -18,6 +18,15 @@ using System.Data;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                if (!String.IsNullOrEmpty(Request.QueryString["logout"]))
+                {
+                    Session["UserID"] = "";
+                    Session["UserName"] = "";
+                    Session["UserLevel"] = "";
+                }
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

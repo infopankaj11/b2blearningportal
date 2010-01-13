@@ -72,6 +72,16 @@ public partial class ExamMaintenance : System.Web.UI.Page
         txtDuration.Text = dtExamInfo.Rows[0]["exam_duration"].ToString();  
    }
 
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        txtExamName.Text = "";
+        txtAbbr.Text =  "";
+        txtTotQns.Text =  "";
+        txtTotMarks.Text = "";
+        txtPassMark.Text ="";
+        txtDuration.Text = "";
+    }
+
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("Exams.aspx");

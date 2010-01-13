@@ -44,11 +44,16 @@ public partial class Survey : System.Web.UI.Page
     protected void btnClear_Click(object sender, EventArgs e)
     {
         CheckBox chkSelectedsurvey;
+        CheckBox chkSelectAll;
         foreach (GridViewRow myRow in gv_surveys.Rows)
         {
             chkSelectedsurvey = (CheckBox)(myRow.FindControl("chkSelectedsurvey"));
             chkSelectedsurvey.Checked = false;
         }
+
+        chkSelectAll = (CheckBox)(gv_surveys.HeaderRow.FindControl("cbSelectAll"));
+        if (chkSelectAll != null)
+            chkSelectAll.Checked = false; 
     }
 
      protected void btnDelete_Click(object sender, EventArgs e)

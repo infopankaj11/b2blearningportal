@@ -25,7 +25,7 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        ConfigurationManager.AppSettings["CurrentMenu"] = "Exams";
+        ConfigurationManager.AppSettings["CurrentMenu"] = "Survey";
 
         if (!Page.IsPostBack)
         {
@@ -55,7 +55,9 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
 
         }         
      }
-    
+
+ 
+
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("SurveyQuestions.aspx?SurveyId=" + lblSurveyID2.Text + "&QID=" + lblQID.Text);
@@ -171,6 +173,12 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
             gv_Object.DataBind();   
         }
     }
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        txtQuestion.Text = "";
+        ddlQnType.Text = "";
+
+    }
 
     protected void AddOption()
     {
@@ -201,35 +209,19 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
     }
     protected void btnAddOpt_Click(object sender, EventArgs e)
     {
-        //if (String.IsNullOrEmpty(lblQID.Text))
-        //{
-        //      lblMsg.ForeColor = System.Drawing.Color.Red;
-        //      lblMsg.Text = "Please give Question name before proceeding.";
-        //      return false;
-
-        //}
-        //                lblQID.Text = surveyBL.InsertQuestion(int.Parse(lblSurveyID2.Text), txtQuestion.Text, ddlQnType.Text,"May", "").ToString();
-
-
-
-            //txtQuestion 
-             
-
-        AddOption();
-       // surveyBL.InsertQuestionOptions(int.Parse(lblQID.Text), "");
-       // PopulateQuestionOptions();
+        AddOption();   
      }
     
 
     protected bool checkParam()
     {
 
-        //if (String.IsNullOrEmpty(txtExamName.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Exam name before proceeding.";
-        //    return false;
-        //}
+        if (String.IsNullOrEmpty(txtQuestion.Text))
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Please give QUESTION TEXT before proceeding.";
+            return false;
+        }
         //else if (String.IsNullOrEmpty(txtAbbr.Text))
         //{
         //    lblMsg.ForeColor = System.Drawing.Color.Red;

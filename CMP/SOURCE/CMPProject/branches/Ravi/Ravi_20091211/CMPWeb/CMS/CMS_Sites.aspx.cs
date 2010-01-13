@@ -20,13 +20,13 @@ namespace Web.CMS
         protected void Page_Load(object sender, EventArgs e)
         {
             ConfigurationManager.AppSettings["CurrentMenu"] = "Modules";
-            _userName = Session["UserName"].ToString();
-            
+            _userName = Session["userName"].ToString();
+
             if (!IsPostBack)
             {
                 LoadSiteDetails();
-                SetGrdRadiosOnClick();
             }
+            SetGrdRadiosOnClick();
         }
 
         public void SetGrdRadiosOnClick()
@@ -49,12 +49,12 @@ namespace Web.CMS
                 DataTable siteDT = cmsBL.GetAllSites();
 
                 dgSites.DataSource = siteDT;
-                if ((dgSites.Items.Count % dgSites.PageSize == 1) &&
+                /*if ((dgSites.Items.Count % dgSites.PageSize == 1) &&
                     (dgSites.CurrentPageIndex == dgSites.PageCount - 1) &&
                     (dgSites.CurrentPageIndex != 0))
                 {
                     dgSites.CurrentPageIndex = dgSites.CurrentPageIndex - 1;
-                }
+                }*/
                 dgSites.DataBind();
             }
             catch (Exception ex)
@@ -100,13 +100,13 @@ namespace Web.CMS
 
             if (returnNumber > 0)
             {
-                lblMessage.Text = "Record Deleted Successfully";
+                lblMessage.Text = "Successfully deleted the site.";
                 lblMessage.ForeColor = System.Drawing.Color.Green;
                 LoadSiteDetails();
             }
             else
             {
-                lblMessage.Text = "Record Not Deleted";
+                lblMessage.Text = "Site Not Deleted.";
                 lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
@@ -177,7 +177,18 @@ namespace Web.CMS
                 string siteID = dgSites.Items[rowNumber].Cells[0].Text;
                 //Response.Redirect("../CMS/CMS_Pages.aspx?companyName=" + companyName +" &siteName=" + siteName + "&siteID=" + siteID, false);
                 Response.Redirect("../CMS/CMS_Site_Outline.aspx?companyName=" + companyName + " &siteName=" + siteName + "&siteID=" + siteID, false);
-            }            
+            }
+            else
+            {
+                lblMessage.Text = "Please select a site before proceeding";
+            }
+        }
+
+        protected void dgSites_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
+        {
+            dgSites.CurrentPageIndex = e.NewPageIndex;
+            LoadSiteDetails();
+            SetGrdRadiosOnClick();
         }
 
         /*protected void btnManageTreeView_Click(object sender, EventArgs e)

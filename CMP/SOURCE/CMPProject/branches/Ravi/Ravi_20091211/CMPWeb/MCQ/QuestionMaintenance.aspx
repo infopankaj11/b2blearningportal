@@ -25,7 +25,7 @@
     <asp:Label id="lblQuestion" Text="Question" runat="server"></asp:Label>
     </td>
     <td>
-    <asp:TextBox ID="txtQuestion" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtQuestion" TextMode="MultiLine" Rows="5" runat="server" MaxLength ="250" ></asp:TextBox>
     </td>
     </tr>
     <tr>
@@ -79,7 +79,7 @@
                         </HeaderTemplate>
                         
                         <ItemTemplate>
-                            <asp:TextBox runat="server" ID="txtOptiontxt" Text='<%#Eval("OptText") %>'/>                              
+                            <asp:TextBox runat="server" ID="txtOptiontxt" Text='<%#Eval("OptText") %>' MaxLength="250"/>                              
                         </ItemTemplate>
                     </asp:TemplateField>                  
                    
@@ -101,14 +101,17 @@
     
 
 </td>
-</tr></table>        
+</tr></table> 
+        <br />
+        <br />
+               
     <table>
     <tr>
     <td>
     <asp:Button ID="btnAddUpdate" Text="Add" runat="server"  OnClick="btnAddUpdate_Click"/>
     </td>
     <td>
-    <asp:Button ID="btnClear" Text="Clear" runat="server" />
+    <asp:Button ID="btnClear" Text="Clear" runat="server" OnClick="btnClear_Click" />
     </td>
     <td>
     <asp:Button ID="btnCancel" Text="Back to Questions" runat="server"

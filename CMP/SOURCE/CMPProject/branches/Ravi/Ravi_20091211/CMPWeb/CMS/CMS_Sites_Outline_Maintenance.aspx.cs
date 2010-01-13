@@ -20,7 +20,7 @@ namespace Web.CMS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _userName = Session["UserName"].ToString();
+            _userName = Session["userName"].ToString();
             if (!IsPostBack)
             {
                 loadSort();
@@ -99,23 +99,37 @@ namespace Web.CMS
                 }
                 if (returnNumber == 1)
                 {
-                    lblMessage.Text = "Record Updated Successfully";
+                    if (lblTitle.Text == "Add Outline")
+                    {
+                        lblMessage.Text = "Successfully added the new Outline.";
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Successfully updated the Outline.";
+                    }
                     lblMessage.ForeColor = System.Drawing.Color.Green;
 
                 }
                 else if (returnNumber == 10)
                 {
-                    lblMessage.Text = "Outline already exist";
+                    lblMessage.Text = "Outline already exist.";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
                 else if (sortNumber == 10)
                 {
-                    lblMessage.Text = "Sort Number already exist";
+                    lblMessage.Text = "Sort Number already exist.";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    lblMessage.Text = "Record Not Updated";
+                    if (lblTitle.Text == "Add Outline")
+                    {
+                        lblMessage.Text = "Outline Not Added.";
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Outline Not Updated.";
+                    }
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
             }

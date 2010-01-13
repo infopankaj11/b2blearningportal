@@ -8,6 +8,7 @@
 <table width="100%" class="frame">
 <tr>
 <td width="100%" >
+<center>
 <asp:datagrid id="dgModules" runat="server" Font-Size="Medium" AutoGenerateColumns="False"
 			AllowPaging="True"  BorderStyle="Solid">
 			<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#CE5D5A"></SelectedItemStyle>
@@ -19,7 +20,7 @@
 <Columns>
     <asp:BoundColumn Visible="False" DataField="ID" HeaderText="ID">				
 	</asp:BoundColumn>
-    <asp:TemplateColumn HeaderText="AAA">
+    <asp:TemplateColumn HeaderText="Content">
 	    <HeaderStyle CssClass="headertext"></HeaderStyle>
 		<ItemStyle HorizontalAlign="Left"></ItemStyle>
 		<ItemTemplate>
@@ -30,6 +31,7 @@
 	</asp:TemplateColumn>				
 </Columns>						
 </asp:datagrid>
+</center>
 </td>
 </tr>
 </table>
