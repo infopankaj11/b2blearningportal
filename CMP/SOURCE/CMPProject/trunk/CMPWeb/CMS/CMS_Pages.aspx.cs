@@ -26,9 +26,9 @@ namespace CMPWeb.CMS
                 lblOutlineName.Text = Request.QueryString["outlineName"].ToString();
                 hdnSiteID.Value = Request.QueryString["siteID"].ToString();
                 hdnPageID.Value = Request.QueryString["pageID"].ToString();
-                LoadPageDetails();
-                SetGrdRadiosOnClick();
+                LoadPageDetails();                
             }
+            SetGrdRadiosOnClick();
         }
 
         public void SetGrdRadiosOnClick()
@@ -50,13 +50,14 @@ namespace CMPWeb.CMS
                 DataTable siteDT = cmsBL.GetAllPages(hdnSiteID.Value, hdnPageID.Value);
 
                 dgPages.DataSource = siteDT;
-                if ((dgPages.Items.Count % dgPages.PageSize == 1) &&
+                dgPages.DataBind();
+
+                /*if ((dgPages.Items.Count % dgPages.PageSize == 1) &&
                     (dgPages.CurrentPageIndex == dgPages.PageCount - 1) &&
                     (dgPages.CurrentPageIndex != 0))
                 {
                     dgPages.CurrentPageIndex = dgPages.CurrentPageIndex - 1;
-                }
-                dgPages.DataBind();
+                }*/                
             }
             catch (Exception ex)
             {
@@ -114,13 +115,13 @@ namespace CMPWeb.CMS
 
             if (returnNumber == 1)
             {
-                lblMessage.Text = "Record Deleted Successfully";
+                lblMessage.Text = "Page Deleted Successfully.";
                 lblMessage.ForeColor = System.Drawing.Color.Green;
                 LoadPageDetails();
             }
             else
             {
-                lblMessage.Text = "Record Not Deleted";
+                lblMessage.Text = "Page Not Deleted.";
                 lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
@@ -185,6 +186,13 @@ namespace CMPWeb.CMS
         protected void btnGoOutline_Click(object sender, EventArgs e)
         {
             Response.Redirect("../CMS/CMS_Site_Outline.aspx?companyName=" + lblCompanyName.Text + " &siteName=" + lblSiteName.Text + "&siteID=" + hdnSiteID.Value, false);
+        }
+
+        protected void dgPages_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
+        {
+            dgPages.CurrentPageIndex = e.NewPageIndex;
+            LoadPageDetails();
+            SetGrdRadiosOnClick();
         }
     }
 }

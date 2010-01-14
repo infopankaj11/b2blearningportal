@@ -22,7 +22,7 @@ namespace CMPWeb.ACS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ConfigurationManager.AppSettings["CurrentMenu"] = "PortalAdmin";
+            ConfigurationManager.AppSettings["CurrentMenu"] = "UserAdmin";
             if (!Page.IsPostBack)
                 PopulateUserAdminList();
         }

@@ -215,7 +215,8 @@ namespace CMPWeb.CMS
 
             SqlServer sqlServer = new SqlServer(Util.SqlConnectionString());
             sqlServer.JMD_MOD_HTML_SAVE(hdnPageModID.Value, string.Empty,
-                Server.HtmlEncode(Html_Text.Text).Replace("'", "&#39;"));            
+                Server.HtmlEncode(Html_Text.Text).Replace("'", "&#39;"));
+            lblMessage.Text = "Successfully saved the content";
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

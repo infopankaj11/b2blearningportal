@@ -37,6 +37,19 @@ namespace WorkLayers.DataLayer
             return dbAccessManager.GetDataTable(strSQL);
         }
 
+        /*        public int InsertExam(String exName, String exAbbr, int total_qns, int total_mark, int pass_mark, int exam_duration, String createdBy, String modifiedBy)
+        {
+            strSQL = "INSERT INTO MCQ_EXAM_MASTER(Exam_name,Exam_abbr, total_qns, total_marks, pass_mark, exam_duration, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag) VALUES (";
+            strSQL += "'" + exName + "','" + exAbbr + "'," + total_qns + "," + total_mark + "," + pass_mark + "," + exam_duration + ",'" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','";
+            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
+            strSQL += "INSERT INTO module_master(module_name, module_type, Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
+            strSQL += "'" + exName + "','MCQ','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") +"','" + modifiedBy + "','";
+            strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
+            strSQL += "SELECT exam_id FROM MCQ_EXAM_MASTER WHERE exam_id=@@IDENTITY; ";
+            return (int)dbAccessManager.GetScalar(strSQL);
+
+        }*/
+
         public int InsertExam(String exName, String exAbbr, int total_qns, int total_mark, int pass_mark, int exam_duration, String createdBy, String modifiedBy)
         {
             strSQL = "INSERT INTO MCQ_EXAM_MASTER(Exam_name,Exam_abbr, total_qns, total_marks, pass_mark, exam_duration, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag) VALUES (";
@@ -47,7 +60,7 @@ namespace WorkLayers.DataLayer
             int id = (int)dbAccessManager.GetScalar(strSQL);
 
             strSQL = "INSERT INTO module_master(module_id, module_name, module_type, module_remarks, Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
-            strSQL += id + ",'" + exName + "','MCQ','','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") +"','" + modifiedBy + "','";
+            strSQL += id + ",'" + exName + "','MCQ','','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','";
             strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
             dbAccessManager.GetScalar(strSQL);
             return id;
@@ -190,56 +203,52 @@ namespace WorkLayers.DataLayer
             strSQL = "INSERT INTO mcq_question_options(question_id, OptText, isAnswer) VALUES (" + question_id + ",'" + OptText + "'," + isAnswer + ");";
             dbAccessManager.GetCommand(strSQL);
         }
-
-        public DataTable GetAllUserExams(int User_id)
+        //this select statement has to be changed to reflect the user rights
+        public DataTable GetAllUserExams(string userName)
         {
             strSQL = "select a.*, (Select count(b.exam_id) from mcq_exam_result b where a.exam_id = b.exam_id ) as Taken from dbo.mcq_exam_master a where  a.delete_flag=0; ";
             return dbAccessManager.GetDataTable(strSQL);
         }
 
-        public int getUserExam(int userId, int exam_id)
+        public int getUserExam(string userName, int exam_id)
         {
-            strSQL = "Select count(user_exam_id) bHasMCQ from mcq_user_exam where exam_id =" + exam_id + " and user_id=" + userId + ";";
+            strSQL = "Select count(user_exam_id) bHasMCQ from mcq_user_exam where exam_id =" + exam_id + " and username='" + userName + "';";
             return (int)dbAccessManager.GetScalar(strSQL);
  
         }
 
-        public void GenerateQuestionLevel(String stype, String sLevel, int iQCount, int section_id, int user_id )
+        public void GenerateQuestionLevel(String stype, String sLevel, int iQCount, int exam_id, int section_id, string userName )
         {
             strSQL = "INSERT INTO mcq_user_exam (exam_id, section_id, user_id, qn_id, exam_date, created_by, created_date, delete_flag)";
-            strSQL += "SELECT top " + iQCount + " exam_id, " + section_id + "," + user_id + " , question_id, null, " + user_id + ", '" + DateTime.Today.ToString("dd-MMM-yyyy") + "', 0 ";
-            strSQL += " from mcq_question_master where exam_type='" + stype + "' and question_level='" + sLevel + "' and section_id=" + section_id+ " order by NEWID();";
+            strSQL += "SELECT top " + iQCount + " exam_id, " + section_id + "," + userName + " , question_id, null, " + userName + ", '" + DateTime.Today.ToString("dd-MMM-yyyy") + "', 0 ";
+            strSQL += " from mcq_question_master where exam_type='" + stype + "' and question_level='" + sLevel + "' and section_id=" + section_id + " order by NEWID();";
             dbAccessManager.GetCommand(strSQL);
         }
 
-        public DataTable GetNextQuestion(int User_id, int Exam_id, int Section_id)
-        {
-            return null;
-        }
 
-        public DataTable GetSectionsForUser(int user_id, int ExamId)
+        public DataTable GetSectionsForUser(string userName, int ExamId, int sectionId)
         {
-            strSQL = "select distinct b.*  from dbo.mcq_user_exam a inner join mcq_section_master b on a.section_id=b.section_id  where  a.user_id = " + user_id + "and b.exam_id=" + ExamId + " and b.delete_flag=0 order by section_seq;";
+            strSQL = "select distinct b.*  from dbo.mcq_user_exam a inner join mcq_section_master b on a.section_id=b.section_id  where  a.userName = " + userName + "and b.exam_id=" + ExamId + " and b.delete_flag=0 order by section_seq;";
             return dbAccessManager.GetDataTable(strSQL);
         }
-        public DataTable GetPreviousQuestion(int curQuestioId, int exam_id, int section_id, int user_id)
+        public DataTable GetPreviousQuestion(int curQuestioId, int exam_id, int section_id, string userName)
         {
-            strSQL = "select * from mcq_user_exam a inner join mcq_question_master b on a.qn_id = b.question_id where a.exam_id=2 and a.section_id=5 and a.user_id=1 and a.user_exam_id not in (select user_exam_id from mcq_user_answer) and a.delete_flag=0 and b.delete_flag=0 order by a.user_exam_id";
+            strSQL = "select * from mcq_user_exam a inner join mcq_question_master b on a.qn_id = b.question_id where a.exam_id=2 and a.section_id=5 and a.userName='" + userName + "' and a.user_exam_id not in (select user_exam_id from mcq_user_answer) and a.delete_flag=0 and b.delete_flag=0 order by a.user_exam_id";
             return dbAccessManager.GetDataTable(strSQL);
         }
 
-        public DataTable GetAnswerQuestion(int curQuestioId, int exam_id, int section_id, int user_id)
+        public DataTable GetAnswerQuestion(int curQuestioId, int exam_id, int section_id, string userName)
         {
-            strSQL = "select * from mcq_user_exam a inner join mcq_question_master b on a.qn_id = b.question_id where a.exam_id=2 and a.section_id=5 and a.user_id=1 and a.user_exam_id not in (select user_exam_id from mcq_user_answer) and a.delete_flag=0 and b.delete_flag=0 order by a.user_exam_id";
+            strSQL = "select * from mcq_user_exam a inner join mcq_question_master b on a.qn_id = b.question_id where a.exam_id=2 and a.section_id=5 and a.username='" + userName + "' and a.user_exam_id not in (select user_exam_id from mcq_user_answer) and a.delete_flag=0 and b.delete_flag=0 order by a.user_exam_id";
             return dbAccessManager.GetDataTable(strSQL);
         }
-
-        public DataTable GetNextQuestion(int curQuestioId, int exam_id, int section_id, int user_id)
+        
+        public DataTable GetNextQuestion(int curQuestioId, int exam_id, int section_id, string userName, String stype)
         {
-            strSQL = "select top 1 * from mcq_user_exam a inner join mcq_question_master b on a.qn_id = b.question_id where a.exam_id=" + exam_id + " and a.section_id=" + section_id + " and a.user_id=" + user_id + " and a.user_exam_id not in (select user_exam_id from mcq_user_answer) and a.delete_flag=0 and b.delete_flag=0 order by a.user_exam_id";
+            strSQL = "select top 1 * from mcq_user_exam a inner join mcq_question_master b on a.qn_id = b.question_id and b.exam_type='" + stype + "' where a.exam_id=" + exam_id + " and a.section_id=" + section_id + " and a.username=" + userName + " and a.user_exam_id not in (select user_exam_id from mcq_user_answer) and a.delete_flag=0 and b.delete_flag=0 order by a.user_exam_id";
             return dbAccessManager.GetDataTable(strSQL);
         }
-
+                
         public void InsertAnswerQuestion(int user_exam_id, int choice_id)
         {            
             strSQL = "INSERT INTO mcq_user_answer(user_exam_id, choice_id) VALUES (" + user_exam_id + "," + choice_id + ");";

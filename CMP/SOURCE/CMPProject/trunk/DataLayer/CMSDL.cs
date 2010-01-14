@@ -152,7 +152,7 @@ namespace WorkLayers.DataLayer
             {
                 dtSite = new DataTable();
                 dtSite = dbAccessManager.GetDataTable(string.Format(SqlGet_DuplicateSite, siteName, companyID));
-                if (dtSite.Rows.Count > 1)
+                if (dtSite.Rows.Count > 0)
                     returnNumber = 10;
                 else
                     returnNumber = 0;
@@ -173,7 +173,7 @@ namespace WorkLayers.DataLayer
             {
                 dtFolder = new DataTable();
                 dtFolder = dbAccessManager.GetDataTable(string.Format(SqlGet_DuplicateFolder, folderName));
-                if (dtFolder.Rows.Count > 1)
+                if (dtFolder.Rows.Count > 0)
                     returnNumber = 11;
                 else
                     returnNumber = 0;
@@ -315,7 +315,7 @@ namespace WorkLayers.DataLayer
             {
                 dtOutline = new DataTable();
                 dtOutline = dbAccessManager.GetDataTable(string.Format(SqlGet_DuplicateOutline, siteID, pageName));
-                if (dtOutline.Rows.Count > 1)
+                if (dtOutline.Rows.Count > 0)
                     returnNumber = 10;
                 else
                     returnNumber = 0;

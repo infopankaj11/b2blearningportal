@@ -12,12 +12,14 @@
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
+                            <asp:Label runat="server" ID="lbexam_takenHEader" Text="Take Exercise?" />
                         </HeaderTemplate>
                         <itemstyle horizontalalign="Center" />
                         <headerstyle horizontalalign="Center" />
                         
                         <itemtemplate>
                             <asp:HiddenField ID="hfExamListID" Value='<%#Eval("exam_ID")%>' runat="server" />
+                            <asp:Label runat="server" ID="lbhas_Exercise" Text='<%#Eval("Taken") %>'/>
                         </itemtemplate>
                     </asp:TemplateField>
                      
