@@ -7,14 +7,14 @@
 <center><h1> Survey Questions</h1></center>
 <center><h2> <asp:Label ID="lblSurveyName"  runat="server" Text="Label"></asp:Label></h2></center>
 
- <table style="width: 598px">
+ <table class="middle">
 <tr align="right">
 <td>
 <asp:GridView Width="100%" runat="server" ID="gv_Object" AutoGenerateColumns="false" DataKeyNames="squestion_id" >
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
-                            <asp:CheckBox runat="server" ID="cbSelectAll" AutoPostBack="True"  OnCheckedChanged="cbSelectAll_OnCheckedChanged" /> 
+                            <asp:CheckBox runat="server" ID="cbSelectAll" AutoPostBack="True" Visible=false OnCheckedChanged="cbSelectAll_OnCheckedChanged" /> 
                         </HeaderTemplate>
                         <itemstyle horizontalalign="Center" />
                         <headerstyle horizontalalign="Center" />
@@ -26,18 +26,9 @@
                     </asp:TemplateField>
                      
                     <asp:HyperLinkField DataNavigateUrlFields="squestion_id,survey_id" DataNavigateUrlFormatString="~/Survey/SurveyQuestionMaintenance.aspx?Action=Update&QID={0}&SurveyID={1}"
-                         DataTextField="squestion_id" NavigateUrl="~/Survey/SurveyQuestionMaintenance.aspx" HeaderText = "Question ID"/>
+                         DataTextField="question" NavigateUrl="~/Survey/SurveyQuestionMaintenance.aspx" HeaderText = "Question"/>
                         
-                    <asp:TemplateField>
-                        <HeaderTemplate>
-                            <asp:Label runat="server" ID="lbsection_abbrHeader" Text="Question" />
-                        </HeaderTemplate>
-                        
-                        <ItemTemplate>
-                            <asp:Label runat="server" ID="lbsection_abbr" Text='<%#Eval("question") %>'/>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
-                    
+                               
                     <asp:TemplateField>
                         <HeaderTemplate>
                             <asp:Label runat="server" ID="lbsection_seq" Text="Question Type" />
@@ -90,13 +81,12 @@
                     
                 </Columns>
                 </asp:GridView>
-
-
-
-
 </td>
 </tr>
-</table>    
+</table>   
+    <br />
+    <br /> 
+    <br />
 
     <br />
     <table>
@@ -107,11 +97,15 @@
     <td>
     <asp:Button ID="btnDelete" Text="Delete" runat="server" OnClick="btnDelete_Click"  />
     </td>    
+      <td>
+    <asp:Button ID="btnClear" Text="Clear" runat="server" OnClick="btnClear_Click"  />
+    </td>  
     <td>
     <asp:Button ID="btnCancel" Text="Cancel" runat="server" onclick="btnCancel_Click"/>
     </td>
     </tr>
     </table>
+           
      <table>
         <tr>
             <td>

@@ -16,7 +16,7 @@
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
-                            <asp:CheckBox runat="server" ID="cbSelectAll" AutoPostBack="True"  OnCheckedChanged="cbSelectAll_OnCheckedChanged" /> 
+                            <asp:CheckBox runat="server" ID="cbSelectAll" AutoPostBack="True"  Visible=false  OnCheckedChanged="cbSelectAll_OnCheckedChanged" /> 
                         </HeaderTemplate>
                         <itemstyle horizontalalign="Center" />
                         <headerstyle horizontalalign="Center" />
@@ -111,6 +111,11 @@
 </table>    
 
     <br />
+            <br />
+        <br />
+        <br />
+        <br />
+        <br />
     <table>
     <tr>
     <td>
@@ -119,8 +124,11 @@
     <td>
     <asp:Button ID="btnDelete" Text="Delete" runat="server" OnClick="btnDelete_Click"  />
     </td>    
+        <td>
+    <asp:Button ID="Button1" Text="Clear" runat="server" OnClick="btnClear_Click"  />
+    </td>    
     <td>
-    <asp:Button ID="btnCancel" Text="Cancel" runat="server" onclick="btnCancel_Click"/>
+    <asp:Button ID="btnCancel" Text="Back to Sections" runat="server" onclick="btnCancel_Click"/>
     </td>
     </tr>
     </table>

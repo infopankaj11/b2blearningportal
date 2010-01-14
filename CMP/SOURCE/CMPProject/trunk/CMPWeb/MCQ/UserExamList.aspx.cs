@@ -32,7 +32,7 @@ public partial class UserExamList : System.Web.UI.Page
 
     private void PopulateExamList()
     {
-        DataTable dtExams= mcqBL.GetAllUserExams(0);
+        DataTable dtExams= mcqBL.GetAllUserExams("");
         gv_Exams.DataSource = dtExams;
         gv_Exams.DataBind();
     }

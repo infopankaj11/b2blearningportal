@@ -42,12 +42,18 @@ public partial class Exams : System.Web.UI.Page
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
+       
         CheckBox chkSelectedExam;
+        CheckBox chkSelectAll;
         foreach (GridViewRow myRow in gv_Exams.Rows)
         {
             chkSelectedExam = (CheckBox)(myRow.FindControl("chkSelectedExam"));
             chkSelectedExam.Checked = false;
+         
         }
+        chkSelectAll = (CheckBox)(gv_Exams.HeaderRow.FindControl("cbSelectAll"));
+        if (chkSelectAll != null)
+            chkSelectAll.Checked = false; 
     }
 
      protected void btnDelete_Click(object sender, EventArgs e)

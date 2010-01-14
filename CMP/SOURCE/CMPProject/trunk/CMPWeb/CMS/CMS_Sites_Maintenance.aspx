@@ -4,7 +4,8 @@
     <title>Content Management Portal</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<script type="text/javascript">
+
+    <script type="text/javascript">
 function ClearFields()
 {    
     document.getElementById('ctl00_ContentPlaceHolder1_txtSiteName').value = '';
@@ -83,6 +84,7 @@ function CheckSubmit()
     <tr>
     <td >
     <asp:Label id="lblSiteName" Text="Site Name" runat="server"></asp:Label>
+    &nbsp; <asp:Label id="Label1" ForeColor="Red" Text="*" runat="server"></asp:Label>
     </td>
     <td>
     <asp:TextBox ID="txtSiteName" MaxLength="255" runat="server"></asp:TextBox>
@@ -91,6 +93,7 @@ function CheckSubmit()
     <tr>
     <td >
     <asp:Label id="lblCompany" Text="Company" runat="server"></asp:Label>
+    &nbsp; <asp:Label id="Label2" ForeColor="Red" Text="*" runat="server"></asp:Label>
     </td>
     <td>
     <asp:DropDownList ID="ddlCompany" runat="server"></asp:DropDownList>    
@@ -99,6 +102,7 @@ function CheckSubmit()
     <tr>
     <td >
     <asp:Label id="lblStyleSheet" Text="Style Sheet" runat="server"></asp:Label>
+    &nbsp; <asp:Label id="Label3" ForeColor="Red" Text="*" runat="server"></asp:Label>
     </td>
     <td>
     <asp:DropDownList ID="ddlStyleSheet" runat="server"></asp:DropDownList>    
@@ -107,6 +111,7 @@ function CheckSubmit()
     <tr>
     <td >
     <asp:Label id="lblFolder" Text="Site Folder" runat="server"></asp:Label>
+    &nbsp; <asp:Label id="Label4" ForeColor="Red" Text="*" runat="server"></asp:Label>
     </td>
     <td>
     <asp:TextBox ID="txtFolderName" MaxLength="255" runat="server"></asp:TextBox>

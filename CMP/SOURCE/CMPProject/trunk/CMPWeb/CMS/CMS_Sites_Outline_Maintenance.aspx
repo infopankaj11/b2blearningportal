@@ -33,6 +33,7 @@ function CheckSubmit()
     <tr>
     <td >
     <asp:Label id="lblOutlineName" Text="Outline Name" runat="server"></asp:Label>
+    &nbsp; <asp:Label id="Label1" ForeColor="Red" Text="*" runat="server"></asp:Label>
     </td>
     <td>
     <asp:TextBox ID="txtOutlineName" runat="server"></asp:TextBox>
@@ -49,6 +50,7 @@ function CheckSubmit()
     <tr>
     <td >
     <asp:Label id="lblSortNumber" Text="Sort Number" runat="server"></asp:Label>
+    &nbsp; <asp:Label id="Label3" ForeColor="Red" Text="*" runat="server"></asp:Label>
     </td>
     <td>
     <asp:DropDownList ID="ddlSortNumber" runat="server"></asp:DropDownList>    

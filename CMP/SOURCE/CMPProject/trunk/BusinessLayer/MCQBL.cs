@@ -148,41 +148,57 @@ namespace WorkLayers.BusinessLayer
             mcqDL.InsertQuestionOptions(question_id, OptText, isAnswer);   
         }
 
-        public DataTable GetAllUserExams(int user_id)
+        public DataTable GetAllUserExams(string userName)
         {
-            return mcqDL.GetAllUserExams(user_id);  
+            return mcqDL.GetAllUserExams(userName);  
         }
 
-        public DataTable GenerateExam(int user_id, int examId)
+        public DataSet GetExamDetails(int examID)
         {
-            if (mcqDL.getUserExam(user_id, examId) == 0)
+            DataSet dsExamDetail = new DataSet();
+            DataTable dtExam = null; //mcqDL.GetExamDetail(examID);
+            DataTable dtSection = mcqDL.GetAllExamSections(examID);
+            dsExamDetail.Tables.Add(dtExam);
+            dsExamDetail.Tables.Add(dtSection);
+            return dsExamDetail;
+        }
+
+        public DataTable GenerateExam(string userName, int examId)
+        {
+            DataTable dtSections = null;
+            if (mcqDL.getUserExam(userName, examId) == 0)
             {
-                DataTable dtSections = mcqDL.GetAllExamSections(examId);
+                dtSections = mcqDL.GetAllExamSections(examId);
 
                 foreach (DataRow dr in dtSections.Rows )
                 {
-                    mcqDL.GenerateQuestionLevel("Exam", "Simple", int.Parse(dr["total_simple_qns"].ToString ()), int.Parse(dr["section_id"].ToString()), user_id);
-                    mcqDL.GenerateQuestionLevel("Exam", "Moderate", int.Parse(dr["total_moderate_qns"].ToString()), int.Parse(dr["section_id"].ToString()), user_id);
-                    mcqDL.GenerateQuestionLevel("Exam", "Complex", int.Parse(dr["total_complex_qns"].ToString()), int.Parse(dr["section_id"].ToString()), user_id);
+                    mcqDL.GenerateQuestionLevel("Exam", "Simple", int.Parse(dr["total_simple_qns"].ToString()), examId, int.Parse(dr["section_id"].ToString()), userName);
+                    mcqDL.GenerateQuestionLevel("Exam", "Moderate", int.Parse(dr["total_moderate_qns"].ToString()), examId, int.Parse(dr["section_id"].ToString()), userName);
+                    mcqDL.GenerateQuestionLevel("Exam", "Complex", int.Parse(dr["total_complex_qns"].ToString()), examId, int.Parse(dr["section_id"].ToString()), userName);
                 }
              }
-            return mcqDL.GetSectionsForUser(user_id, examId);
-            
+
+            return dtSections;
         }
 
-        public DataTable GetPreviousQuestion(int curQuestioId, int exam_id, int section_id, int user_id)
+        public DataTable GetSectionsForUser(string userName, int examId, int sectionId)
         {
-            return mcqDL.GetPreviousQuestion(curQuestioId, exam_id, section_id, user_id);
+            return mcqDL.GetSectionsForUser(userName, examId, sectionId);
         }
 
-        public DataTable GetAnswerQuestion(int curQuestioId, int exam_id, int section_id, int user_id)
+        public DataTable GetPreviousQuestion(int curQuestioId, int exam_id, int section_id, string userName)
         {
-            return mcqDL.GetAnswerQuestion(curQuestioId, exam_id, section_id, user_id);
+            return mcqDL.GetPreviousQuestion(curQuestioId, exam_id, section_id, userName);
         }
 
-        public DataTable GetNextQuestion(int curQuestioId, int exam_id, int section_id, int user_id)
+        public DataTable GetAnswerQuestion(int curQuestioId, int exam_id, int section_id, string userName)
         {
-            return mcqDL.GetNextQuestion(curQuestioId, exam_id, section_id, user_id);
+            return mcqDL.GetAnswerQuestion(curQuestioId, exam_id, section_id, userName);
+        }
+
+        public DataTable GetNextQuestion(int curQuestioId, int exam_id, int section_id, string userName, string stype)
+        {
+            return mcqDL.GetNextQuestion(curQuestioId, exam_id, section_id, userName, stype);
         }
 
         public void InsertAnswerQuestion(int user_exam_id, int choice_id)

@@ -11,13 +11,13 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
-public partial class PortalAdmin : System.Web.UI.Page
+namespace CMPWeb.MCQ
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class UserExam : System.Web.UI.Page
     {
-        ConfigurationManager.AppSettings["CurrentMenu"] = "PortalAdmin";
-        
-    }
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-    
+        }
+    }
 }

@@ -28,7 +28,7 @@ namespace CMPWeb.CMSClient
                 hdnType.Value = Request.QueryString["type"].ToString();
                 UserBL userBL = new UserBL();
                 DataTable dtModule = userBL.GetUserModule(Session["UserName"].ToString(), Session["UserID"].ToString(), hdnType.Value);
-
+                
                 dgModules.DataSource = dtModule;
                 if ((dgModules.Items.Count % dgModules.PageSize == 1) &&
                     (dgModules.CurrentPageIndex == dgModules.PageCount - 1) &&

@@ -163,19 +163,26 @@ namespace CMPWeb.CMS
                     "Mod_" + pageName, "7", "1", "0", "Admin;Guests;Registered;",
                     "Admin;", "Admin;", "Admin;", "Admin;", "0");
 
-                    lblMessage.Text = "Page Updated Successfully";
+                    if (lblTitle.Text == "Add Page")
+                    {
+                        lblMessage.Text = "Successfully added the new Page.";
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Successfully updated the Page.";
+                    }
                     lblMessage.ForeColor = System.Drawing.Color.Green;
 
                 }
                 else
                 {
-                    lblMessage.Text = "Sort Number already exist";
+                    lblMessage.Text = "Sort Number already exist.";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
             }
             catch (Exception ex)
             {
-                lblMessage.Text = "Page Not Updated";
+                lblMessage.Text = "Page Not Updated.";
                 lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }

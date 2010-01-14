@@ -38,17 +38,17 @@ namespace WorkLayers.DataLayer
 
         public int InsertSurvey(String exName, String exAbbr, String createdBy, String modifiedBy)
         {
-            strSQL = "INSERT INTO survey_MASTER(Survey_name,Survey_abbr, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag) VALUES (";
-            strSQL += "'" + exName + "','" + exAbbr + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "',0);";
-            strSQL += "SELECT Survey_id FROM survey_MASTER WHERE Survey_id=@@IDENTITY; ";
-            
+            strSQL = "INSERT INTO survey_MASTER(Survey_name,Survey_abbr, Created_By, Created_Date,Modified_By,  modified_date, Delete_Flag) VALUES (";
+            strSQL += "'" + exName + "','" + exAbbr + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','','',0);";
+            strSQL += "SELECT survey_id FROM survey_MASTER WHERE survey_id=@@IDENTITY; ";
+
             int id = (int)dbAccessManager.GetScalar(strSQL);
 
-            strSQL = "INSERT INTO module_master(module_id,module_name, module_type, module_remarks,Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
-            strSQL += id + ",'" + exName + "','Survey','','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','";
+            strSQL += "INSERT INTO module_master(module_id, module_name, module_type, Created_By, Created_Date,Modified_By, Modified_Date, Delete_Flag) VALUES ( ";
+            strSQL += id + ",'" + exName + "','Survey','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + modifiedBy + "','";
             strSQL += DateTime.Today.ToString("dd-MMM-yyyy") + "',0" + ");";
-            dbAccessManager.GetScalar(strSQL);
-            return id;
+            strSQL += "SELECT Survey_id FROM survey_MASTER WHERE Survey_id=@@IDENTITY; ";
+            return (int)dbAccessManager.GetScalar(strSQL);
 
         }
 
@@ -92,7 +92,7 @@ namespace WorkLayers.DataLayer
         public int InsertQuestion(int Survey_id, String question, String qn_type, String createdBy)
         {
             strSQL = "INSERT INTO survey_qn_master(Survey_id, question, qn_type, Created_By, Created_Date, Modified_By, Modified_Date, Delete_Flag) VALUES (";
-            strSQL += Survey_id + ",'" + question + "','" + qn_type + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "', 0);";
+            strSQL += Survey_id + ",'" + question + "','" + qn_type + "','" + createdBy + "','" + DateTime.Today.ToString("dd-MMM-yyyy") + "','','', 0);";
             strSQL += "SELECT squestion_id FROM survey_qn_master WHERE squestion_id=@@IDENTITY; ";
             return (int)dbAccessManager.GetScalar(strSQL);
         }
@@ -141,9 +141,52 @@ namespace WorkLayers.DataLayer
             dbAccessManager.GetCommand(strSQL);
         }
 
+        //*******
+
+        //this select statement has to be changed to reflect the user rights
         public DataTable getUserSurveys() 
         {
-            return null; 
+            strSQL = "Select * from survey_master a where a.delete_flag=0; ";
+            return dbAccessManager.GetDataTable(strSQL);
+        }
+        
+        public DataTable GetPreviousQuestion(int curQuestioId, int survey_id, String username)
+        {
+            strSQL = "select top 1 *, (Select MIN(b.squestion_id) FROM survey_qn_master b where b.survey_id=" + survey_id + " and b.delete_flag=0) as firstQN from survey_qn_master a where a.survey_id=" + survey_id + " and a.delete_flag=0 and squestion_id<" + curQuestioId + " order by a.squestion_id DESC";
+            return dbAccessManager.GetDataTable(strSQL);
+
+        }
+        
+        public DataTable GetNextQuestion(int curQuestioId, int survey_id, String username)
+        {
+            if (curQuestioId==0)
+                strSQL = "select top 1 * from survey_qn_master a where a.survey_id=" + survey_id + " and a.delete_flag=0 order by a.squestion_id";
+            else
+               strSQL = "select top 1 * from survey_qn_master a where a.survey_id=" + survey_id + " and a.delete_flag=0 and squestion_id=1+(" + curQuestioId  + ") order by a.squestion_id";
+            return dbAccessManager.GetDataTable(strSQL);
+        }
+
+        public void InsertAnswerQuestion(int survey_id, int qn_id, int opt_id, String username)
+        {
+            strSQL = "INSERT INTO survey_user_answer(survey_id, qn_id,  opt_id, username, answer_date) VALUES (" + survey_id + "," + qn_id + "," + opt_id + ",'" + username + "','" + DateTime.Today.ToString("dd-MMM-yyyy") +"');";
+            dbAccessManager.GetCommand(strSQL);
+
+        }
+           
+        public void DeleteAnswerQuestion(String username, int qn_id)
+        {
+            strSQL = "DELETE survey_user_answer where username = '" + username + "' and qn_id=" + qn_id + ";";
+            dbAccessManager.GetCommand(strSQL);
+        }
+
+        public DataTable GetUserAnswer(int qn_id, String username)
+        {
+
+            //strSQL = "select a.*, ISNULL((select count(b.opt_id) from survey_user_answer b where b.opt_id=a.opt_id and username='" + username + "' group by b.opt_id),0) bSelected from dbo.survey_qn_options a where a.question_id =" + qn_id + ";";
+            strSQL = "select a.*, ISNULL((select CASE WHEN count(b.opt_id)>0 THEN '1' ELSE '0' END from survey_user_answer b where b.opt_id=a.opt_id group by b.opt_id), '0') bSelected from dbo.survey_qn_options a where a.question_id =" + qn_id + ";";
+            //strSQL = "select a.*,'1' as bSelected from dbo.survey_qn_options a where a.question_id =" + qn_id + ";";
+
+            return dbAccessManager.GetDataTable(strSQL);
         }
 
 
