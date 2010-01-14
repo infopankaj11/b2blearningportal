@@ -365,41 +365,24 @@ SET ANSI_PADDING OFF
 
 
 /****************************************************
-* Table Name: survey_result
+* Table Name: survey_user_answer
 ****************************************************/
 
 USE [CMP]
 GO
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[survey_result](
-	[user_survey_id] [varchar](25) NOT NULL,
-	[survey_id] [varchar](25) NOT NULL,
-	[user_id] [varchar](10) NOT NULL,
-	[qn_id] [varchar](25) NOT NULL,
-	[survey_user_answer] [varchar](250) NULL,
-	[exam_dt] [datetime] NOT NULL,
-	[created_by] [varchar](50) NOT NULL,
-	[created_date] [datetime] NOT NULL,
-	[modified_by] [varchar](50) NOT NULL,
-	[modified_date] [datetime] NOT NULL,
-	[delete_flag] [varchar](2) NULL,
- CONSTRAINT [pk_survey_result] PRIMARY KEY CLUSTERED 
-(
-	[user_survey_id] ASC,
-	[survey_id] ASC,
-	[user_id] ASC,
-	[qn_id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+CREATE TABLE [dbo].[survey_user_answer](
+	[survey_user_answer_id] [int] IDENTITY(1,1) NOT NULL,
+	[user_id] [int] NOT NULL,
+	[survey_id] [int] NOT NULL,
+	[question_id] [int] NOT NULL,
+	[opt_id] [int] NOT NULL,
+	[taken_date] [datetime] NULL
 ) ON [PRIMARY]
-GO
-
-SET ANSI_PADDING OFF
-GO
 
 
 
