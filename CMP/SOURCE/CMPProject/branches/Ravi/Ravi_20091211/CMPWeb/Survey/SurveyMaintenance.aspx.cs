@@ -16,10 +16,12 @@ public partial class SurveyMaintenance : System.Web.UI.Page
 {
     
     SurveyBL surveyBL;
+    String userName = "";
 
     public SurveyMaintenance()
     {
         surveyBL = new SurveyBL();
+        userName = "May";
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -48,7 +50,7 @@ public partial class SurveyMaintenance : System.Web.UI.Page
 
         if (lblAction.Text == "Add") //Add new FAP
         {
-            surveyBL.InsertSurvey(txtSurveyName.Text, txtAbbr.Text, "May", ""); 
+            surveyBL.InsertSurvey(txtSurveyName.Text, txtAbbr.Text, userName , ""); 
                 
             lblMsg.ForeColor = System.Drawing.Color.Green;
             lblMsg.Text = "Successfully added the new Survey.";
@@ -56,7 +58,7 @@ public partial class SurveyMaintenance : System.Web.UI.Page
 
         if (lblAction.Text == "Update") //Update Existing FAP
         {
-            surveyBL.UpdateSurvey(int.Parse(lblSurveyID2.Text), txtSurveyName.Text, txtAbbr.Text,"May");  
+            surveyBL.UpdateSurvey(int.Parse(lblSurveyID2.Text), txtSurveyName.Text, txtAbbr.Text, userName);  
             lblMsg.ForeColor = System.Drawing.Color.Green;
             lblMsg.Text = "Successfully updated the Survey.";
         }

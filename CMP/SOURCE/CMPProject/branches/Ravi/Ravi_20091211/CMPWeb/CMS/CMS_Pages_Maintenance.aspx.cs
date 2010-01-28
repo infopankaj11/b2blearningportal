@@ -101,7 +101,7 @@ namespace CMPWeb.CMS
             try
             {
                 int returnNumber = -1;
-                int sortNumber = -1;
+                int sortNumber = 0;
                 int childPageNumber = -1;
                 string pageModID = "0";
                 string pageName = txtPageName.Text.Replace("'", "''");
@@ -133,7 +133,7 @@ namespace CMPWeb.CMS
                 else if (rbNo.Checked)
                     isPublished = "0";
 
-                sortNumber = cmsBL.GetDuplicatePageSort(hdnSiteID.Value, hdnPageID.Value, ddlSortNumber.SelectedValue);
+                //sortNumber = cmsBL.GetDuplicatePageSort(hdnSiteID.Value, hdnPageID.Value, ddlSortNumber.SelectedValue);
 
                 if (sortNumber == 0)
                 {
