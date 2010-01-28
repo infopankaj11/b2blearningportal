@@ -154,16 +154,16 @@ namespace WorkLayers.DataLayer
             switch (type)
             {
                 case "module":
-                    strSQL = "select id, module_id, module_name, module_type from module_master m, role_dap r, user_master u, jmd_site " +
-                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id and site_url=module_name";
+                    strSQL = "select distinct id, module_id, module_name, module_type  from user_master u, role_dap r, DAP_Master d, module_master m, jmd_site " +
+                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and r.daplistid=d.daplistid and d.dapmoduleid=m.module_id and site_url=module_name";
                     break;
                 case "mcq":
-                    strSQL = "select exam_id id, module_id, module_name, module_type from module_master m, role_dap r, user_master u, mcq_exam_master " +
-                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and daplistid=module_id and module_name=exam_name";
+                    strSQL = "select distinct exam_id id, module_id, module_name, module_type from user_master u, role_dap r, DAP_Master d, module_master m, mcq_exam_master " +
+                       "where userlistid=" + ListID + " and u.rolelistid=r.rolelistid and r.daplistid=d.daplistid and d.dapmoduleid=m.module_id and module_name=exam_name";
                     break;
                 case "survey":
-                    strSQL = "select survey_id id, module_id, module_name, module_type from module_master m, dap_master d, role_dap r, user_master u, survey_master " +
-                       "where userlistid=" + ListID + "  and u.rolelistid=r.rolelistid and r.daplistid=d.daplistid and d.dapmoduleid=module_id and module_name COLLATE Latin1_General_CI_AS =survey_name";
+                    strSQL = "select distinct survey_id id, module_id, module_name, module_type from user_master u, role_dap r, DAP_Master d, module_master m, survey_master " +
+                       "where userlistid=" + ListID + "  and u.rolelistid=r.rolelistid and r.daplistid=d.daplistid and d.dapmoduleid=m.module_id and module_name COLLATE Latin1_General_CI_AS =survey_name";
                     break;
             }
             

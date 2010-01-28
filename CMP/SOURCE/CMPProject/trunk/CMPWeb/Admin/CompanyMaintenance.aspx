@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MasterPage.master" CodeBehind="CompanyMaintenance.aspx.cs" Inherits="CMPWeb.Admin.CompanyMaintenance" Title="Company" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MasterPage.master" CodeBehind="CompanyMaintenance.aspx.cs" Inherits="CMPWeb.Admin.CompanyMaintenance" Title="Company Maintenance" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Collections;
 
 namespace WorkLayers.DataLayer
 {
@@ -26,6 +27,12 @@ namespace WorkLayers.DataLayer
         public DataTable GetExam(int examId)
         {
             strSQL = "select * from dbo.mcq_exam_master where exam_id=" + examId + ";";
+            return dbAccessManager.GetDataTable(strSQL);
+        }
+
+        public DataTable GetExamDetail(int examId)
+        {
+            strSQL = "select * from dbo.mcq_exam_master where exam_id=" + examId + " and delete_flag=0";
             return dbAccessManager.GetDataTable(strSQL);
         }
 
@@ -95,6 +102,21 @@ namespace WorkLayers.DataLayer
         {
             strSQL = "select * from dbo.mcq_section_master where  exam_id = " + ExamId.ToString() + " and delete_flag=0 order by section_seq asc;";
             return dbAccessManager.GetDataTable(strSQL);
+        }
+
+        public DataTable GetAllExamSections(int ExamId, int SectionId)
+        {
+            //if (SectionId == 0)
+                strSQL = "select top(1) * from dbo.mcq_section_master where  exam_id = " + ExamId.ToString() + " and section_id>" + SectionId + " and delete_flag=0 order by section_seq asc;";
+            //else
+                //strSQL = "select top(1) * from dbo.mcq_section_master where  exam_id = " + ExamId.ToString() + " and section_id=" + SectionId + " and delete_flag=0 order by section_seq asc;";
+            return dbAccessManager.GetDataTable(strSQL);
+        }
+
+        public void DeleteExams()
+        {
+            strSQL = "delete from mcq_user_exam;delete from mcq_user_answer;";
+            dbAccessManager.GetCommand(strSQL);
         }
 
         public DataTable GetAllSections()
@@ -219,12 +241,70 @@ namespace WorkLayers.DataLayer
 
         public void GenerateQuestionLevel(String stype, String sLevel, int iQCount, int exam_id, int section_id, string userName )
         {
-            strSQL = "INSERT INTO mcq_user_exam (exam_id, section_id, user_id, qn_id, exam_date, created_by, created_date, delete_flag)";
-            strSQL += "SELECT top " + iQCount + " exam_id, " + section_id + "," + userName + " , question_id, null, " + userName + ", '" + DateTime.Today.ToString("dd-MMM-yyyy") + "', 0 ";
+            strSQL = "INSERT INTO mcq_user_exam (exam_id, section_id, username, qn_id, exam_date, created_by, created_date, delete_flag)";
+            strSQL += "SELECT top " + iQCount + " exam_id, " + section_id + ",'" + userName + "' , question_id, '" + DateTime.Now.ToString("dd-MMM-yyyy") + "', '" + userName + "', '" + DateTime.Today.ToString("dd-MMM-yyyy") + "', 0 ";
             strSQL += " from mcq_question_master where exam_type='" + stype + "' and question_level='" + sLevel + "' and section_id=" + section_id + " order by NEWID();";
             dbAccessManager.GetCommand(strSQL);
         }
 
+        public DataSet GetQuestion(int exam_id, int section_id, int user_exam_id, string userName)
+        {
+            if (user_exam_id == 0)
+                strSQL = "select top(1) user_exam_id, qn_id,question_text,question_type from mcq_question_master a, mcq_user_exam b where b.exam_id=" + exam_id + " and b.section_id=" + section_id + " and username='" + userName + "' and exam_date='" + DateTime.Now.ToString("dd-MMM-yyyy") + "'  and b.qn_id=a.question_id";
+            else
+                strSQL = "select user_exam_id, qn_id,question_text,question_type from mcq_question_master a, mcq_user_exam b where b.exam_id=" + exam_id + " and b.section_id=" + section_id + " and user_exam_id=" + user_exam_id + " and qn_id=question_id";
+
+            DataTable dtQn = dbAccessManager.GetDataTable(strSQL);
+            DataTable dtOption = new DataTable();
+            if (dtQn.Rows.Count > 0)
+            {
+                string qn_id = dtQn.Rows[0]["qn_id"].ToString();
+                strSQL = "select * from mcq_question_options where question_id=" + qn_id;
+                dtOption = dbAccessManager.GetDataTable(strSQL);
+            }
+
+            DataSet dsQuestion = new DataSet();
+            dsQuestion.Tables.Add(dtQn);
+            dsQuestion.Tables.Add(dtOption);
+
+            return dsQuestion;
+        }
+
+        public bool GetSectionValue(int exam_id, int section_id, string username)
+        {
+            strSQL = "select * from mcq_user_exam where exam_id=" + exam_id + " and section_id=" + section_id + " and username='" + username + "' and exam_date='" + DateTime.Now.ToString("dd-MMM-yyyy") + "'";
+            DataTable dtSection = dbAccessManager.GetDataTable(strSQL);
+            if (dtSection.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public void UserReadQuestion(int exam_id, int section_id, string userName, int qn_id)
+        {
+            strSQL = "delete from mcq_user_questions where qn_id=" + qn_id + " and user_exam_id=" + exam_id + " and user_section_id=" + section_id + " and username='" + userName + "' and exam_date='" + DateTime.Now.ToString("dd-MMM-yyyy") + "';";
+            strSQL += "insert into mcq_user_questions values(" + exam_id + "," + section_id + ",'" + userName + "','" + DateTime.Now.ToString("dd-MMM-yyyy") + "'," + qn_id + ")";
+            dbAccessManager.GetCommand(strSQL);
+        }
+
+        public DataSet GetReadAnsQuestion(int exam_id, int section_id, string userName)
+        {
+            DataSet dsRdAnsQn = new DataSet();
+            strSQL = "select qn_id from mcq_user_questions where user_exam_id=" + exam_id + " and user_section_id=" + section_id + " and username='" + userName + "' and exam_date='" + DateTime.Now.ToString("dd-MMM-yyyy") + "'";
+            DataTable dtQns = dbAccessManager.GetDataTable(strSQL);
+            strSQL = "select b.user_exam_id as uei from dbo.mcq_user_exam a, mcq_user_answer b where exam_id=" + exam_id + " and section_id=" + section_id + " and username='" + userName + "' and exam_date='" + DateTime.Now.ToString("dd-MMM-yyyy") + "' and a.user_exam_id=b.user_exam_id";
+            DataTable dtAns = dbAccessManager.GetDataTable(strSQL);
+            dsRdAnsQn.Tables.Add(dtQns);
+            dsRdAnsQn.Tables.Add(dtAns);
+            return dsRdAnsQn;
+        }
+
+        public DataTable GetAllQuestions(int exam_id, int section_id, string userName)
+        {
+            strSQL = "select row_number() over (order by user_exam_id) as 'rownum',user_exam_id, qn_id,question_text,question_type from mcq_question_master a, mcq_user_exam b ";
+            strSQL += "where b.exam_id=" + exam_id + " and b.section_id=" + section_id + " and username='" + userName + "' and qn_id=question_id order by user_exam_id";
+            return dbAccessManager.GetDataTable(strSQL);
+        }
 
         public DataTable GetSectionsForUser(string userName, int ExamId, int sectionId)
         {
@@ -276,6 +356,73 @@ namespace WorkLayers.DataLayer
             dbAccessManager.GetCommand(strSQL);
         }
 
-    }
+        public void updateAnswerHistory(int exam_id, string userName)
+        {
+            strSQL = "insert into mcq_user_answer_history select exam_id, section_id, username, exam_date, mcq_user_answer_id,qn_id, choice_id, correct,created_by,getdate()";
+            strSQL += "from mcq_user_exam a, mcq_user_answer b where exam_id=" + exam_id + " and username='" + userName + "' and exam_date='" + DateTime.Now.ToString("dd-MMM-yyyy") + "' and a.user_exam_id=b.user_exam_id";
+            dbAccessManager.GetCommand(strSQL);
+        }
 
+        public string[] GetResult(int exam_id, string userName)
+        {
+            strSQL = "select * from mcq_section_master where exam_id=" + exam_id;
+            DataTable dtSection = dbAccessManager.GetDataTable(strSQL);
+
+            strSQL = "select * from mcq_exam_master where exam_id=" + exam_id;
+            DataTable dtExam = dbAccessManager.GetDataTable(strSQL);
+
+            strSQL = "select a.user_exam_id,a.section_id,qn_id,correct,question_level from mcq_user_exam a, mcq_user_answer b, mcq_question_master c ";
+            strSQL += "where a.exam_id=" + exam_id + " and username='" + userName + "' and exam_date='" + DateTime.Now.ToString("dd-MMM-yyyy");
+            strSQL += "' and a.user_exam_id=b.user_exam_id and c.question_id=a.qn_id;";
+            DataTable dtUserAns = dbAccessManager.GetDataTable(strSQL);
+            ArrayList qNos = new ArrayList();
+            int markCount = 0;
+            
+            foreach (DataRow drUserAns in dtUserAns.Rows)
+            {
+                DataRow[] drWrong = dtUserAns.Select("correct=0 and qn_id=" + drUserAns["qn_id"].ToString());
+                int qExist = qNos.IndexOf(drUserAns["qn_id"].ToString());
+
+                if (drWrong.Length == 0 && qExist == -1)
+                {
+                    qNos.Add(drUserAns["qn_id"].ToString());
+
+                    string level = drUserAns["question_level"].ToString();
+                    string weight = "";                   
+
+                    switch(level)
+                    {
+                        case "Simple":
+                            weight = "simple_qn_weight";
+                            break;
+                        case "Moderate":
+                            weight = "moderate_qn_weight";
+                            break;
+                        case "Complex":
+                            weight = "complex_qn_weight";
+                            break;
+                    }
+
+                    DataRow[] drSection = dtSection.Select("section_id=" + drUserAns["section_id"].ToString());
+                    if (drSection.Length > 0)
+                    {
+                        markCount += Convert.ToInt32(drSection[0][weight].ToString());
+                    }
+
+                }
+            }
+
+            int passMark = Convert.ToInt32(dtExam.Rows[0]["pass_mark"].ToString());
+            string result = "FAIL";
+            if (markCount > passMark)
+            {
+                result = "PASS";
+            }
+
+            string[] totalResult = new string[2];
+            totalResult[0] = result;
+            totalResult[1] = markCount.ToString();
+            return totalResult;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/UserMasterPage.master" AutoEventWireup="true" CodeBehind="LearnPage.aspx.cs" Inherits="CMPWeb.CMSClient.LearnPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/UserPage.master" AutoEventWireup="true" CodeBehind="LearnPage.aspx.cs" Inherits="CMPWeb.CMSClient.LearnPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>Content Management Portal</title>
@@ -8,21 +8,21 @@
     <script type="text/javascript" language="javascript">
 function callNextPrev(pageName)
 {
-    document.form1.action = "LearnPage.aspx?pageName=" + pageName;
-    document.form1.submit();
+    document.aspnetForm.action = "LearnPage.aspx?pageName=" + pageName;
+    document.aspnetForm.submit();
 }
 </script>
 
 <table>
 <tr>
-<td width="50%">
+<td valign="top" width="20%">
     <asp:XmlDataSource ID="treeSource" runat="server"></asp:XmlDataSource>
     <asp:TreeView ID="tvContent" runat="server" 
         onselectednodechanged="tvContent_SelectedNodeChanged" >    
     </asp:TreeView>
             
 </td>
-<td width="50%">
+<td valign="top" width="80%">
 <asp:Literal ID="literal1" runat="server"></asp:Literal>
                     
 </td>

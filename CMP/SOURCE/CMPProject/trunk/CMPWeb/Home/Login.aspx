@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Login" EnableSessionState="True" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Login" EnableSessionState="True" Title="Content Managerment Portal"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -14,7 +14,8 @@
     <td style="width:30%"></td>
     
     <td style="width:40%">
-    <center> <img alt="" src="../Images/logo.gif" style="width: 324px; height: 83px" /></center> 
+    <p>&nbsp;</p><p>&nbsp;</p>
+    <center> <img alt="" src="../Images/welcome.gif" style="width: 324px; height: 83px" /></center> 
     <br /> <br /> <br />
         <center> 
         <table cellpadding="5" cellspacing="0" width="100%" border=1>

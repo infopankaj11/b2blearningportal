@@ -34,6 +34,22 @@ public partial class Survey : System.Web.UI.Page
         DataTable dtsurveys= surveyBL.GetAllSurveys();
         gv_surveys.DataSource = dtsurveys;
         gv_surveys.DataBind();
+
+        if (dtsurveys.Rows.Count > 0)
+        {          
+            btnClear.Enabled = true;
+            btnDelete.Enabled = true;
+            btnQuestions.Enabled = true;
+            lblInfo.Text = "";
+            
+        }
+        else {
+            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
+            btnQuestions.Enabled = false;
+            lblInfo.Text = "No Surveys yet";
+        }
+
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -70,8 +86,9 @@ public partial class Survey : System.Web.UI.Page
             surveyBL.DeleteSurvey(surveyIDs);
             lblMsg.ForeColor = System.Drawing.Color.Green;
             lblMsg.Text = "Successfully deleted selected survey(s).";
-            PopulatesurveyList();
+            
         }
+        PopulatesurveyList();
     }
 
      protected void btnManageSection_Click(object sender, EventArgs e)

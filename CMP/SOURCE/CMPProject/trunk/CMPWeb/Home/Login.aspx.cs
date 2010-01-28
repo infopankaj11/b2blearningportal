@@ -49,7 +49,7 @@ using System.Data;
                         //Response.Redirect("../Admin/PortalAdmin.aspx");
                         break;
                     case "UserAdmin":
-                        Response.Redirect("../Admin/UserAdmin.aspx");
+                        Response.Redirect("../ACS/User.aspx");
                         break;
                     case "PortalAdmin":
                         Response.Redirect("../Admin/PortalAdmin.aspx");

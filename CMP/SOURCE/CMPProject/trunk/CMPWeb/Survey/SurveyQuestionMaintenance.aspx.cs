@@ -16,11 +16,12 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
 {
     
     SurveyBL surveyBL;
-    //DataTable dtObject;
+    String userName = "";
 
     public SurveyQuestionMaintenance()
     {
         surveyBL = new SurveyBL();
+        userName = "May";
     }
     
     protected void Page_Load(object sender, EventArgs e)
@@ -65,48 +66,28 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
     
     protected void btnDeleteOpt_Click(object sender, EventArgs e)
     {
-     //
+        Button btn = (Button)sender;
+        String sOId = btn.CommandArgument;
+        if (sOId.Length > 0)
+        {
+            surveyBL.DeleteQuestionOption(int.Parse(sOId));
+            PopulateQuestionOptions();
+        }        
     }
     
-    protected void btnOptions_Click(object sender, EventArgs e)
-    {        
-        int iNoOptions, iCnt;
-
-        //if (!surveyBL.checkEmptyInteger(txtTotalOption.Text))
-        //{
-        //     lblMsg.Text = "Invalid number of options.";
-        //}
-        //else {
-        //    iNoOptions = int.Parse(txtTotalOption.Text);
-
-            //CheckBoxList chkAns = new CheckBoxList ();
-
-            //for (iCnt = 0; iCnt < iNoOptions; iCnt = iCnt + 1)
-            //{
-            //    TextBox txtOption = new TextBox();
-            //    CheckBox chkOAns = new CheckBox();
-              
-            //    pnlOptions.Controls.Add(chkOAns);
-            //    pnlOptions.Controls.Add(txtOption);
-                
-            //}
-        //}
-  
-        
-    }
-
+    
     protected void btnAddUpdate_Click(object sender, EventArgs e)
     {
         if  (!checkParam())  return;
 
         if (lblAction.Text == "Add") //Add new question
         {
-            lblQID.Text = surveyBL.InsertQuestion(int.Parse(lblSurveyID2.Text), txtQuestion.Text, ddlQnType.Text,"May", "").ToString();
+            lblQID.Text = surveyBL.InsertQuestion(int.Parse(lblSurveyID2.Text), txtQuestion.Text, ddlQnType.Text, userName, "").ToString();
         }
 
         if (lblAction.Text == "Update") //Update Existing question
         {
-            surveyBL.UpdateQuestion(int.Parse(lblQID.Text), txtQuestion.Text, ddlQnType.Text, "May"); 
+            surveyBL.UpdateQuestion(int.Parse(lblQID.Text), txtQuestion.Text, ddlQnType.Text, userName); 
 
            
         }
@@ -201,12 +182,7 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
         gv_Object.DataBind();        
     }
 
-    protected void DeleteOption(int  optionID)
-    {    
-        surveyBL.DeleteQuestionOption(optionID);
-        PopulateQuestionOptions();
-
-    }
+   
     protected void btnAddOpt_Click(object sender, EventArgs e)
     {
         AddOption();   
@@ -219,51 +195,42 @@ public partial class SurveyQuestionMaintenance : System.Web.UI.Page
         if (String.IsNullOrEmpty(txtQuestion.Text))
         {
             lblMsg.ForeColor = System.Drawing.Color.Red;
-            lblMsg.Text = "Please give QUESTION TEXT before proceeding.";
+            lblMsg.Text = "Please give Survey Question text before proceeding.";
             return false;
         }
-        //else if (String.IsNullOrEmpty(txtAbbr.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Exam abbreviation  before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtTotQns.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give total questions (numeric) before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtTotMarks.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Total Marks (numeric) before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtPassMark.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Passing mark (numeric) before proceeding.";
-        //    return false;
-        //}
-        //else if (!mcqBL.checkEmptyInteger(txtDuration.Text))
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Please give Exam duration in minutes (numeric) name before proceeding.";
-        //    return false;
-        //}
+             
+        if (gv_Object.Rows.Count < 2)
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Provide atleast two options before proceeding.";
+            return false;
+        }
+       
+        Boolean hasOption = false;
+        int iValid = 0;
+        foreach (GridViewRow myRow in gv_Object.Rows)
+        {
 
-        ////check for validity 
-        //int totMarks = int.Parse( txtTotMarks.Text);
-        //int passMark = int.Parse(txtPassMark.Text);
+            TextBox optTxt = (TextBox)(myRow.FindControl("txtOptiontxt"));
 
-        //if (passMark > totMarks)
-        //{
-        //    lblMsg.ForeColor = System.Drawing.Color.Red;
-        //    lblMsg.Text = "Passing mark cannot be more than the total marks.";
-        //    return false;
-        //}
-                
+            if (optTxt.Text.Trim() != "" )
+            {
+                iValid = iValid + 1;
+                hasOption = true;
+            }           
+
+            if (hasOption && iValid > 1)
+                break;
+        }
+
+        if (iValid < 2)
+        {
+            lblMsg.ForeColor = System.Drawing.Color.Red;
+            lblMsg.Text = "Provide atleast two options before proceeding.";
+            return false;
+        }       
+
         return true;
+        
     } 
 }
