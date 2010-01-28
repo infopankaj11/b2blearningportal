@@ -51,13 +51,13 @@
                         </HeaderTemplate>
                         
                         <ItemTemplate>
-                            <asp:TextBox runat="server" ID="txtOptiontxt" Text='<%#Eval("Choice") %>' MaxLength="50"/>                              
+                            <asp:TextBox runat="server" ID="txtOptiontxt" Text='<%#Eval("Choice") %>' MaxLength="50"/>                                                        
                         </ItemTemplate>
                     </asp:TemplateField>                  
                    
                     <asp:TemplateField>                       
                         <ItemTemplate>
-                              <asp:Button ID="btnDeleteOpt" Text="Delete" runat="server"  OnClick="btnDeleteOpt_Click"/>              
+                              <asp:Button ID="btnDeleteOpt" Text="Delete" runat="server" CommandArgument='<%#Eval("opt_id")%>'  OnClick="btnDeleteOpt_Click"/>              
                         </ItemTemplate>
                     </asp:TemplateField>        
                     
@@ -91,7 +91,7 @@
     <asp:Button ID="btnClear" Text="Clear" runat="server"  OnClick="btnClear_Click" />
     </td>
     <td>
-    <asp:Button ID="btnCancel" Text="Back to Surveys" runat="server"
+    <asp:Button ID="btnCancel" Text="Back to Questions" runat="server"
             onclick="btnCancel_Click" />
     </td>
     </tr>

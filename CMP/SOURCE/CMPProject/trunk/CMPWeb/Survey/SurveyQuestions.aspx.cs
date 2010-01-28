@@ -57,13 +57,25 @@ public partial class SurveyQuestions : System.Web.UI.Page
         DataTable dtSurvey = surveyBL.GetSurvey(surveyID);
         if (dtSurvey.Rows.Count > 0)
             lblSurveyName.Text = dtSurvey.Rows[0]["survey_name"] + " (" + dtSurvey.Rows[0]["survey_abbr"] + ")";
-        else
-            lblSurveyName.Text = "No Question";
-
-
+        
         DataTable dtObject = surveyBL.GetSurveyQuestions(surveyID);
+
         gv_Object.DataSource = dtObject;
         gv_Object.DataBind();
+        if (dtObject.Rows.Count > 0)
+        {
+            btnClear.Enabled = true;
+            btnDelete.Enabled = true;
+            lblInfo.Text = "";
+        }
+        else {
+            
+            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
+            lblInfo.Text = "No Question yet";
+        
+        }
+
     }
     
     protected void btnClear_Click(object sender, EventArgs e)
@@ -95,8 +107,9 @@ public partial class SurveyQuestions : System.Web.UI.Page
             surveyBL.DeleteQuestion(ObjectIDs);
             lblMsg.ForeColor = System.Drawing.Color.Green;
             lblMsg.Text = "Successfully deleted selected question(s).";
-            PopulateObjectList();
+           
         }
+        PopulateObjectList();
     }
 
 

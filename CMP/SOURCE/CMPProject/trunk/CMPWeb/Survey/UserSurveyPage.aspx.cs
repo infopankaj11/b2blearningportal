@@ -116,9 +116,18 @@ public partial class UserSurveyPage : System.Web.UI.Page
         }
     }
 
-    protected void CheckChanged(object sender, EventArgs e)
-    {
-        lblMsg.Text = "ok";
+    protected void rbSelectedAnswer_CheckedChanged(object sender, EventArgs e)
+    {        
+        RadioButton rBselected = (RadioButton)sender;
+        RadioButton rbSelectedSurvey;
+
+        foreach (GridViewRow myRow in gv_Object.Rows)
+        {
+            rbSelectedSurvey = (RadioButton)(myRow.FindControl("rbSelectedAnswer"));
+            if (rbSelectedSurvey.NamingContainer != rBselected.NamingContainer)
+                rbSelectedSurvey.Checked = false;
+        }
+
     
     }
 

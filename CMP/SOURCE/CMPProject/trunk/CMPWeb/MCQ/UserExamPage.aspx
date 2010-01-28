@@ -147,7 +147,8 @@
         </tr>
         <tr>
         <td>
-        <asp:Button id="btnStart" Text="Start Exam" runat="server" onclick="btnStart_Click" />
+        <br />
+        <asp:Button id="btnStart" Text="Next" runat="server" onclick="btnStart_Click" />
         </td>
         </tr>
     </table>
@@ -161,6 +162,7 @@
                 <asp:Label runat="server" ID="lblExamID2" Visible="false" Text="" />
                 <asp:Label runat="server" ID="lblAction" Visible="false" Text="" />
                 <asp:Label runat="server" ID="lblSectionID" Visible="false" Text="" />
+                <asp:HiddenField runat="server" ID="hdnQnCnt" />
             </td>
         </tr>
     </table>

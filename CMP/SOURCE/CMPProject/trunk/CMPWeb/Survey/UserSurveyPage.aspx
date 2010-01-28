@@ -17,11 +17,11 @@
                     <asp:TemplateField>                 
                         
                         <itemtemplate>
-                            <asp:Label ID="Label1" Text='<%#Eval("bSelected") %>' runat="server" Font-Bold> <br /> </asp:Label>
+                            
                              <%if (sControltype == "Multiple") {%>
                                 <asp:CheckBox id="chkSelectedAnswer" runat="server"  />                              
                             <%}else {%>                            
-                                <asp:RadioButton ID="rbSelectedAnswer" runat="server" />
+                                <asp:RadioButton ID="rbSelectedAnswer" runat="server" AutoPostBack=true  OnCheckedChanged="rbSelectedAnswer_CheckedChanged"   />
                             <%} %>
                 
                             <asp:HiddenField ID="hfObjectID" Value='<%#Eval("opt_id")%>' runat="server" />

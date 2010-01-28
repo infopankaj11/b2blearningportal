@@ -5,7 +5,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    <center><h1>Surveys</h1></center>
-    
+        <center><h3> <asp:Label ID="lblInfo"  runat="server" Text=""></asp:Label></h3></center>
+
   <table class ="middle">
 <tr>
 <td>
@@ -34,7 +35,7 @@
                     </asp:TemplateField>
                      
                     <asp:HyperLinkField DataNavigateUrlFields="survey_ID" DataNavigateUrlFormatString="~/Survey/SurveyMaintenance.aspx?Action=Update&surveyID={0}"
-                         DataTextField="survey_name" NavigateUrl="~/Survey/SurveyMaintenance.aspx" HeaderText = "survey Name"/>
+                         DataTextField="survey_name" NavigateUrl="~/Survey/SurveyMaintenance.aspx" HeaderText = "Survey Name"/>
                         
                     <asp:TemplateField>
                         <HeaderTemplate>

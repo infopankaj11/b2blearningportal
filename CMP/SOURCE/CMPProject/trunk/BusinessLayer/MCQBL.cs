@@ -153,18 +153,19 @@ namespace WorkLayers.BusinessLayer
             return mcqDL.GetAllUserExams(userName);  
         }
 
-        public DataSet GetExamDetails(int examID)
+        public DataSet GetExamDetails(int examID, int sectionID)
         {
             DataSet dsExamDetail = new DataSet();
-            DataTable dtExam = null; //mcqDL.GetExamDetail(examID);
-            DataTable dtSection = mcqDL.GetAllExamSections(examID);
+            DataTable dtExam = mcqDL.GetExamDetail(examID);
+            DataTable dtSection = mcqDL.GetAllExamSections(examID, sectionID);
             dsExamDetail.Tables.Add(dtExam);
             dsExamDetail.Tables.Add(dtSection);
             return dsExamDetail;
         }
 
-        public DataTable GenerateExam(string userName, int examId)
+        public void GenerateExam(string userName, int examId)
         {
+            mcqDL.DeleteExams();
             DataTable dtSections = null;
             if (mcqDL.getUserExam(userName, examId) == 0)
             {
@@ -178,7 +179,32 @@ namespace WorkLayers.BusinessLayer
                 }
              }
 
-            return dtSections;
+            //return dtSections;
+        }
+
+        public DataSet GetQuestion(int exam_id, int section_id, int user_exam_id, string userName)
+        {
+            return mcqDL.GetQuestion(exam_id, section_id, user_exam_id, userName);
+        }
+
+        public bool GetSectionValue(int exam_id, int section_id, string username)
+        {
+            return mcqDL.GetSectionValue(exam_id, section_id, username);
+        }
+
+        public void UserReadQuestion(int exam_id, int section_id, string userName, int qn_id)
+        {
+            mcqDL.UserReadQuestion(exam_id, section_id, userName, qn_id);
+        }
+
+        public DataSet GetReadAnsQuestion(int exam_id, int section_id, string userName)
+        {
+            return mcqDL.GetReadAnsQuestion(exam_id, section_id, userName);
+        }
+
+        public DataTable GetAllQuestions(int exam_id, int section_id, string userName)
+        {
+            return mcqDL.GetAllQuestions(exam_id, section_id, userName);
         }
 
         public DataTable GetSectionsForUser(string userName, int examId, int sectionId)
@@ -214,6 +240,16 @@ namespace WorkLayers.BusinessLayer
         public String isCorrect(int user_exam_id)
         {
             return mcqDL.isCorrect( user_exam_id);
+        }
+
+        public void updateAnswerHistory(int exam_id, string userName)
+        {
+            mcqDL.updateAnswerHistory(exam_id, userName);
+        }
+
+        public string[] GetResult(int exam_id, string userName)
+        {
+            return mcqDL.GetResult(exam_id, userName);
         }
 
     }
