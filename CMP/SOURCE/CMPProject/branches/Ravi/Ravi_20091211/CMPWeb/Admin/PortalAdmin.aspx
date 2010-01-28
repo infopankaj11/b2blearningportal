@@ -39,7 +39,7 @@
       </tr>
       <tr>
       <td>
-           <a class="Portaladmin" href="../Admin/ModuleMaintenance.aspx" >Module Manager</a>
+           <a class="Portaladmin" href="../CMS/CMS_Sites.aspx" >Module Manager</a>
            </td>
            <td> &nbsp;
            </td>

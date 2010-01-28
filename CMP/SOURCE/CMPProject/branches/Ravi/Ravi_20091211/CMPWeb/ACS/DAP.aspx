@@ -1,33 +1,20 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DAP.aspx.cs" Inherits="DAP" Title="DAP" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DAP.aspx.cs" Inherits="DAP" Title="DAP Manager" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <center><h1>DAP Maintenance</h1></center>
  
-<table>
+<table class="middle" >
 <tr>
 <td>
-    <table class="search">
-    <tr align="right">
-    <td>
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-    <asp:Button ID="Button4" Text="Search" runat="server" />
-    </td>
-    </tr>
-    <tr align="right">
-    <td>
-    <asp:RadioButton id="RadioButton2" Text="by Company" runat="server"/>
-    <asp:RadioButton id="RadioButton3" Text="by Module" runat="server"/>
-    </td>
-    </tr>
-    </table>
+    
 
 </td>
 </tr>
 <tr>
 <td>
-    <table border="1" cellspacing="0" cellpadding="3">
+    <table  cellspacing="0" cellpadding="0" width="800px" >
    <tr>
    <td style="width:60%" valign="top" >
        <asp:GridView Width="100%" runat="server" ID="gv_DAPs" AutoGenerateColumns="false" DataKeyNames="DAPListID" >

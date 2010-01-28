@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Roles.aspx.cs" Inherits="Roles" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Roles.aspx.cs" Inherits="Roles" Title="Role Manager" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -6,23 +6,10 @@
 
 <center><h1>Role Maintenance</h1></center>
  
-<table>
+<table class="middle" >
 <tr>
 <td>
-   <table class="search">
-        <tr align="right">
-            <td class="style1">
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                <asp:Button ID="Button4" Text="Search" runat="server" />
-            </td>
-        </tr>
-        <tr align="right">
-            <td>
-                <asp:RadioButton id="RadioButton2" Text="by Company" runat="server"/>
-                <asp:RadioButton id="RadioButton3" Text="by Name" runat="server"/>
-            </td>
-        </tr>
-    </table>
+
 </td>
 </tr>
 

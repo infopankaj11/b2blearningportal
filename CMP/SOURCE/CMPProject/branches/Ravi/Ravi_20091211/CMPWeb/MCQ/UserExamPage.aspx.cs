@@ -38,21 +38,27 @@ public partial class UserExamPage : System.Web.UI.Page
         else
             lblExamName.Text = "Invalid Exam. Go <a href='Exams.aspx'>back</a> to Exams page.";
 
-        if (Request.QueryString["SectionID"] != null)
-        {
-            lblSectionID.Text = Request.QueryString["SectionID"].ToString();
-        }
-        else
-            lblSectionID.Text = "0";
-
         if (!Page.IsPostBack)
+        {
+            if (Request.QueryString["SectionID"] != null)
+            {
+                lblSectionID.Text = Request.QueryString["SectionID"].ToString();
+            }
+            else
+                lblSectionID.Text = "0";
+
+            if (lblSectionID.Text == "0")
+                mcqBL.GenerateExam(userName, examID);        
+        
+
             GetExamDetails();
+        }
             //GenerateExam();
     }
 
     private void GetExamDetails()
     {
-        DataSet dsExamDetails = mcqBL.GetExamDetails(examID);
+        DataSet dsExamDetails = mcqBL.GetExamDetails(examID, Convert.ToInt32(lblSectionID.Text));
         FillExamDetails(dsExamDetails.Tables[0]);
         PopulateObjectList(dsExamDetails.Tables[1]);
     }
@@ -71,38 +77,26 @@ public partial class UserExamPage : System.Web.UI.Page
 
     private void GenerateExam()
     {
-        //DataTable dtExam = mcqBL.GetExam(examID);
-        mcqBL.GenerateExam(userName, examID);  //may
-        //if (examID != 0)
-            //lblExamName.Text = dtExam.Rows[0]["exam_name"] + " (" + dtExam.Rows[0]["exam_abbr"] + ")";            
     }
 
     private void PopulateObjectList(DataTable dtSection)
     {
-        /*DataTable dtExam = mcqBL.GetExam(examID);
-        DataTable dtObject = mcqBL.GenerateExam(userName, examID);  //may
-        if (examID != 0)
-            lblExamName.Text = dtExam.Rows[0]["exam_name"] + " (" + dtExam.Rows[0]["exam_abbr"] + ")";        
-   
-        if (dtObject.Rows.Count == 0)
-            lblInfo.Text = "Error retrieving Exams.";
-        DataTable dtObject =  mcqBL.GetSectionsForUser(userName, examID, Convert.ToInt32(lblSectionID.Text));
-        if (dtObject.Rows.Count > 0)
-            lblSectionID.Text = dtObject.Rows[0]["section_id"].ToString();
-        gv_Object.DataSource = dtObject;
-        gv_Object.DataBind();*/
 
         if (dtSection.Rows.Count > 0)
+        {
             lblSectionID.Text = dtSection.Rows[0]["section_id"].ToString();
-
+            hdnQnCnt.Value = (Convert.ToInt32(dtSection.Rows[0]["total_simple_qns"].ToString()) +
+                     Convert.ToInt32(dtSection.Rows[0]["total_moderate_qns"].ToString()) +
+                     Convert.ToInt32(dtSection.Rows[0]["total_complex_qns"].ToString())).ToString();
+        }
+        
         gv_Object.DataSource = dtSection;
         gv_Object.DataBind();
     }
 
     protected void btnStart_Click(object sender, EventArgs e)
-    {
-        GenerateExam();
-        Response.Redirect("/MCQ/UserExamQuestion.aspx?SID=" + lblSectionID.Text + "&ExamID=" + examID);
+    {        
+        Response.Redirect("/MCQ/UserExam.aspx?sectionId=" + lblSectionID.Text + "&examId=" + examID + "&totalQn=" + hdnQnCnt.Value);
     }
 
 }

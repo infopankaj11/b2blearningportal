@@ -6,6 +6,7 @@
 
 <center><h1> Survey Questions</h1></center>
 <center><h2> <asp:Label ID="lblSurveyName"  runat="server" Text="Label"></asp:Label></h2></center>
+        <center><h3> <asp:Label ID="lblInfo"  runat="server" Text=""></asp:Label></h3></center>
 
  <table class="middle">
 <tr align="right">
@@ -101,7 +102,7 @@
     <asp:Button ID="btnClear" Text="Clear" runat="server" OnClick="btnClear_Click"  />
     </td>  
     <td>
-    <asp:Button ID="btnCancel" Text="Cancel" runat="server" onclick="btnCancel_Click"/>
+    <asp:Button ID="btnCancel" Text="Back to Surveys" runat="server" onclick="btnCancel_Click"/>
     </td>
     </tr>
     </table>
