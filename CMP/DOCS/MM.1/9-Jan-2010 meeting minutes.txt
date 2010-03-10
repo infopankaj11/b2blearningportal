@@ -1,0 +1,37 @@
+1. Design model - review form signed by PM - OK
+2. Project Plan - must be updated - OK
+3. When is the last time Gantt Chart is updated? after 2nd audit - OK
+4. Who did what? ACS, CMS, MCQ, Testing by other 3 - OK
+5. How many use cases? ~35 original is ~40 -OK
+6. How to monitor progrss? Progress report, timesheet - OK
+7. How often do you meet? twice a month. - OK
+8. Quality Plan shown? Yes - OK
+9. How do you instruct people to do the job? WIF. Show Dave. - OK
+10. Database Design is in wrong portion. - Rectified
+11. Show Dave the Master File Directory. 
+12. Workfile directory is not needed
+13. show User Manual review
+14. Must review and sign on End of Project Report and hand in next week(within 6 days)
+15. All the report deliverables must be reviewed and signed and hand in
+16. Any test plan and cases? Yes.
+17. Show Dave the Test Plan and Test Result
+18. Re-do the test log - copy from spreadsheet to test log.
+19. Change Request  - show change request
+20. Summary - Need more heading on content page
+21. Must be reviewed and signed off on all review and document
+22. 
+
+
+
+code through -derek
+overview first of the system
+review of user manual - dave
+
+feaure and where it is implemented in the code
+print the user manual for dave
+
+will discuss technicalities
+like problems rencountered, the changes etc
+copy of sourcecode in the cd
+
+diff documents to be submitetd
