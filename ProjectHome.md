@@ -1,0 +1,1 @@
+Business to Business (B2B) learning portal application which will make easy organizations learning process, by subscribing this application system, customer account will be created for their employees to learn anything that the company wants their employees to learn.
